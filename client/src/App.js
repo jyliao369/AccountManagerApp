@@ -4,12 +4,12 @@ import LoginRegister from "./components/LoginRegister";
 function App() {
   return (
     <div className="App">
-      <div className="appMainCont">
+      <div className="appCont">
         <LoginRegister />
 
-        {/* <div>
+        <div className="appMainCont" id="appMainCont">
           <ProfileCard />
-        </div> */}
+        </div>
       </div>
     </div>
   );
