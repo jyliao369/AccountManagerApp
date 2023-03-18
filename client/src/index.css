@@ -6,3 +6,90 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.appMainCont {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LOGREGISTER */
+.logRegForm {
+  width: 20em;
+  height: 32em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-style: solid;
+}
+.logRegHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0em 1em 0em;
+}
+.logRegForm input {
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin: 0em 0em 0.5em 0em;
+}
+.logForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+}
+.logUserInput,
+.logPassInput {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.loginButton,
+.registerButton {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: center;
+  padding: 0em 0em 1em 0em;
+}
+.regForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+}
+.fullNameInput {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.nameInput {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.usernameInput,
+.emailInput,
+.passwordInput {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.logToReg {
+  width: 100%;
+  display: flex;
+}
+.logToReg button {
+  width: 50%;
+  height: 3em;
+}
