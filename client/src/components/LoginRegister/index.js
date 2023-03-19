@@ -61,6 +61,7 @@ const LoginRegister = () => {
       $("#logRegForm").css({ display: "none" });
       $("#appMainCont").css({ display: "flex" });
       setLoginUser({ username: "", password: "" });
+      $("#navigationBar").css({ display: "flex" });
     } else if (logReg === "register") {
       $("#logRegForm").css({ display: "none" });
       $("#appMainCont").css({ display: "flex" });
@@ -71,6 +72,7 @@ const LoginRegister = () => {
         email: "",
         password: "",
       });
+      $("#navigationBar").css({ display: "flex" });
     }
   };
 

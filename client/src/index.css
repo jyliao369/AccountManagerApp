@@ -12,6 +12,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 .appMainCont {
   display: none;
@@ -106,6 +108,22 @@
 }
 
 /* PROFILECARD */
+.profileCardPage {
+  width: 45%;
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+}
+.profileCardPage::-webkit-scrollbar {
+  display: none;
+}
+.profileCardCont {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 2em 0em 2.5em 0em;
+}
 .profileCard {
   width: 20em;
   height: 26em;
@@ -114,7 +132,7 @@
   flex-direction: column;
   align-items: center;
   border-style: solid;
-  margin: 4em;
+  /* margin: 3em 0em 3em 0em; */
 }
 .profileIcon {
   aspect-ratio: 1/1;
@@ -125,4 +143,36 @@
 }
 .profileCard p {
   margin: 0em 0em 1em 0em;
+}
+.accountsCont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.accounts {
+  width: 20em;
+  height: 1.75em;
+  display: flex;
+  border-style: solid;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 0em 0em 1.25em 0em;
+}
+
+/* NAVIGATIONBAR */
+.navigationBar {
+  width: 100%;
+  height: 3.5em;
+  display: none;
+  background-color: gray;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+}
+.navigationBar button {
+  height: 100%;
+  width: 25%;
 }
