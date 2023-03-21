@@ -18,7 +18,9 @@ const Navigation = ({ setUserAccounts, userAccounts }) => {
     <div className="navigationBar" id="navigationBar">
       <button onClick={() => switchPages("#profileCardPage")}>Home</button>
       <button onClick={() => switchPages("#settingsPage")}>Settings</button>
-      <button onClick={() => switchPages()}>Add Account</button>
+      <button onClick={() => switchPages("#addAccountPage")}>
+        Add Account
+      </button>
       <button onClick={() => logOut()}>Log Out</button>
     </div>
   );

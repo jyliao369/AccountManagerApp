@@ -28,7 +28,7 @@
 /* LOGREGISTER */
 .logRegForm {
   width: 20em;
-  height: 32em;
+  height: 35em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,10 +41,10 @@
   justify-content: center;
   margin: 1em 0em 1.5em 0em;
 }
-.logRegForm input {
+/* .logRegForm input {
   padding: 0.5em 0.5em 0.5em 0.5em;
   margin: 0em 0em 0.5em 0em;
-}
+} */
 .logForm {
   width: 100%;
   height: 100%;
@@ -55,21 +55,32 @@
   align-content: center;
   background-color: white;
 }
-.logo {
+.logoCont {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0em 0em 2em 0em;
+}
+.logo {
+  aspect-ratio: 1/1;
+  width: 51%;
+  border-style: solid;
 }
 .logUserInput,
 .logPassInput {
   width: 90%;
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 0.5em 0em;
 }
 .loginButton,
 .registerButton {
   width: 90%;
-  height: 100%;
+  height: 75%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end;
   align-content: center;
   padding: 0em 0em 1em 0em;
@@ -84,10 +95,20 @@
   align-content: center;
   background-color: white;
 }
-.fullNameInput {
+.regFormA {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.fullNameInput,
+.dobInputMain {
   width: 90%;
   display: flex;
   justify-content: space-between;
+  margin: 0em 0em 0.5em 0em;
 }
 .nameInput {
   width: 45%;
@@ -96,10 +117,44 @@
 }
 .usernameInput,
 .emailInput,
-.passwordInput {
+.passwordInput,
+.phoneNumInput {
   width: 90%;
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 0.5em 0em;
+}
+.dobMonthInput {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.dobDateInput,
+.dobYearInput {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.regFormB {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.regFormB div {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0em 0em 0.5em 0em;
+}
+.regPage {
+  width: 90%;
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .logToReg {
   width: 100%;
@@ -116,6 +171,7 @@
   display: flex;
   overflow: auto;
   flex-direction: column;
+  padding: 0em 0em 4em 0em;
 }
 .profileCardPage::-webkit-scrollbar {
   display: none;
@@ -187,6 +243,20 @@
   border-style: solid;
   background-color: white;
 }
+.settingImageCont {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.settingImg {
+  aspect-ratio: 1/1;
+  width: 8em;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 1.5px;
+}
 .nameUpdateInput {
   width: 90%;
   display: flex;
@@ -208,6 +278,49 @@
   height: 100%;
   display: flex;
   align-items: flex-end;
+}
+
+/* ADDACCOUNT */
+.addAccountPage {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  place-content: center;
+}
+.addAccountForm {
+  width: 20em;
+  height: 32em;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  border-style: solid;
+  background-color: white;
+}
+.addAccHeader {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.addAccountForm div {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.addAccName,
+.addAccUsername,
+.addAccPass,
+.addAccEmail,
+.addAccPhone {
+  display: flex;
+  flex-direction: column;
 }
 
 /* NAVIGATIONBAR */

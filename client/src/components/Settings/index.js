@@ -5,7 +5,10 @@ const Settings = () => {
     <div className="settingsPage" id="settingsPage">
       <div className="settingsForm">
         <div className="settingsHeader">
-          <h2>Sign Up</h2>
+          <h2>Update Profile</h2>
+        </div>
+        <div className="settingImageCont">
+          <div className="settingImg" />
         </div>
         <div className="nameUpdateInput">
           <div className="nameUpInput">

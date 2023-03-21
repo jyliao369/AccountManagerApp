@@ -10,6 +10,12 @@ const LoginRegister = () => {
     username: "",
     email: "",
     password: "",
+    securityOne: "",
+    ansOne: "",
+    securityTwo: "",
+    ansTwo: "",
+    securityThree: "",
+    ansThree: "",
   });
   const [reTypePass, setReTypePass] = useState("");
 
@@ -26,6 +32,12 @@ const LoginRegister = () => {
         registerUser.lastName === "" ||
         registerUser.username === "" ||
         registerUser.email === "" ||
+        registerUser.securityOne === "" ||
+        registerUser.ansOne === "" ||
+        registerUser.securityTwo === "" ||
+        registerUser.ansTwo === "" ||
+        registerUser.securityThree === "" ||
+        registerUser.ansThree === "" ||
         registerUser.password === "" ||
         reTypePass === "" ||
         reTypePass !== registerUser.password
@@ -71,8 +83,26 @@ const LoginRegister = () => {
         username: "",
         email: "",
         password: "",
+        securityOne: "",
+        ansOne: "",
+        securityTwo: "",
+        ansTwo: "",
+        securityThree: "",
+        ansThree: "",
       });
       $("#navigationBar").css({ display: "flex" });
+    }
+  };
+
+  const changeRegPage = (regPage) => {
+    if (regPage === "#regFormA") {
+      console.log(regPage);
+      $(regPage).css({ display: "flex" });
+      $("#regFormB").css({ display: "none" });
+    } else {
+      console.log(regPage);
+      $(regPage).css({ display: "flex" });
+      $("#regFormA").css({ display: "none" });
     }
   };
 
@@ -82,7 +112,9 @@ const LoginRegister = () => {
         <div className="logRegHeader">
           <h2>Login</h2>
         </div>
-        <div className="logo"></div>
+        <div className="logoCont">
+          <div className="logo" />
+        </div>
         <div className="logUserInput">
           <label>Username</label>
           <input
@@ -117,79 +149,219 @@ const LoginRegister = () => {
         <div className="logRegHeader">
           <h2>Sign Up</h2>
         </div>
-        <div className="fullNameInput">
-          <div className="nameInput">
-            <label>First Name</label>
+        <div className="regFormA" id="regFormA">
+          <div className="usernameInput">
+            <label>Username</label>
             <input
-              placeholder="Ex. John"
-              value={registerUser.firstName}
+              placeholder="Ex. testninja101"
+              value={registerUser.username}
               onChange={(event) =>
                 setRegisterUser({
                   ...registerUser,
-                  firstName: event.target.value,
+                  username: event.target.value,
                 })
               }
             />
           </div>
-          <div className="nameInput">
-            <label>Last Name</label>
+          <div className="passwordInput">
+            <label>Password</label>
             <input
-              placeholder="Ex. Allen"
-              value={registerUser.lastName}
+              placeholder="**********"
+              value={registerUser.password}
               onChange={(event) =>
                 setRegisterUser({
                   ...registerUser,
-                  lastName: event.target.value,
+                  password: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div className="passwordInput">
+            <label>Re-type Password</label>
+            <input
+              placeholder="**********"
+              value={reTypePass}
+              onChange={(event) => setReTypePass(event.target.value)}
+            />
+          </div>
+          <div className="emailInput">
+            <label>Email</label>
+            <input
+              placeholder="Ex. testninja101"
+              value={registerUser.email}
+              onChange={(event) =>
+                setRegisterUser({ ...registerUser, email: event.target.value })
+              }
+            />
+          </div>
+          <div className="fullNameInput">
+            <div className="nameInput">
+              <label>First Name</label>
+              <input
+                placeholder="Ex. John"
+                value={registerUser.firstName}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    firstName: event.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="nameInput">
+              <label>Last Name</label>
+              <input
+                placeholder="Ex. Allen"
+                value={registerUser.lastName}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    lastName: event.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="phoneNumInput">
+            <label>Mobile Number</label>
+            <input
+              placeholder="Ex. 111-222-3333"
+              value={registerUser.phoneNum}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  phoneNum: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div className="dobInputMain">
+            <div className="dobMonthInput">
+              <label>Month</label>
+              <input
+                placeholder="Ex. January or May"
+                value={registerUser.dobMonth}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    dobMonth: event.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="dobDateInput">
+              <label>Date</label>
+              <input
+                placeholder="Ex. 15 or 28"
+                value={registerUser.dobDate}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    dobDate: event.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="dobYearInput">
+              <label>Year</label>
+              <input
+                placeholder="Ex. 1989 or 2021"
+                value={registerUser.dobYear}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    dobYear: event.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="regFormB" id="regFormB">
+          <div>
+            <label>Security Question 1:</label>
+            <input
+              value={registerUser.securityOne}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  securityOne: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label>Answer</label>
+            <input
+              value={registerUser.ansOne}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  ansOne: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label>Security Question 2:</label>
+            <input
+              value={registerUser.securityTwo}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  securityTwo: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label>Answer</label>
+            <input
+              value={registerUser.ansTwo}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  ansTwo: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label>Security Question 3:</label>
+            <input
+              value={registerUser.securityThree}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  securityThree: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label>Answer</label>
+            <input
+              value={registerUser.ansThree}
+              onChange={(event) =>
+                setRegisterUser({
+                  ...registerUser,
+                  ansThree: event.target.value,
                 })
               }
             />
           </div>
         </div>
-        <div className="usernameInput">
-          <label>Username</label>
-          <input
-            placeholder="Ex. testninja101"
-            value={registerUser.username}
-            onChange={(event) =>
-              setRegisterUser({ ...registerUser, username: event.target.value })
-            }
-          />
-        </div>
-        <div className="emailInput">
-          <label>Email</label>
-          <input
-            placeholder="Ex. testninja101"
-            value={registerUser.email}
-            onChange={(event) =>
-              setRegisterUser({ ...registerUser, email: event.target.value })
-            }
-          />
-        </div>
-        <div className="passwordInput">
-          <label>Password</label>
-          <input
-            placeholder="**********"
-            value={registerUser.password}
-            onChange={(event) =>
-              setRegisterUser({ ...registerUser, password: event.target.value })
-            }
-          />
-        </div>
-        <div className="passwordInput">
-          <label>Re-type Password</label>
-          <input
-            placeholder="**********"
-            value={reTypePass}
-            onChange={(event) => setReTypePass(event.target.value)}
-          />
-        </div>
+
         <div className="registerButton">
+          <button onClick={() => changeRegPage("#regFormA")}>Page One</button>
           <button
             disabled={confirm("reg")}
             onClick={() => loginRegister("register")}
           >
             Register
           </button>
+          <button onClick={() => changeRegPage("#regFormB")}>Page Two</button>
         </div>
       </div>
 

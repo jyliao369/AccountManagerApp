@@ -4,6 +4,7 @@ import ProfilePage from "./components/ProfilePage";
 import LoginRegister from "./components/LoginRegister";
 import Navigation from "./components/Navigation";
 import Settings from "./components/Settings";
+import AddAccount from "./components/AddAccount";
 
 function App() {
   const [userAccounts, setUserAccounts] = useState([]);
@@ -18,11 +19,8 @@ function App() {
             setUserAccounts={setUserAccounts}
             userAccounts={userAccounts}
           />
+          <AddAccount />
           <Settings />
-
-          <br />
-          <br />
-          <br />
         </div>
 
         <Navigation
