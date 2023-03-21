@@ -11,7 +11,7 @@ const ProfilePage = ({ setUserAccounts, userAccounts }) => {
   };
 
   return (
-    <div className="profileCardPage">
+    <div className="profileCardPage" id="profileCardPage">
       <div className="profileCardCont">
         <div className="profileCard">
           <div className="profileIcon"></div>
