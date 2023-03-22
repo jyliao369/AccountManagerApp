@@ -1,5 +1,6 @@
 import React from "react";
 import $ from "jquery";
+import Axios from "axios";
 import { useEffect, useState } from "react";
 
 const LoginRegister = () => {
@@ -75,22 +76,23 @@ const LoginRegister = () => {
       setLoginUser({ username: "", password: "" });
       $("#navigationBar").css({ display: "flex" });
     } else if (logReg === "register") {
-      $("#logRegForm").css({ display: "none" });
-      $("#appMainCont").css({ display: "flex" });
-      setRegisterUser({
-        firstName: "",
-        lastName: "",
-        username: "",
-        email: "",
-        password: "",
-        securityOne: "",
-        ansOne: "",
-        securityTwo: "",
-        ansTwo: "",
-        securityThree: "",
-        ansThree: "",
-      });
-      $("#navigationBar").css({ display: "flex" });
+      console.log(registerUser);
+      //   $("#logRegForm").css({ display: "none" });
+      //   $("#appMainCont").css({ display: "flex" });
+      //   setRegisterUser({
+      //     firstName: "",
+      //     lastName: "",
+      //     username: "",
+      //     email: "",
+      //     password: "",
+      //     securityOne: "",
+      //     ansOne: "",
+      //     securityTwo: "",
+      //     ansTwo: "",
+      //     securityThree: "",
+      //     ansThree: "",
+      //   });
+      //   $("#navigationBar").css({ display: "flex" });
     }
   };
 
@@ -104,6 +106,12 @@ const LoginRegister = () => {
       $(regPage).css({ display: "flex" });
       $("#regFormA").css({ display: "none" });
     }
+  };
+
+  const test = () => {
+    Axios.get(`http://localhost:3001/test`, {}).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -142,6 +150,7 @@ const LoginRegister = () => {
           >
             Login
           </button>
+          <button onClick={() => test()}>test</button>
         </div>
       </div>
 
