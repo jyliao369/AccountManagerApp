@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { urlencoded } = require("body-parser");
 
 const app = express();
 
@@ -12,12 +13,25 @@ app.use(
   })
 );
 
+// BODYPARSER, NEEDED TO PASS DATA FROM FRONT TO BACK
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get(`/`, (req, res) => {
   res.send({ message: "hello" });
 });
 
-app.get(`/test`, (req, res) => {
-  res.send("test");
+// LOGIN/REGISTER
+app.post(`/register`, (req, res) => {
+  const registerUser = req.body.registerUser;
+
+  console.log(registerUser);
+});
+
+app.post(`/login`, (req, res) => {
+  const loginUser = req.body.loginUser;
+
+  console.log(loginUser);
 });
 
 const PORT = process.env.PORT || 3001;

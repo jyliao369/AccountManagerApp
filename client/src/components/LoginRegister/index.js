@@ -71,28 +71,39 @@ const LoginRegister = () => {
 
   const loginRegister = (logReg) => {
     if (logReg === "login") {
-      $("#logRegForm").css({ display: "none" });
-      $("#appMainCont").css({ display: "flex" });
-      setLoginUser({ username: "", password: "" });
-      $("#navigationBar").css({ display: "flex" });
+      console.log(loginUser);
+      Axios.post(`http://localhost:3001/login`, {
+        loginUser: loginUser,
+      }).then((response) => {
+        console.log(response);
+      });
+      // $("#logRegForm").css({ display: "none" });
+      // $("#appMainCont").css({ display: "flex" });
+      // setLoginUser({ username: "", password: "" });
+      // $("#navigationBar").css({ display: "flex" });
     } else if (logReg === "register") {
       console.log(registerUser);
-      //   $("#logRegForm").css({ display: "none" });
-      //   $("#appMainCont").css({ display: "flex" });
-      //   setRegisterUser({
-      //     firstName: "",
-      //     lastName: "",
-      //     username: "",
-      //     email: "",
-      //     password: "",
-      //     securityOne: "",
-      //     ansOne: "",
-      //     securityTwo: "",
-      //     ansTwo: "",
-      //     securityThree: "",
-      //     ansThree: "",
-      //   });
-      //   $("#navigationBar").css({ display: "flex" });
+      Axios.post(`http://localhost:3001/register`, {
+        registerUser: registerUser,
+      }).then((response) => {
+        console.log(response);
+      });
+      // $("#logRegForm").css({ display: "none" });
+      // $("#appMainCont").css({ display: "flex" });
+      // setRegisterUser({
+      //   firstName: "",
+      //   lastName: "",
+      //   username: "",
+      //   email: "",
+      //   password: "",
+      //   securityOne: "",
+      //   ansOne: "",
+      //   securityTwo: "",
+      //   ansTwo: "",
+      //   securityThree: "",
+      //   ansThree: "",
+      // });
+      // $("#navigationBar").css({ display: "flex" });
     }
   };
 
@@ -108,11 +119,13 @@ const LoginRegister = () => {
     }
   };
 
-  const test = () => {
-    Axios.get(`http://localhost:3001/test`, {}).then((response) => {
-      console.log(response);
-    });
-  };
+  // const test = () => {
+  //   Axios.post(`http://localhost:3001/test`, {
+  //     test: "test",
+  //   }).then((response) => {
+  //     console.log(response);
+  //   });
+  // };
 
   return (
     <div className="logRegForm" id="logRegForm">
