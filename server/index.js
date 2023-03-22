@@ -17,10 +17,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get(`/`, (req, res) => {
-  res.send({ message: "hello" });
-});
-
 // LOGIN/REGISTER
 app.post(`/register`, (req, res) => {
   const registerUser = req.body.registerUser;

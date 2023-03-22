@@ -11,6 +11,10 @@ const LoginRegister = () => {
     username: "",
     email: "",
     password: "",
+    phoneNum: "",
+    dobMonth: "",
+    dobDate: "",
+    dobYear: "",
     securityOne: "",
     ansOne: "",
     securityTwo: "",
@@ -60,72 +64,72 @@ const LoginRegister = () => {
         username: "",
         email: "",
         password: "",
+        phoneNum: "",
+        dobMonth: "",
+        dobDate: "",
+        dobYear: "",
+        securityOne: "",
+        ansOne: "",
+        securityTwo: "",
+        ansTwo: "",
+        securityThree: "",
+        ansThree: "",
       });
       setReTypePass("");
     } else if (logReg === "reg") {
       $("#logForm").css({ display: "none" });
       $("#regForm").css({ display: "flex" });
+      $("#regFormA").css({ display: "flex" });
+      $("#regFormB").css({ display: "none" });
       setLoginUser({ username: "", password: "" });
     }
   };
 
   const loginRegister = (logReg) => {
     if (logReg === "login") {
-      console.log(loginUser);
       Axios.post(`http://localhost:3001/login`, {
         loginUser: loginUser,
-      }).then((response) => {
-        console.log(response);
-      });
-      // $("#logRegForm").css({ display: "none" });
-      // $("#appMainCont").css({ display: "flex" });
-      // setLoginUser({ username: "", password: "" });
-      // $("#navigationBar").css({ display: "flex" });
+      }).then((response) => {});
+      $("#logRegForm").css({ display: "none" });
+      $("#appMainCont").css({ display: "flex" });
+      setLoginUser({ username: "", password: "" });
+      $("#navigationBar").css({ display: "flex" });
     } else if (logReg === "register") {
-      console.log(registerUser);
       Axios.post(`http://localhost:3001/register`, {
         registerUser: registerUser,
-      }).then((response) => {
-        console.log(response);
+      }).then((response) => {});
+      $("#logRegForm").css({ display: "none" });
+      $("#appMainCont").css({ display: "flex" });
+      setRegisterUser({
+        firstName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        password: "",
+        phoneNum: "",
+        dobMonth: "",
+        dobDate: "",
+        dobYear: "",
+        securityOne: "",
+        ansOne: "",
+        securityTwo: "",
+        ansTwo: "",
+        securityThree: "",
+        ansThree: "",
       });
-      // $("#logRegForm").css({ display: "none" });
-      // $("#appMainCont").css({ display: "flex" });
-      // setRegisterUser({
-      //   firstName: "",
-      //   lastName: "",
-      //   username: "",
-      //   email: "",
-      //   password: "",
-      //   securityOne: "",
-      //   ansOne: "",
-      //   securityTwo: "",
-      //   ansTwo: "",
-      //   securityThree: "",
-      //   ansThree: "",
-      // });
-      // $("#navigationBar").css({ display: "flex" });
+      $("#navigationBar").css({ display: "flex" });
     }
   };
 
   const changeRegPage = (regPage) => {
     if (regPage === "#regFormA") {
-      console.log(regPage);
       $(regPage).css({ display: "flex" });
       $("#regFormB").css({ display: "none" });
     } else {
-      console.log(regPage);
       $(regPage).css({ display: "flex" });
       $("#regFormA").css({ display: "none" });
     }
   };
-
-  // const test = () => {
-  //   Axios.post(`http://localhost:3001/test`, {
-  //     test: "test",
-  //   }).then((response) => {
-  //     console.log(response);
-  //   });
-  // };
 
   return (
     <div className="logRegForm" id="logRegForm">
@@ -163,7 +167,6 @@ const LoginRegister = () => {
           >
             Login
           </button>
-          <button onClick={() => test()}>test</button>
         </div>
       </div>
 
@@ -304,6 +307,7 @@ const LoginRegister = () => {
           <div>
             <label>Security Question 1:</label>
             <input
+              placeholder="Security Question 1"
               value={registerUser.securityOne}
               onChange={(event) =>
                 setRegisterUser({
@@ -316,6 +320,7 @@ const LoginRegister = () => {
           <div>
             <label>Answer</label>
             <input
+              placeholder="Answer"
               value={registerUser.ansOne}
               onChange={(event) =>
                 setRegisterUser({
@@ -328,6 +333,7 @@ const LoginRegister = () => {
           <div>
             <label>Security Question 2:</label>
             <input
+              placeholder="Security Question 2"
               value={registerUser.securityTwo}
               onChange={(event) =>
                 setRegisterUser({
@@ -340,6 +346,7 @@ const LoginRegister = () => {
           <div>
             <label>Answer</label>
             <input
+              placeholder="Answer"
               value={registerUser.ansTwo}
               onChange={(event) =>
                 setRegisterUser({
@@ -352,6 +359,7 @@ const LoginRegister = () => {
           <div>
             <label>Security Question 3:</label>
             <input
+              placeholder="Security Question 3"
               value={registerUser.securityThree}
               onChange={(event) =>
                 setRegisterUser({
@@ -364,6 +372,7 @@ const LoginRegister = () => {
           <div>
             <label>Answer</label>
             <input
+              placeholder="Answer"
               value={registerUser.ansThree}
               onChange={(event) =>
                 setRegisterUser({
