@@ -20,14 +20,16 @@ app.use(express.urlencoded({ extended: true }));
 // LOGIN/REGISTER
 app.post(`/register`, (req, res) => {
   const registerUser = req.body.registerUser;
-
-  console.log(registerUser);
 });
 
 app.post(`/login`, (req, res) => {
   const loginUser = req.body.loginUser;
+});
 
-  console.log(loginUser);
+// USERSACCOUNTS
+app.post(`/addAcc`, (req, res) => {
+  const newAcc = req.body.newAccount;
+  console.log(newAcc);
 });
 
 const PORT = process.env.PORT || 3001;

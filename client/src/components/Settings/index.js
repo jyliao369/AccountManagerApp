@@ -133,7 +133,6 @@ const Settings = () => {
 
         <div className="updateButton">
           <button onClick={() => updatePageChange("#updatePageA")}>back</button>
-          <button disabled={confirmUpdate()}>Update</button>
           <button onClick={() => updatePageChange("#updatePageB")}>next</button>
         </div>
       </div>

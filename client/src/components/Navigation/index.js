@@ -10,6 +10,12 @@ const Navigation = ({ setUserAccounts, userAccounts }) => {
   };
 
   const switchPages = (page) => {
+    $("#addAccountPageA").css({ display: "flex" });
+    $("#addAccountPageB").css({ display: "none" });
+
+    $("#updatePageA").css({ display: "flex" });
+    $(`#updatePageB`).css({ display: "none" });
+
     $("#appMainCont").children().css({ display: "none" });
     $(page).css({ display: "flex" });
   };
