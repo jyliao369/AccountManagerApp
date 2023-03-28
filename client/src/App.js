@@ -22,14 +22,14 @@ function App() {
             setUserAccounts={setUserAccounts}
             userAccounts={userAccounts}
           />
-          <AddAccount />
-          <Settings />
+          {/* <AddAccount />
+          <Settings /> */}
         </div>
 
-        <Navigation
+        {/* <Navigation
           setUserAccounts={setUserAccounts}
           userAccounts={userAccounts}
-        />
+        /> */}
       </div>
     </div>
   );
