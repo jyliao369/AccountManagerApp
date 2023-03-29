@@ -5,7 +5,12 @@ import { useState, useEffect } from "react";
 import AddAccount from "../AddAccount";
 import Settings from "../Settings";
 
-const ProfilePage = ({ setUserAccounts, userAccounts }) => {
+const ProfilePage = ({
+  setUserAccounts,
+  userAccounts,
+  setNewAccount,
+  newAcccount,
+}) => {
   const [userAccountsA, setUserAccountsA] = useState([]);
   const [userAccountsB, setUserAccountsB] = useState([]);
 
@@ -17,39 +22,56 @@ const ProfilePage = ({ setUserAccounts, userAccounts }) => {
   };
 
   const switchPages = (page) => {
-    console.log("hello");
-    console.log(page);
+    $("#addAccountPageA").css({ display: "flex" });
+    $("#addAccountPageB").css({ display: "none" });
+
+    $("#updatePageA").css({ display: "flex" });
+    $(`#updatePageB`).css({ display: "none" });
+
+    $("#addAccTwo").prop("checked", false);
+    $("#addAccSec").prop("checked", false);
+
+    setNewAccount({
+      accName: "",
+      accUsername: "",
+      accPassword: "",
+      accEmail: "",
+      accPhoneNum: "",
+      accTwoStep: false,
+      accSecQues: false,
+      accSecOne: "N/A",
+      accAnsOne: "N/A",
+      accSecTwo: "N/A",
+      accAnsTwo: "N/A",
+      accSecThree: "N/A",
+      accAnsThree: "N/A",
+    });
 
     $("#profileCardCont").children().css({ display: "none" });
     $(page).css({ display: "flex" });
-
-    // $("#addAccountPageA").css({ display: "flex" });
-    // $("#addAccountPageB").css({ display: "none" });
-
-    // $("#updatePageA").css({ display: "flex" });
-    // $(`#updatePageB`).css({ display: "none" });
-
-    // $("#appMainCont").children().css({ display: "none" });
-    // $(page).css({ display: "flex" });
   };
 
   const logOut = () => {
     $("#appMainCont").css({ display: "none" });
-    $("#navigationBar").css({ display: "none" });
+    $("#profileCardCont").children().css({ display: "none" });
+    $("#profileCard").css({ display: "flex" });
+
     $("#logRegForm").css({ display: "flex" });
-    setUserAccounts([]);
+    setUserAccountsA([]);
+    setUserAccountsB([]);
   };
 
-  const test = (account) => {
-    console.log(account);
+  const updateAccount = (accountID) => {
+    console.log(accountID);
   };
 
   return (
     <div className="profileCardPage" id="profileCardPage">
       <div className="accountSideA">
         {userAccountsA.map((account, index) => (
-          <div onClick={() => test()} className="test" key={index}>
-            {account}
+          <div className="test" key={index}>
+            <p>{account}</p>
+            <p onClick={() => updateAccount(account)}>update</p>
           </div>
         ))}
       </div>
@@ -66,7 +88,7 @@ const ProfilePage = ({ setUserAccounts, userAccounts }) => {
             </div>
           </div>
 
-          <AddAccount />
+          <AddAccount setNewAccount={setNewAccount} newAcccount={newAcccount} />
           <Settings />
         </div>
 
@@ -82,8 +104,9 @@ const ProfilePage = ({ setUserAccounts, userAccounts }) => {
 
       <div className="accountSideB">
         {userAccountsB.map((account, index) => (
-          <div onClick={() => test(account)} className="test" key={index}>
-            {account}
+          <div className="test" key={index}>
+            <p>{account}</p>
+            <p onClick={() => updateAccount(account)}>update</p>
           </div>
         ))}
       </div>

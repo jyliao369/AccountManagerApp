@@ -19,7 +19,7 @@
 .appMainCont {
   display: none;
   /* width: 40%; */
-  width: 100%;
+  width: 75%;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -167,7 +167,7 @@
 }
 
 .test {
-  width: 50%;
+  width: 75%;
   height: 3em;
   display: flex;
   align-items: center;
@@ -181,7 +181,7 @@
 /* PROFILECARD */
 .mainProfilePage {
   display: flex;
-  width: 100%;
+  width: 75%;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -205,7 +205,7 @@
 }
 .profileCardCont {
   /* width: 70%; */
-  height: 60%;
+  height: 65%;
   display: flex;
   align-items: center;
   align-content: center;
@@ -274,17 +274,34 @@
 }
 
 /* SETTINGSPAGE */
+.settingsHeader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  margin: 0.5em 0em 1em 0em;
+}
 .settingsForm {
   /* width: 20em;
   height: 32em; */
   width: 22em;
   height: 100%;
   display: none;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   border-style: solid;
   background-color: white;
+}
+.settingsFormMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 .updatePageA {
   width: 100%;
@@ -302,10 +319,11 @@
   justify-content: center;
   align-content: center;
 }
-.updatePageB div {
+.secQuesAnsInput {
   width: 90%;
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 0.5em 0em;
 }
 .settingImageCont {
   width: 100%;
@@ -313,6 +331,7 @@
   align-items: center;
   justify-content: center;
   align-content: center;
+  margin: 1em 0em 2em 0em;
 }
 .settingImg {
   aspect-ratio: 1/1;
@@ -326,6 +345,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0em 0em 0.5em 0em;
 }
 .nameUpInput {
   width: 47%;
@@ -339,12 +359,14 @@
   width: 90%;
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 0.5em 0em;
 }
 .dobUpInput {
   width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0em 0em 0.5em 0em;
 }
 .dobUpInput div {
   display: flex;
@@ -358,12 +380,23 @@
   width: 25%;
 }
 .updateButton {
-  height: 100%;
+  width: 100%;
+  height: 3em;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ADDACCOUNT */
+.addAccHeader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  margin: 0.5em 0em 1em 0em;
+}
 .addAccountForm {
   /* width: 20em;
   height: 32em; */
@@ -373,16 +406,25 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   border-style: solid;
   background-color: white;
 }
-.addAccHeader {
-  width: 90%;
+.addAccountFormMain {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
+}
+.accIconCont {
+  margin: 0.5em 0em 1.5em 0em;
+}
+.accIcon {
+  aspect-ratio: 1/1;
+  width: 7em;
+  border-style: solid;
 }
 .addAccountPageA {
   width: 90%;
@@ -426,11 +468,10 @@
 }
 .updateBtn {
   width: 100%;
-  height: 100%;
+  height: 3em;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  align-content: center;
 }
 
 /* NAVIGATIONBAR */
