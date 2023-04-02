@@ -101,35 +101,44 @@ const LoginRegister = () => {
     if (logReg === "login") {
       Axios.post(`http://localhost:3001/login`, {
         loginUser: loginUser,
-      }).then((response) => {});
-      $("#logRegForm").css({ display: "none" });
-      $("#appMainCont").css({ display: "flex" });
-      setLoginUser({ username: "", password: "" });
-      $("#navigationBar").css({ display: "flex" });
+      }).then((response) => {
+        if (response.data.isLoggedin) {
+          $("#logRegForm").css({ display: "none" });
+          $("#appMainCont").css({ display: "flex" });
+          setLoginUser({ username: "", password: "" });
+        } else {
+          console.log("access denied");
+        }
+      });
     } else if (logReg === "register") {
       Axios.post(`http://localhost:3001/register`, {
         registerUser: registerUser,
-      }).then((response) => {});
-      $("#logRegForm").css({ display: "none" });
-      $("#appMainCont").css({ display: "flex" });
-      setRegisterUser({
-        firstName: "",
-        lastName: "",
-        username: "",
-        email: "",
-        password: "",
-        phoneNum: "",
-        dobMonth: "",
-        dobDate: "",
-        dobYear: "",
-        securityOne: "",
-        ansOne: "",
-        securityTwo: "",
-        ansTwo: "",
-        securityThree: "",
-        ansThree: "",
+      }).then((response) => {
+        console.log(response.data);
+        if (response.data.isLoggedin) {
+          $("#logRegForm").css({ display: "none" });
+          $("#appMainCont").css({ display: "flex" });
+          setRegisterUser({
+            firstName: "",
+            lastName: "",
+            username: "",
+            email: "",
+            password: "",
+            phoneNum: "",
+            dobMonth: "",
+            dobDate: "",
+            dobYear: "",
+            securityOne: "",
+            ansOne: "",
+            securityTwo: "",
+            ansTwo: "",
+            securityThree: "",
+            ansThree: "",
+          });
+        } else {
+          console.log("register failed");
+        }
       });
-      $("#navigationBar").css({ display: "flex" });
     }
   };
 
@@ -143,9 +152,9 @@ const LoginRegister = () => {
     }
   };
 
-  const test = () => {
-    console.log(registerUser);
-  };
+  // const test = () => {
+  //   console.log(registerUser);
+  // };
 
   return (
     <div className="logRegForm" id="logRegForm">
@@ -169,6 +178,7 @@ const LoginRegister = () => {
         <div className="logPassInput">
           <label>Password</label>
           <input
+            type="password"
             placeholder="**********"
             value={loginUser.password}
             onChange={(event) =>
@@ -207,6 +217,7 @@ const LoginRegister = () => {
           <div className="passwordInput">
             <label>Password</label>
             <input
+              type="password"
               placeholder="**********"
               value={registerUser.password}
               onChange={(event) =>
@@ -223,6 +234,7 @@ const LoginRegister = () => {
               {passwordCheck()}
             </div>
             <input
+              type="password"
               placeholder="**********"
               value={reTypePass}
               onChange={(event) => setReTypePass(event.target.value)}
