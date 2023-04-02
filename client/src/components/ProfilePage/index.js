@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import AddAccount from "../AddAccount";
 import Settings from "../Settings";
+import AccountInfoCard from "../AccountInfoCard";
 
 const ProfilePage = ({
   setUserAccounts,
@@ -65,6 +66,12 @@ const ProfilePage = ({
     console.log(accountID);
   };
 
+  const showAccInfo = (accountID) => {
+    console.log(accountID);
+    $("#profileCard").css({ display: "none" });
+    $("#accInfoCard").css({ display: "flex" });
+  };
+
   return (
     <div className="profileCardPage" id="profileCardPage">
       <div className="accountSideA">
@@ -90,6 +97,7 @@ const ProfilePage = ({
 
           <AddAccount setNewAccount={setNewAccount} newAcccount={newAcccount} />
           <Settings />
+          <AccountInfoCard />
         </div>
 
         <div className="profileNav">
@@ -105,7 +113,7 @@ const ProfilePage = ({
       <div className="accountSideB">
         {userAccountsB.map((account, index) => (
           <div className="test" key={index}>
-            <p>{account}</p>
+            <p onClick={() => showAccInfo(account)}>{account}</p>
             <p onClick={() => updateAccount(account)}>update</p>
           </div>
         ))}

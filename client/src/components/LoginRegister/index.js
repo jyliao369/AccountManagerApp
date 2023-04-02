@@ -2,6 +2,7 @@ import React from "react";
 import $ from "jquery";
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import { securityQuestion, dobMonths } from "../data";
 
 const LoginRegister = () => {
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
@@ -23,6 +24,7 @@ const LoginRegister = () => {
     ansThree: "",
   });
   const [reTypePass, setReTypePass] = useState("");
+  const [secQuestion, setSecQuestion] = useState(securityQuestion);
 
   const confirm = (logReg) => {
     if (logReg === "log") {
@@ -51,6 +53,16 @@ const LoginRegister = () => {
       } else {
         return false;
       }
+    }
+  };
+
+  const passwordCheck = () => {
+    if (
+      registerUser.password !== reTypePass &&
+      registerUser.password !== "" &&
+      reTypePass !== ""
+    ) {
+      return <p>Not Matching</p>;
     }
   };
 
@@ -131,6 +143,10 @@ const LoginRegister = () => {
     }
   };
 
+  const test = () => {
+    console.log(registerUser);
+  };
+
   return (
     <div className="logRegForm" id="logRegForm">
       <div className="logForm" id="logForm">
@@ -202,7 +218,10 @@ const LoginRegister = () => {
             />
           </div>
           <div className="passwordInput">
-            <label>Re-type Password</label>
+            <div>
+              <label>Re-type Password</label>
+              {passwordCheck()}
+            </div>
             <input
               placeholder="**********"
               value={reTypePass}
@@ -263,8 +282,7 @@ const LoginRegister = () => {
           <div className="dobInputMain">
             <div className="dobMonthInput">
               <label>Month</label>
-              <input
-                placeholder="Ex. January or May"
+              <select
                 value={registerUser.dobMonth}
                 onChange={(event) =>
                   setRegisterUser({
@@ -272,7 +290,12 @@ const LoginRegister = () => {
                     dobMonth: event.target.value,
                   })
                 }
-              />
+              >
+                <option>Month</option>
+                {dobMonths.map((month, index) => (
+                  <option key={index}>{month}</option>
+                ))}
+              </select>
             </div>
             <div className="dobDateInput">
               <label>Date</label>
@@ -306,8 +329,7 @@ const LoginRegister = () => {
         <div className="regFormB" id="regFormB">
           <div>
             <label>Security Question 1:</label>
-            <input
-              placeholder="Security Question 1"
+            <select
               value={registerUser.securityOne}
               onChange={(event) =>
                 setRegisterUser({
@@ -315,7 +337,12 @@ const LoginRegister = () => {
                   securityOne: event.target.value,
                 })
               }
-            />
+            >
+              <option>Question 1</option>
+              {secQuestion.map((question, index) => (
+                <option key={index}>{question}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label>Answer</label>
@@ -332,8 +359,7 @@ const LoginRegister = () => {
           </div>
           <div>
             <label>Security Question 2:</label>
-            <input
-              placeholder="Security Question 2"
+            <select
               value={registerUser.securityTwo}
               onChange={(event) =>
                 setRegisterUser({
@@ -341,7 +367,12 @@ const LoginRegister = () => {
                   securityTwo: event.target.value,
                 })
               }
-            />
+            >
+              <option>Question 2</option>
+              {secQuestion.map((question, index) => (
+                <option key={index}>{question}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label>Answer</label>
@@ -358,8 +389,7 @@ const LoginRegister = () => {
           </div>
           <div>
             <label>Security Question 3:</label>
-            <input
-              placeholder="Security Question 3"
+            <select
               value={registerUser.securityThree}
               onChange={(event) =>
                 setRegisterUser({
@@ -367,7 +397,12 @@ const LoginRegister = () => {
                   securityThree: event.target.value,
                 })
               }
-            />
+            >
+              <option>Question 3</option>
+              {secQuestion.map((question, index) => (
+                <option key={index}>{question}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label>Answer</label>
@@ -392,6 +427,7 @@ const LoginRegister = () => {
           >
             Register
           </button>
+          {/* <button onClick={() => test()}>test</button> */}
           <button onClick={() => changeRegPage("#regFormB")}>Page Two</button>
         </div>
       </div>

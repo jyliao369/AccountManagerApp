@@ -1,0 +1,43 @@
+let securityQuestion = [
+  `What was the house number and street name you lived in as a child?`,
+  `What were the last four digits of your childhood telephone number?`,
+  `What primary school did you attend?`,
+  `What school did you attend for sixth grade?`,
+  `What was the last name of your third grade teacher?`,
+  `What is the make and model of your first car?`,
+  `In what town or city was your first full time job?`,
+  `In what town or city did you meet your spouse or partner?`,
+  `What is the middle name of your oldest child?`,
+  `What are the last five digits of your driver's license number?`,
+  `What is your grandmother's (on your mother's side) maiden name?`,
+  `What is your spouse or partner's mother's maiden name?`,
+  `In what town or city did your parents meet?`,
+  `What time of the day were you born?`,
+  `What time of the day was your first child born?`,
+  `What was the name of the hospital where you were born?`,
+  `Who is your childhood sports hero?`,
+  `What is your favorite team?`,
+  `What is your favorite movie?`,
+  `When you were young, what did you want to be when you grew up?`,
+  `Who was your childhood hero?`,
+  `Where was your best family vacation as a kid?`,
+  `What was the first concert you attended?`,
+  `What is your youngest sibling’s middle name?`,
+];
+
+let dobMonths = [
+  `January`,
+  `Feburary`,
+  `March`,
+  `April`,
+  `May`,
+  `June`,
+  `July`,
+  `August`,
+  `September`,
+  `October`,
+  `November`,
+  `December`,
+];
+
+export { securityQuestion, dobMonths };

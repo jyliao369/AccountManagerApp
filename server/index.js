@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { urlencoded } = require("body-parser");
+const mysql = require("mysql2");
 
 const app = express();
 
@@ -16,6 +17,23 @@ app.use(
 // BODYPARSER, NEEDED TO PASS DATA FROM FRONT TO BACK
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "rootpassword",
+  database: "accmanagerdb",
+});
+
+app.get(`/`, (req, res) => {
+  db.query(`SELECT * FROM users`, [], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json({ result });
+    }
+  });
+});
 
 // LOGIN/REGISTER
 app.post(`/register`, (req, res) => {
