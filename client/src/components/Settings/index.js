@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 
-const Settings = () => {
+const Settings = ({ setUpdateUser, updateUser }) => {
   const updatePageChange = (updatePage) => {
     if (updatePage === "#updatePageA") {
       $(updatePage).css({ display: "flex" });
@@ -30,58 +30,64 @@ const Settings = () => {
             <div className="nameUpInput">
               <label>First Name</label>
               <input
-              //   placeholder="Ex. John"
-              //   value={registerUser.firstName}
-              //   onChange={(event) =>
-              //     setRegisterUser({
-              //       ...registerUser,
-              //       firstName: event.target.value,
-              //     })
-              //   }
+                value={updateUser.firstName}
+                //   placeholder="Ex. John"
+                //   value={registerUser.firstName}
+                //   onChange={(event) =>
+                //     setRegisterUser({
+                //       ...registerUser,
+                //       firstName: event.target.value,
+                //     })
+                //   }
               />
             </div>
             <div className="nameUpInput">
               <label>Last Name</label>
               <input
-              //   placeholder="Ex. Allen"
-              //   value={registerUser.lastName}
-              //   onChange={(event) =>
-              //     setRegisterUser({
-              //       ...registerUser,
-              //       lastName: event.target.value,
-              //     })
-              //   }
+                value={updateUser.lastName}
+                //   placeholder="Ex. Allen"
+                //   value={registerUser.lastName}
+                //   onChange={(event) =>
+                //     setRegisterUser({
+                //       ...registerUser,
+                //       lastName: event.target.value,
+                //     })
+                //   }
               />
             </div>
           </div>
           <div className="usernameUpInput">
             <label>Username</label>
             <input
-            // placeholder="Ex. testninja101"
-            // value={registerUser.username}
-            // onChange={(event) =>
-            //   setRegisterUser({ ...registerUser, username: event.target.value })
-            // }
+              value={updateUser.username}
+              // placeholder="Ex. testninja101"
+              // value={registerUser.username}
+              // onChange={(event) =>
+              //   setRegisterUser({ ...registerUser, username: event.target.value })
+              // }
             />
           </div>
           <div className="emailUpInput">
             <label>Email</label>
             <input
-            // placeholder="Ex. testninja101"
-            // value={registerUser.email}
-            // onChange={(event) =>
-            //   setRegisterUser({ ...registerUser, email: event.target.value })
-            // }
+              value={updateUser.email}
+              // placeholder="Ex. testninja101"
+              // value={registerUser.email}
+              // onChange={(event) =>
+              //   setRegisterUser({ ...registerUser, email: event.target.value })
+              // }
             />
           </div>
           <div className="passwordUpInput">
             <label>Password</label>
             <input
-            // placeholder="**********"
-            // value={registerUser.password}
-            // onChange={(event) =>
-            //   setRegisterUser({ ...registerUser, password: event.target.value })
-            // }
+              value={updateUser.password}
+              type="password"
+              // placeholder="**********"
+              // value={registerUser.password}
+              // onChange={(event) =>
+              //   setRegisterUser({ ...registerUser, password: event.target.value })
+              // }
             />
           </div>
         </div>
@@ -89,45 +95,45 @@ const Settings = () => {
         <div className="updatePageB" id="updatePageB">
           <div className="phoneNumUpInput">
             <label>Phone Number</label>
-            <input />
+            <input value={updateUser.mobileNum} />
           </div>
           <div className="dobUpInput">
             <div className="dobMonthUp">
               <label>Month</label>
-              <input />
+              <input value={updateUser.dobMonth} />
             </div>
             <div className="dobDateUp">
               <label>Date</label>
-              <input />
+              <input value={updateUser.dobDate} />
             </div>
             <div className="dobYearUp">
               <label>Year</label>
-              <input />
+              <input value={updateUser.dobYear} />
             </div>
           </div>
           <div className="secQuesAnsInput">
             <label>Security Question 1</label>
-            <input />
+            <input value={updateUser.secQuestionOne} />
           </div>
           <div className="secQuesAnsInput">
             <label>Answer</label>
-            <input />
+            <input value={updateUser.secAnsOne} />
           </div>
           <div className="secQuesAnsInput">
             <label>Security Question 2</label>
-            <input />
+            <input value={updateUser.secQuestionTwo} />
           </div>
           <div className="secQuesAnsInput">
             <label>Answer</label>
-            <input />
+            <input value={updateUser.secAnsTwo} />
           </div>
           <div className="secQuesAnsInput">
             <label>Security Question 3</label>
-            <input />
+            <input value={updateUser.secQuestionThree} />
           </div>
           <div className="secQuesAnsInput">
             <label>Answer</label>
-            <input />
+            <input value={updateUser.secAnsThree} />
           </div>
         </div>
       </div>

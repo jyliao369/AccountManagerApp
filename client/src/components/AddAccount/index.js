@@ -3,23 +3,12 @@ import $ from "jquery";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 
-const AddAccount = ({ setNewAccount, newAcccount }) => {
-  // const [newAcccount, setNewAccount] = useState({
-  //   accName: "",
-  //   accUsername: "",
-  //   accPassword: "",
-  //   accEmail: "",
-  //   accPhoneNum: "",
-  //   accTwoStep: false,
-  //   accSecQues: false,
-  //   accSecOne: "N/A",
-  //   accAnsOne: "N/A",
-  //   accSecTwo: "N/A",
-  //   accAnsTwo: "N/A",
-  //   accSecThree: "N/A",
-  //   accAnsThree: "N/A",
-  // });
-
+const AddAccount = ({
+  setNewAccount,
+  newAcccount,
+  setCurrentUser,
+  currentUser,
+}) => {
   const changeAddAccPage = (accPage) => {
     if (accPage === "#addAccountPageA") {
       $(accPage).css({ display: "flex" });
@@ -31,12 +20,14 @@ const AddAccount = ({ setNewAccount, newAcccount }) => {
   };
 
   const addAccounts = () => {
-    console.log(newAcccount);
-    // Axios.post(`http://localhost:3001/addAcc`, {
-    //   newAccount: newAcccount,
-    // }).then((response) => {
-    //   console.log(response);
-    // });
+    Axios.post(`http://localhost:3001/addAcc`, {
+      newAccount: newAcccount,
+      userID: currentUser.id,
+    }).then((response) => {
+      console.log(response);
+      $("#profileCardCont").children().css({ display: "none" });
+      $("#profileCard").css({ display: "flex" });
+    });
   };
 
   const accSecFactors = (test) => {

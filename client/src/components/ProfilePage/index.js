@@ -1,5 +1,6 @@
 import React from "react";
 import $ from "jquery";
+import Axios from "axios";
 import { useState, useEffect } from "react";
 
 import AddAccount from "../AddAccount";
@@ -11,9 +12,12 @@ const ProfilePage = ({
   userAccounts,
   setNewAccount,
   newAcccount,
+  setCurrentUser,
+  currentUser,
 }) => {
   const [userAccountsA, setUserAccountsA] = useState([]);
   const [userAccountsB, setUserAccountsB] = useState([]);
+  const [updateUser, setUpdateUser] = useState([]);
 
   const grabAccounts = () => {
     let test = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -22,7 +26,19 @@ const ProfilePage = ({
     setUserAccountsB(test.slice(test.length / 2, test.length));
   };
 
-  const switchPages = (page) => {
+  const switchPages = (page, id) => {
+    if (page === "#settingsForm") {
+      console.log(id);
+      Axios.post(`http://localhost:3001/getUser`, {
+        userID: id,
+      }).then((response) => {
+        // console.log(response.data[0]);
+        setUpdateUser(response.data[0]);
+      });
+    } else {
+      setUpdateUser([]);
+    }
+
     $("#addAccountPageA").css({ display: "flex" });
     $("#addAccountPageB").css({ display: "none" });
 
@@ -87,22 +103,31 @@ const ProfilePage = ({
         <div className="profileCardCont" id="profileCardCont">
           <div className="profileCard" id="profileCard">
             <div className="profileIcon"></div>
-            <p>First Name Last Name</p>
-            <p>username</p>
-            <p>email</p>
+            <p>
+              {currentUser.firstName} {currentUser.lastName}
+            </p>
+            <p>{currentUser.username}</p>
+            <p>{currentUser.email}</p>
             <div>
               <button onClick={() => grabAccounts()}>Grab Accounts</button>
             </div>
           </div>
 
-          <AddAccount setNewAccount={setNewAccount} newAcccount={newAcccount} />
-          <Settings />
+          <AddAccount
+            setNewAccount={setNewAccount}
+            newAcccount={newAcccount}
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
+          <Settings setUpdateUser={setUpdateUser} updateUser={updateUser} />
           <AccountInfoCard />
         </div>
 
         <div className="profileNav">
           <button onClick={() => switchPages("#profileCard")}>Home</button>
-          <button onClick={() => switchPages("#settingsForm")}>Settings</button>
+          <button onClick={() => switchPages("#settingsForm", currentUser.id)}>
+            Settings
+          </button>
           <button onClick={() => switchPages("#addAccountForm")}>
             Add Account
           </button>

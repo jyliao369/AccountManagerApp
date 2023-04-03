@@ -24,13 +24,17 @@ function App() {
     accSecThree: "N/A",
     accAnsThree: "N/A",
   });
+  const [currentUser, setCurrentUser] = useState([]);
 
   Axios.defaults.withCredentials = true;
 
   return (
     <div className="App">
       <div className="appCont">
-        <LoginRegister />
+        <LoginRegister
+          setCurrentUser={setCurrentUser}
+          currentUser={currentUser}
+        />
 
         <div className="appMainCont" id="appMainCont">
           <ProfilePage
@@ -38,6 +42,8 @@ function App() {
             userAccounts={userAccounts}
             setNewAccount={setNewAccount}
             newAcccount={newAcccount}
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
           />
           {/* <AddAccount />
           <Settings /> */}

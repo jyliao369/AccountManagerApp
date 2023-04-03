@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { securityQuestion, dobMonths } from "../data";
 
-const LoginRegister = () => {
+const LoginRegister = ({ setCurrentUser, currentUser }) => {
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
   const [registerUser, setRegisterUser] = useState({
     firstName: "",
@@ -106,6 +106,7 @@ const LoginRegister = () => {
           $("#logRegForm").css({ display: "none" });
           $("#appMainCont").css({ display: "flex" });
           setLoginUser({ username: "", password: "" });
+          setCurrentUser(response.data.result[0]);
         } else {
           console.log("access denied");
         }
@@ -114,9 +115,10 @@ const LoginRegister = () => {
       Axios.post(`http://localhost:3001/register`, {
         registerUser: registerUser,
       }).then((response) => {
-        console.log(response.data);
         if (response.data.isLoggedin) {
           $("#logRegForm").css({ display: "none" });
+          $("#logForm").css({ display: "flex" });
+          $("#regForm").css({ display: "none" });
           $("#appMainCont").css({ display: "flex" });
           setRegisterUser({
             firstName: "",
@@ -135,6 +137,7 @@ const LoginRegister = () => {
             securityThree: "",
             ansThree: "",
           });
+          setCurrentUser(response.data.result[0]);
         } else {
           console.log("register failed");
         }
@@ -151,10 +154,6 @@ const LoginRegister = () => {
       $("#regFormA").css({ display: "none" });
     }
   };
-
-  // const test = () => {
-  //   console.log(registerUser);
-  // };
 
   return (
     <div className="logRegForm" id="logRegForm">

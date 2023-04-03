@@ -25,16 +25,6 @@ const db = mysql.createPool({
   database: "accmanagerdb",
 });
 
-// app.get(`/`, (req, res) => {
-//   db.query(`SELECT * FROM users`, [], (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.json({ result });
-//     }
-//   });
-// });
-
 // LOGIN/REGISTER
 app.post(`/register`, (req, res) => {
   const registerUser = req.body.registerUser;
@@ -84,14 +74,14 @@ app.post(`/register`, (req, res) => {
 app.post(`/login`, (req, res) => {
   const loginUser = req.body.loginUser;
   db.query(
-    `SELECT * FROM userdb WHERE username = ?`,
+    `SELECT id, username, password, email, firstName, lastName 
+    FROM userdb WHERE username = ?`,
     [loginUser.username],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
         if (result.length > 0) {
-          console.log(result[0].password === loginUser.password);
           if (result[0].password === loginUser.password) {
             res.send({ isLoggedin: true, result });
           } else {
@@ -108,10 +98,52 @@ app.post(`/login`, (req, res) => {
   );
 });
 
+app.post(`/getUser`, (req, res) => {
+  let userID = req.body.userID;
+  // console.log(userID);
+  db.query(`SELECT * FROM userdb WHERE id =?`, [userID], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 // USERSACCOUNTS
 app.post(`/addAcc`, (req, res) => {
   const newAcc = req.body.newAccount;
-  console.log(newAcc);
+  const userID = req.body.userID;
+  db.query(
+    `INSERT INTO accountdb
+     (userID, accName, accUsername, accPassword,
+      accEmail, accPhoneNum, accTwoStep, accSecQues,
+      accSecQueOne, accAnsOne, accSecQueTwo, accAnsTwo,
+      accSecQueThree, accAnsThree) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+    [
+      userID,
+      newAcc.accName,
+      newAcc.accUsername,
+      newAcc.accPassword,
+      newAcc.accEmail,
+      newAcc.accPhoneNum,
+      newAcc.accTwoStep,
+      newAcc.accSecQues,
+      newAcc.accSecOne,
+      newAcc.accAnsOne,
+      newAcc.accSecTwo,
+      newAcc.accAnsTwo,
+      newAcc.accSecThree,
+      newAcc.accAnsThree,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
 });
 
 const PORT = process.env.PORT || 3001;
