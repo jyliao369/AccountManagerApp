@@ -18,17 +18,22 @@ const ProfilePage = ({
   const [userAccountsA, setUserAccountsA] = useState([]);
   const [userAccountsB, setUserAccountsB] = useState([]);
   const [updateUser, setUpdateUser] = useState([]);
+  const [accInformation, setAccInformation] = useState([]);
 
   const grabAccounts = () => {
-    let test = [1, 2, 3, 4, 5, 6, 7, 8];
-    console.log(test);
-    setUserAccountsA(test.slice(0, test.length / 2));
-    setUserAccountsB(test.slice(test.length / 2, test.length));
+    Axios.post(`http://localhost:3001/getAcc`, {
+      userID: currentUser.id,
+    }).then((response) => {
+      console.log(response);
+      setUserAccountsA(response.data.slice(0, response.data.length / 2));
+      setUserAccountsB(
+        response.data.slice(response.data.length / 2, response.data.length)
+      );
+    });
   };
 
   const switchPages = (page, id) => {
     if (page === "#settingsForm") {
-      console.log(id);
       Axios.post(`http://localhost:3001/getUser`, {
         userID: id,
       }).then((response) => {
@@ -78,23 +83,28 @@ const ProfilePage = ({
     setUserAccountsB([]);
   };
 
-  const updateAccount = (accountID) => {
-    console.log(accountID);
-  };
-
   const showAccInfo = (accountID) => {
-    console.log(accountID);
-    $("#profileCard").css({ display: "none" });
+    setAccInformation([]);
+    $("#profileCardCont").children().css({ display: "none" });
     $("#accInfoCard").css({ display: "flex" });
+
+    Axios.post(`http://localhost:3001/getSpecAcc`, {
+      accountID: accountID.id,
+    }).then((response) => {
+      setAccInformation(response.data[0]);
+    });
   };
 
   return (
     <div className="profileCardPage" id="profileCardPage">
       <div className="accountSideA">
         {userAccountsA.map((account, index) => (
-          <div className="test" key={index}>
-            <p>{account}</p>
-            <p onClick={() => updateAccount(account)}>update</p>
+          <div
+            onClick={() => showAccInfo(account)}
+            className="test"
+            key={index}
+          >
+            <p>{account.accName}</p>
           </div>
         ))}
       </div>
@@ -120,7 +130,10 @@ const ProfilePage = ({
             currentUser={currentUser}
           />
           <Settings setUpdateUser={setUpdateUser} updateUser={updateUser} />
-          <AccountInfoCard />
+          <AccountInfoCard
+            setAccInformation={setAccInformation}
+            accInformation={accInformation}
+          />
         </div>
 
         <div className="profileNav">
@@ -137,9 +150,12 @@ const ProfilePage = ({
 
       <div className="accountSideB">
         {userAccountsB.map((account, index) => (
-          <div className="test" key={index}>
-            <p onClick={() => showAccInfo(account)}>{account}</p>
-            <p onClick={() => updateAccount(account)}>update</p>
+          <div
+            onClick={() => showAccInfo(account)}
+            className="test"
+            key={index}
+          >
+            <p>{account.accName}</p>
           </div>
         ))}
       </div>

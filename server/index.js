@@ -146,6 +146,36 @@ app.post(`/addAcc`, (req, res) => {
   );
 });
 
+app.post(`/getAcc`, (req, res) => {
+  const userID = req.body.userID;
+  db.query(
+    `SELECT id, accName FROM accountdb WHERE userID = ?`,
+    [userID],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.post(`/getSpecAcc`, (req, res) => {
+  const accountID = req.body.accountID;
+  db.query(
+    `SELECT * FROM accountdb WHERE id = ?`,
+    [accountID],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`server running smoothly on port ${PORT}`);

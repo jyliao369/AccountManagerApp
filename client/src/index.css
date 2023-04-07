@@ -182,6 +182,19 @@
   border-radius: 1.5em;
   margin: 1em 0em 1em 0em;
 }
+.testChange {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0em 0em 0.5em 0em;
+}
+.testChangeMain {
+  display: flex;
+}
+.testChangeMain input,
+.testChangeMain p {
+  width: 100%;
+}
 
 /* PROFILECARD */
 .mainProfilePage {
@@ -490,6 +503,106 @@
   justify-content: space-between;
   border-style: solid;
   background-color: white;
+}
+.accCardInfoMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.accCardInfoA {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.accCardInfoB {
+  width: 90%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.accName,
+.accUsername,
+.accPass,
+.accEmail,
+.accPhone {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.accName div,
+.accUsername div,
+.accPass div,
+.accEmail div,
+.accPhone div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.accName input,
+.accUsername input,
+.accPass input,
+.accEmail input,
+.accPhone input {
+  width: 100%;
+  display: none;
+}
+.accName p,
+.accUsername p,
+.accPass p,
+.accEmail p,
+.accPhone p {
+  width: 100%;
+}
+.accSecurity1,
+.accAnswer1,
+.accSecurity2,
+.accAnswer2,
+.accSecurity3,
+.accAnswer3 {
+  width: 100%;
+}
+.accSecurity1 div,
+.accAnswer1 div,
+.accSecurity2 div,
+.accAnswer2 div,
+.accSecurity3 div,
+.accAnswer3 div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  align-content: center;
+}
+.accSecurity1 p,
+.accAnswer1 p,
+.accSecurity2 p,
+.accAnswer2 p,
+.accSecurity3 p,
+.accAnswer3 p {
+  width: 100%;
+}
+.accSecurity1 input,
+.accAnswer1 input,
+.accSecurity2 input,
+.accAnswer2 input,
+.accSecurity3 input,
+.accAnswer3 input {
+  width: 100%;
+  display: none;
+}
+.accTwoStep,
+.accSecQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
 }
 
 /* NAVIGATIONBAR */
