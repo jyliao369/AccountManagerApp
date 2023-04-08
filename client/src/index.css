@@ -25,6 +25,9 @@
   align-items: center;
   align-content: center;
 }
+label {
+  font-size: 1px;
+}
 
 /* LOGREGISTER */
 .logRegForm {
@@ -358,44 +361,112 @@
   border-radius: 50%;
   border-width: 1.5px;
 }
-.nameUpdateInput {
+.nameUpdate {
   width: 90%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin: 0em 0em 0.5em 0em;
+  align-content: center;
+  align-items: flex-start;
 }
-.nameUpInput {
+.usernameUp,
+.emailUp,
+.passwordUp {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.usernameUp div,
+.emailUp div,
+.passwordUp div {
+  display: flex;
+}
+.usernameUp input,
+.emailUp input,
+.passwordUp input,
+.firstNameUp input,
+.lastNameUp input {
+  width: 100%;
+  display: none;
+}
+.usernameUp p,
+.emailUp p,
+.passwordUp p,
+.firstNameUp p,
+.lastNameUp p {
+  width: 100%;
+  display: flex;
+}
+.firstNameUp,
+.lastNameUp {
   width: 47%;
   display: flex;
   flex-direction: column;
 }
-.usernameUpInput,
-.emailUpInput,
-.passwordUpInput,
-.phoneNumUpInput {
-  width: 90%;
+.firstNameUp div,
+.lastNameUp div {
   display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
 }
 .dobUpInput {
   width: 90%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0em 0em 0.5em 0em;
+  align-items: flex-end;
 }
-.dobUpInput div {
+.dobMonthUp,
+.dobDateUp,
+.dobYearUp {
+  width: 30%;
   display: flex;
   flex-direction: column;
 }
-.dobMonthUp {
-  width: 40%;
+.dobMonthUp input,
+.dobDateUp input,
+.dobYearUp input {
+  width: 100%;
 }
-.dobDateUp,
-.dobYearUp {
-  width: 25%;
+.phoneNumUp,
+.secQuesOne,
+.secAnsOne,
+.secQuesTwo,
+.secAnsTwo,
+.secQuesThree,
+.secAnsThree {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.phoneNumUp div,
+.secQuesOne div,
+.secAnsOne div,
+.secQuesTwo div,
+.secAnsTwo div,
+.secQuesThree div,
+.secAnsThree div {
+  display: flex;
+  align-items: flex-end;
+}
+.phoneNumUp input,
+.dobMonthUp input,
+.dobDateUp input,
+.dobYearUp input,
+.secQuesOne input,
+.secAnsOne input,
+.secQuesTwo input,
+.secAnsTwo input,
+.secQuesThree input,
+.secAnsThree input {
+  display: none;
+  width: 100%;
+}
+.phoneNumUp p,
+.secQuesOne p,
+.secAnsOne p,
+.secQuesTwo p,
+.secAnsTwo p,
+.secQuesThree p,
+.secAnsThree p {
+  width: 100%;
 }
 .updateButton {
   width: 100%;
@@ -513,96 +584,113 @@
   align-content: center;
 }
 .accCardInfoA {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .accCardInfoB {
-  width: 90%;
+  width: 100%;
   display: none;
   flex-direction: column;
   align-items: center;
+}
+.accCardIconCont {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 1em 0em 2em 0em;
 }
 .accName,
 .accUsername,
 .accPass,
 .accEmail,
-.accPhone {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.accName div,
-.accUsername div,
-.accPass div,
-.accEmail div,
-.accPhone div {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-}
-.accName input,
-.accUsername input,
-.accPass input,
-.accEmail input,
-.accPhone input {
-  width: 100%;
-  display: none;
-}
-.accName p,
-.accUsername p,
-.accPass p,
-.accEmail p,
-.accPhone p {
-  width: 100%;
-}
+.accPhone,
 .accSecurity1,
 .accAnswer1,
 .accSecurity2,
 .accAnswer2,
 .accSecurity3,
 .accAnswer3 {
-  width: 100%;
-}
-.accSecurity1 div,
-.accAnswer1 div,
-.accSecurity2 div,
-.accAnswer2 div,
-.accSecurity3 div,
-.accAnswer3 div {
+  width: 90%;
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   align-content: center;
+  flex-direction: row;
+  margin: 0.25em 0em 0.25em 0em;
 }
-.accSecurity1 p,
-.accAnswer1 p,
-.accSecurity2 p,
-.accAnswer2 p,
-.accSecurity3 p,
-.accAnswer3 p {
+.accNameMain,
+.accUsernameMain,
+.accPassMain,
+.accEmailMain,
+.accPhoneMain,
+.accSecurity1Main,
+.accAnswer1Main,
+.accSecurity2Main,
+.accAnswer2Main,
+.accSecurity3Main,
+.accAnswer3Main {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
-.accSecurity1 input,
-.accAnswer1 input,
-.accSecurity2 input,
-.accAnswer2 input,
-.accSecurity3 input,
-.accAnswer3 input {
-  width: 100%;
+.accNameCont,
+.accUsernameCont,
+.accPassCont,
+.accEmailCont,
+.accPhoneCont,
+.accSecurity1Cont,
+.accAnswer1Cont,
+.accSecurity2Cont,
+.accAnswer2Cont,
+.accSecurity3Cont,
+.accAnswer3Cont {
+  height: 1.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.accNameCont *,
+.accUsernameCont *,
+.accPassCont *,
+.accEmailCont *,
+.accPhoneCont *,
+.accSecurity1Cont *,
+.accAnswer1Cont *,
+.accSecurity2Cont *,
+.accAnswer2Cont *,
+.accSecurity3Cont *,
+.accAnswer3Cont * {
+  font-size: 1em;
+}
+.accNameCont input,
+.accUsernameCont input,
+.accPassCont input,
+.accEmailCont input,
+.accPhoneCont input,
+.accSecurity1Cont input,
+.accAnswer1Cont input,
+.accSecurity2Cont input,
+.accAnswer2Cont input,
+.accSecurity3Cont input,
+.accAnswer3Cont input {
+  width: 90%;
   display: none;
+  padding: 0em;
+  border: none;
+  outline: none;
 }
 .accTwoStep,
 .accSecQuestion {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-content: center;
+  margin: 0.5em 0em 0.5em 0em;
 }
 
 /* NAVIGATIONBAR */

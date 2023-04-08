@@ -84,9 +84,10 @@ const ProfilePage = ({
   };
 
   const showAccInfo = (accountID) => {
-    setAccInformation([]);
     $("#profileCardCont").children().css({ display: "none" });
     $("#accInfoCard").css({ display: "flex" });
+    $("#accCardInfoA").css({ display: "flex" });
+    $("#accCardInfoB").css({ display: "none" });
 
     Axios.post(`http://localhost:3001/getSpecAcc`, {
       accountID: accountID.id,

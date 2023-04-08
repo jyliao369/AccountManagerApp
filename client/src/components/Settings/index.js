@@ -16,6 +16,22 @@ const Settings = ({ setUpdateUser, updateUser }) => {
     return true;
   };
 
+  const updateInfo = (identifier) => {
+    // console.log("hello");
+    // console.log(identifier);
+    if ($("#" + identifier + "Input").css(`display`) === "none") {
+      $("#" + identifier + "Input").css({ display: "flex" });
+      $("#" + identifier).css({ display: "none" });
+    } else if ($("#" + identifier + "Input").css(`display`) === "flex") {
+      $("#" + identifier + "Input").css({ display: "none" });
+      $("#" + identifier).css({ display: "flex" });
+    }
+  };
+
+  const check = () => {
+    console.log(updateUser);
+  };
+
   return (
     <div className="settingsForm" id="settingsForm">
       <div className="settingsFormMain">
@@ -26,120 +42,234 @@ const Settings = ({ setUpdateUser, updateUser }) => {
           <div className="settingImageCont">
             <div className="settingImg" />
           </div>
-          <div className="nameUpdateInput">
-            <div className="nameUpInput">
+          <div className="nameUpdate">
+            <div className="firstNameUp">
               <label>First Name</label>
-              <input
-                value={updateUser.firstName}
-                //   placeholder="Ex. John"
-                //   value={registerUser.firstName}
-                //   onChange={(event) =>
-                //     setRegisterUser({
-                //       ...registerUser,
-                //       firstName: event.target.value,
-                //     })
-                //   }
-              />
+              <div>
+                <p id="firstNameUp">{updateUser.firstName}</p>
+                <input
+                  value={updateUser.firstName}
+                  onChange={(event) =>
+                    setUpdateUser({
+                      ...updateUser,
+                      firstName: event.target.value,
+                    })
+                  }
+                />
+              </div>
             </div>
-            <div className="nameUpInput">
+            <div className="lastNameUp">
               <label>Last Name</label>
+              <div>
+                <p id="lastNameUp">{updateUser.lastName}</p>
+                <input
+                  value={updateUser.lastName}
+                  onChange={(event) =>
+                    setUpdateUser({
+                      ...updateUser,
+                      lastName: event.target.value,
+                    })
+                  }
+                />
+              </div>
+            </div>
+            <button onClick={() => updateInfo()}>edit</button>
+          </div>
+          <div className="usernameUp">
+            <label>Username</label>
+            <div>
+              <p id="userNameUp">{updateUser.username}</p>
               <input
-                value={updateUser.lastName}
-                //   placeholder="Ex. Allen"
-                //   value={registerUser.lastName}
-                //   onChange={(event) =>
-                //     setRegisterUser({
-                //       ...registerUser,
-                //       lastName: event.target.value,
-                //     })
-                //   }
+                value={updateUser.username}
+                id="userNameUpInput"
+                onChange={(event) =>
+                  setUpdateUser({ ...updateUser, username: event.target.value })
+                }
               />
+              <button onClick={() => updateInfo("userNameUp")}>edit</button>
             </div>
           </div>
-          <div className="usernameUpInput">
-            <label>Username</label>
-            <input
-              value={updateUser.username}
-              // placeholder="Ex. testninja101"
-              // value={registerUser.username}
-              // onChange={(event) =>
-              //   setRegisterUser({ ...registerUser, username: event.target.value })
-              // }
-            />
-          </div>
-          <div className="emailUpInput">
+          <div className="emailUp">
             <label>Email</label>
-            <input
-              value={updateUser.email}
-              // placeholder="Ex. testninja101"
-              // value={registerUser.email}
-              // onChange={(event) =>
-              //   setRegisterUser({ ...registerUser, email: event.target.value })
-              // }
-            />
+            <div>
+              <p id="emailUp">{updateUser.email}</p>
+              <input
+                value={updateUser.email}
+                id="emailUpInput"
+                onChange={(event) =>
+                  setUpdateUser({ ...updateUser, email: event.target.value })
+                }
+              />
+              <button onClick={() => updateInfo("emailUp")}>edit</button>
+            </div>
           </div>
-          <div className="passwordUpInput">
+          <div className="passwordUp">
             <label>Password</label>
-            <input
-              value={updateUser.password}
-              type="password"
-              // placeholder="**********"
-              // value={registerUser.password}
-              // onChange={(event) =>
-              //   setRegisterUser({ ...registerUser, password: event.target.value })
-              // }
-            />
+            <div>
+              <p id="passwordUp">{updateUser.password}</p>
+              <input
+                value={updateUser.password}
+                id="passwordUpInput"
+                type="password"
+                onChange={(event) =>
+                  setUpdateUser({ ...updateUser, password: event.target.value })
+                }
+              />
+              <button onClick={() => updateInfo("passwordUp")}>edit</button>
+            </div>
+          </div>
+          <div className="phoneNumUp">
+            <label>Phone Number</label>
+            <div>
+              <p id="phoneNumUp">{updateUser.mobileNum}</p>
+              <input
+                value={updateUser.mobileNum}
+                id="phoneNumUpInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    mobileNum: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("phoneNumUp")}>edit</button>
+            </div>
           </div>
         </div>
 
         <div className="updatePageB" id="updatePageB">
-          <div className="phoneNumUpInput">
-            <label>Phone Number</label>
-            <input value={updateUser.mobileNum} />
-          </div>
           <div className="dobUpInput">
             <div className="dobMonthUp">
               <label>Month</label>
-              <input value={updateUser.dobMonth} />
+              <div>
+                <p>{updateUser.dobMonth}</p>
+                <input value={updateUser.dobMonth} />
+              </div>
             </div>
             <div className="dobDateUp">
               <label>Date</label>
-              <input value={updateUser.dobDate} />
+              <div>
+                <p>{updateUser.dobDate}</p>
+                <input value={updateUser.dobDate} />
+              </div>
             </div>
             <div className="dobYearUp">
               <label>Year</label>
-              <input value={updateUser.dobYear} />
+              <div>
+                <p>{updateUser.dobYear}</p>
+                <input value={updateUser.dobYear} />
+              </div>
+            </div>
+            <button onClick={() => updateInfo()}>edit</button>
+          </div>
+          <div className="secQuesOne">
+            <label>Security Question 1</label>
+            <div>
+              <p id="secQuesOne">{updateUser.secQuestionOne}</p>
+              <input
+                value={updateUser.secQuestionOne}
+                id="secQuesOneInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    secQuestionOne: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("secQuesOne")}>edit</button>
             </div>
           </div>
-          <div className="secQuesAnsInput">
-            <label>Security Question 1</label>
-            <input value={updateUser.secQuestionOne} />
-          </div>
-          <div className="secQuesAnsInput">
+          <div className="secAnsOne">
             <label>Answer</label>
-            <input value={updateUser.secAnsOne} />
+            <div>
+              <p id="secAnsOne">{updateUser.secAnsOne}</p>
+              <input
+                value={updateUser.secAnsOne}
+                id="secAnsOneInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    secAnsOne: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("secAnsOne")}>edit</button>
+            </div>
           </div>
-          <div className="secQuesAnsInput">
+          <div className="secQuesTwo">
             <label>Security Question 2</label>
-            <input value={updateUser.secQuestionTwo} />
+            <div>
+              <p id="secQuesTwo">{updateUser.secQuestionTwo}</p>
+              <input
+                value={updateUser.secQuestionTwo}
+                id="secQuesTwoInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    secQuestionTwo: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("secQuesTwo")}>edit</button>
+            </div>
           </div>
-          <div className="secQuesAnsInput">
+          <div className="secAnsTwo">
             <label>Answer</label>
-            <input value={updateUser.secAnsTwo} />
+            <div>
+              <p id="secAnsTwo">{updateUser.secAnsTwo}</p>
+              <input
+                value={updateUser.secAnsTwo}
+                id="secAnsTwoInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    secAnsTwo: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("secAnsTwo")}>edit</button>
+            </div>
           </div>
-          <div className="secQuesAnsInput">
+          <div className="secQuesThree">
             <label>Security Question 3</label>
-            <input value={updateUser.secQuestionThree} />
+            <div>
+              <p id="secQuesThree">{updateUser.secQuestionThree}</p>
+              <input
+                value={updateUser.secQuestionThree}
+                id="secQuesThreeInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    secQuestionThree: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("secQuesThree")}>edit</button>
+            </div>
           </div>
-          <div className="secQuesAnsInput">
+          <div className="secAnsThree">
             <label>Answer</label>
-            <input value={updateUser.secAnsThree} />
+            <div>
+              <p id="secAnsThree">{updateUser.secAnsThree}</p>
+              <input
+                value={updateUser.secAnsThree}
+                id="secAnsThreeInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    secAnsThree: event.target.value,
+                  })
+                }
+              />
+              <button onClick={() => updateInfo("secAnsThree")}>edit</button>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="updateButton">
         <button onClick={() => updatePageChange("#updatePageA")}>back</button>
+        <button onClick={() => check()}>check</button>
         <button onClick={() => updatePageChange("#updatePageB")}>next</button>
       </div>
     </div>
