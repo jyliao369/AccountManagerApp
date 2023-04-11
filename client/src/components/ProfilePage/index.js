@@ -98,8 +98,8 @@ const ProfilePage = ({
 
   return (
     <div className="profileCardPage" id="profileCardPage">
-      <div className="accountSideA">
-        {userAccountsA.map((account, index) => (
+      <div className="accountSideB">
+        {userAccountsB.map((account, index) => (
           <div
             onClick={() => showAccInfo(account)}
             className="test"
@@ -129,11 +129,26 @@ const ProfilePage = ({
             newAcccount={newAcccount}
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
+            setUserAccountsA={setUserAccountsA}
+            userAccountsA={userAccountsA}
+            setUserAccountsB={setUserAccountsB}
+            userAccountsB={userAccountsB}
           />
-          <Settings setUpdateUser={setUpdateUser} updateUser={updateUser} />
+          <Settings
+            setUpdateUser={setUpdateUser}
+            updateUser={updateUser}
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
           <AccountInfoCard
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
             setAccInformation={setAccInformation}
             accInformation={accInformation}
+            setUserAccountsA={setUserAccountsA}
+            userAccountsA={userAccountsA}
+            setUserAccountsB={setUserAccountsB}
+            userAccountsB={userAccountsB}
           />
         </div>
 
@@ -149,8 +164,8 @@ const ProfilePage = ({
         </div>
       </div>
 
-      <div className="accountSideB">
-        {userAccountsB.map((account, index) => (
+      <div className="accountSideA">
+        {userAccountsA.map((account, index) => (
           <div
             onClick={() => showAccInfo(account)}
             className="test"

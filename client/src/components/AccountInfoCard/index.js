@@ -1,8 +1,18 @@
 import React from "react";
 import $ from "jquery";
+import Axios from "axios";
 import { useState } from "react";
 
-const AccountInfoCard = ({ setAccInformation, accInformation }) => {
+const AccountInfoCard = ({
+  setCurrentUser,
+  currentUser,
+  setAccInformation,
+  accInformation,
+  setUserAccountsA,
+  userAccountsA,
+  setUserAccountsB,
+  userAccountsB,
+}) => {
   const changeAddAccPage = (accPage) => {
     if (accPage === "#accCardInfoA") {
       $(accPage).css({ display: "flex" });
@@ -14,17 +24,92 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
   };
 
   const updateInfo = (identifier) => {
-    if ($("#" + identifier + "Input").css(`display`) === "none") {
-      $("#" + identifier + "Input").css({ display: "flex" });
-      $("#" + identifier).css({ display: "none" });
-    } else if ($("#" + identifier + "Input").css(`display`) === "flex") {
-      $("#" + identifier + "Input").css({ display: "none" });
-      $("#" + identifier).css({ display: "flex" });
+    if (identifier === "accSecurity1") {
+      if ($("#" + identifier + "Input").css(`display`) === "none") {
+        $("#" + identifier).css({ display: "none" });
+        $("#" + identifier + "Input").css({ display: "flex" });
+        $("#accAnswer1").css({ display: "none" });
+        $("#accAnswer1Input").css({ display: "flex" });
+      } else {
+        $("#" + identifier).css({ display: "flex" });
+        $("#" + identifier + "Input").css({ display: "none" });
+        $("#accAnswer1").css({ display: "flex" });
+        $("#accAnswer1Input").css({ display: "none" });
+      }
+    } else if (identifier === "accSecurity2") {
+      if ($("#" + identifier + "Input").css(`display`) === "none") {
+        $("#" + identifier).css({ display: "none" });
+        $("#" + identifier + "Input").css({ display: "flex" });
+        $("#accAnswer2").css({ display: "none" });
+        $("#accAnswer2Input").css({ display: "flex" });
+      } else {
+        $("#" + identifier).css({ display: "flex" });
+        $("#" + identifier + "Input").css({ display: "none" });
+        $("#accAnswer2").css({ display: "flex" });
+        $("#accAnswer2Input").css({ display: "none" });
+      }
+    } else if (identifier === "accSecurity3") {
+      if ($("#" + identifier + "Input").css(`display`) === "none") {
+        $("#" + identifier).css({ display: "none" });
+        $("#" + identifier + "Input").css({ display: "flex" });
+        $("#accAnswer3").css({ display: "none" });
+        $("#accAnswer3Input").css({ display: "flex" });
+      } else {
+        $("#" + identifier).css({ display: "flex" });
+        $("#" + identifier + "Input").css({ display: "none" });
+        $("#accAnswer3").css({ display: "flex" });
+        $("#accAnswer3Input").css({ display: "none" });
+      }
+    } else {
+      if ($("#" + identifier + "Input").css(`display`) === "none") {
+        $("#" + identifier + "Input").css({ display: "flex" });
+        $("#" + identifier).css({ display: "none" });
+      } else if ($("#" + identifier + "Input").css(`display`) === "flex") {
+        $("#" + identifier + "Input").css({ display: "none" });
+        $("#" + identifier).css({ display: "flex" });
+      }
     }
   };
 
-  const checkInfo = () => {
-    console.log(accInformation);
+  const accSecFactors = (secFactor) => {
+    if (secFactor === "#accTwoStep") {
+      if (!$(secFactor).is(":checked")) {
+        setAccInformation({ ...accInformation, accTwoStep: false });
+      } else {
+        setAccInformation({ ...accInformation, accTwoStep: true });
+      }
+    } else if (secFactor === "#accSecQues") {
+      if (!$(secFactor).is(":checked")) {
+        setAccInformation({ ...accInformation, accSecQues: false });
+      } else {
+        setAccInformation({ ...accInformation, accSecQues: true });
+      }
+    }
+  };
+
+  const updateAcc = () => {
+    Axios.post(`http://localhost:3001/updateAcc`, {
+      updateAcc: accInformation,
+      userID: currentUser.id,
+    }).then((response) => {
+      // console.log(response.data.result.length);
+      if (response.data.update === true) {
+        $("#accInfoCard").css({ display: "none" });
+        $("#profileCard").css({ display: "flex" });
+        $("#accCardInfoB").css({ display: "flex" });
+        $("#accCardInfoB").css({ display: "none" });
+
+        setUserAccountsA(
+          response.data.result.slice(0, response.data.result.length / 2)
+        );
+        setUserAccountsB(
+          response.data.result.slice(
+            response.data.result.length / 2,
+            response.data.result.length
+          )
+        );
+      }
+    });
   };
 
   return (
@@ -139,7 +224,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
               <div className="accSecurity1Cont">
                 <p id="accSecurity1">{accInformation.accSecQueOne}</p>
                 <input
-                  // disabled={!newAcccount.accSecQues}
                   value={accInformation.accSecQueOne}
                   id="accSecurity1Input"
                   onChange={(e) =>
@@ -151,7 +235,12 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
                 />
               </div>
             </div>
-            <button onClick={(e) => updateInfo("accSecurity1")}>Edit</button>
+            <button
+              disabled={!accInformation.accSecQues}
+              onClick={(e) => updateInfo("accSecurity1")}
+            >
+              Edit
+            </button>
           </div>
           <div className="accAnswer1">
             <div className="accAnswer1Main">
@@ -159,7 +248,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
               <div className="accAnswer1Cont">
                 <p id="accAnswer1">{accInformation.accAnsOne}</p>
                 <input
-                  // disabled={!newAcccount.accSecQues}
                   value={accInformation.accAnsOne}
                   id="accAnswer1Input"
                   onChange={(e) =>
@@ -171,7 +259,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
                 />
               </div>
             </div>
-            <button onClick={(e) => updateInfo("accAnswer1")}>Edit</button>
           </div>
           <div className="accSecurity2">
             <div className="accSecurity2Main">
@@ -179,7 +266,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
               <div className="accSecurity2Cont">
                 <p id="accSecurity2">{accInformation.accSecQueTwo}</p>
                 <input
-                  // disabled={!newAcccount.accSecQues}
                   value={accInformation.accSecQueTwo}
                   id="accSecurity2Input"
                   onChange={(e) =>
@@ -191,7 +277,12 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
                 />
               </div>
             </div>
-            <button onClick={(e) => updateInfo("accSecurity2")}>Edit</button>
+            <button
+              disabled={!accInformation.accSecQues}
+              onClick={(e) => updateInfo("accSecurity2")}
+            >
+              Edit
+            </button>
           </div>
           <div className="accAnswer2">
             <div className="accAnswer2Main">
@@ -199,7 +290,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
               <div className="accAnswer2Cont">
                 <p id="accAnswer2">{accInformation.accAnsTwo}</p>
                 <input
-                  // disabled={!newAcccount.accSecQues}
                   value={accInformation.accAnsTwo}
                   id="accAnswer2Input"
                   onChange={(e) =>
@@ -211,7 +301,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
                 />
               </div>
             </div>
-            <button onClick={(e) => updateInfo("accAnswer2")}>Edit</button>
           </div>
           <div className="accSecurity3">
             <div className="accSecurity3Main">
@@ -219,7 +308,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
               <div className="accSecurity3Cont">
                 <p id="accSecurity3">{accInformation.accSecQueThree}</p>
                 <input
-                  // disabled={!newAcccount.accSecQues}
                   value={accInformation.accSecQueThree}
                   id="accSecurity3Input"
                   onChange={(e) =>
@@ -231,7 +319,12 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
                 />
               </div>
             </div>
-            <button onClick={(e) => updateInfo("accSecurity3")}>Edit</button>
+            <button
+              disabled={!accInformation.accSecQues}
+              onClick={(e) => updateInfo("accSecurity3")}
+            >
+              Edit
+            </button>
           </div>
           <div className="accAnswer3">
             <div className="accAnswer3Main">
@@ -239,7 +332,6 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
               <div className="accAnswer3Cont">
                 <p id="accAnswer3">{accInformation.accAnsThree}</p>
                 <input
-                  // disabled={!newAcccount.accSecQues}
                   value={accInformation.accAnsThree}
                   id="accAnswer3Input"
                   onChange={(e) =>
@@ -251,22 +343,23 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
                 />
               </div>
             </div>
-            <button onClick={(e) => updateInfo("accAnswer3")}>Edit</button>
           </div>
           <div className="accTwoStep">
             <label>Two-Step Verification</label>
             <input
-              // onClick={() => accSecFactors("#addAccTwo")}
-              id="addAccTwo"
+              onClick={() => accSecFactors("#accTwoStep")}
+              id="accTwoStep"
               type={"checkbox"}
+              checked={accInformation.accTwoStep}
             />
           </div>
           <div className="accSecQuestion">
             <label>Security Question</label>
             <input
-              // onClick={() => accSecFactors("#addAccSec")}
-              id="addAccSec"
+              onClick={() => accSecFactors("#accSecQues")}
+              id="accSecQues"
               type={"checkbox"}
+              checked={accInformation.accSecQues}
             />
           </div>
         </div>
@@ -274,10 +367,7 @@ const AccountInfoCard = ({ setAccInformation, accInformation }) => {
 
       <div className="updateBtn">
         <button onClick={() => changeAddAccPage("#accCardInfoA")}>back</button>
-        {/* <button disabled={addAccConfirm()} onClick={() => addAccounts()}>
-          Add Account
-        </button> */}
-        <button onClick={() => checkInfo()}>check</button>
+        <button onClick={() => updateAcc()}>Update</button>
         <button onClick={() => changeAddAccPage("#accCardInfoB")}>next</button>
       </div>
     </div>

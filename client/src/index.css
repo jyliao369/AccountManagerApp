@@ -352,7 +352,7 @@ label {
   align-items: center;
   justify-content: center;
   align-content: center;
-  margin: 1em 0em 2em 0em;
+  margin: 1em 0em 1.25em 0em;
 }
 .settingImg {
   aspect-ratio: 1/1;
@@ -367,62 +367,29 @@ label {
   justify-content: space-between;
   align-content: center;
   align-items: flex-start;
-}
-.usernameUp,
-.emailUp,
-.passwordUp {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-}
-.usernameUp div,
-.emailUp div,
-.passwordUp div {
-  display: flex;
-}
-.usernameUp input,
-.emailUp input,
-.passwordUp input,
-.firstNameUp input,
-.lastNameUp input {
-  width: 100%;
-  display: none;
-}
-.usernameUp p,
-.emailUp p,
-.passwordUp p,
-.firstNameUp p,
-.lastNameUp p {
-  width: 100%;
-  display: flex;
+  margin: 0.25em 0em 0.25em 0em;
 }
 .firstNameUp,
 .lastNameUp {
-  width: 47%;
+  width: 40%;
   display: flex;
   flex-direction: column;
 }
 .firstNameUp div,
 .lastNameUp div {
   display: flex;
-}
-.dobUpInput {
-  width: 90%;
-  display: flex;
-  align-items: flex-end;
-}
-.dobMonthUp,
-.dobDateUp,
-.dobYearUp {
-  width: 30%;
-  display: flex;
   flex-direction: column;
 }
-.dobMonthUp input,
-.dobDateUp input,
-.dobYearUp input {
-  width: 100%;
+.firstNameUp div input,
+.lastNameUp div input,
+.dobMonthUp div input,
+.dobDateUp div input,
+.dobYearUp div input {
+  display: none;
 }
+.usernameUp,
+.emailUp,
+.passwordUp,
 .phoneNumUp,
 .secQuesOne,
 .secAnsOne,
@@ -432,41 +399,69 @@ label {
 .secAnsThree {
   width: 90%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
   align-content: center;
+  margin: 0.25em 0em 0.25em 0em;
 }
-.phoneNumUp div,
-.secQuesOne div,
-.secAnsOne div,
-.secQuesTwo div,
-.secAnsTwo div,
-.secQuesThree div,
-.secAnsThree div {
+.usernameUpMain,
+.emailUpMain,
+.passwordUpMain,
+.phoneNumUpMain,
+.secQuesOneMain,
+.secAnsOneMain,
+.secQuesTwoMain,
+.secAnsTwoMain,
+.secQuesThreeMain,
+.secAnsThreeMain {
+  width: 100%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
 }
-.phoneNumUp input,
-.dobMonthUp input,
-.dobDateUp input,
-.dobYearUp input,
-.secQuesOne input,
-.secAnsOne input,
-.secQuesTwo input,
-.secAnsTwo input,
-.secQuesThree input,
-.secAnsThree input {
+.usernameUpCont,
+.emailUpCont,
+.passwordUpCont,
+.phoneNumUpCont,
+.secQuesOneCont,
+.secAnsOneCont,
+.secQuesTwoCont,
+.secAnsTwoCont,
+.secQuesThreeCont,
+.secAnsThreeCont {
+  display: flex;
+  flex-direction: column;
+}
+.usernameUpCont input,
+.emailUpCont input,
+.passwordUpCont input,
+.phoneNumUpCont input,
+.secQuesOneCont input,
+.secAnsOneCont input,
+.secQuesTwoCont input,
+.secAnsTwoCont input,
+.secQuesThreeCont input,
+.secAnsThreeCont input {
   display: none;
-  width: 100%;
 }
-.phoneNumUp p,
-.secQuesOne p,
-.secAnsOne p,
-.secQuesTwo p,
-.secAnsTwo p,
-.secQuesThree p,
-.secAnsThree p {
-  width: 100%;
+.dobUpdate {
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0.25em 0em 0.25em 0em;
+}
+.dobMonthUp,
+.dobDateUp,
+.dobYearUp {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+}
+.dobMonthUp div,
+.dobDateUp div,
+.dobYearUp div {
+  display: flex;
+  flex-direction: column;
 }
 .updateButton {
   width: 100%;
@@ -680,8 +675,6 @@ label {
   width: 90%;
   display: none;
   padding: 0em;
-  border: none;
-  outline: none;
 }
 .accTwoStep,
 .accSecQuestion {

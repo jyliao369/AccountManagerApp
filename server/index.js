@@ -110,6 +110,37 @@ app.post(`/getUser`, (req, res) => {
   });
 });
 
+app.post(`/updateUser`, (req, res) => {
+  const updateUser = req.body.updateUser;
+  db.query(
+    `UPDATE userdb
+      SET username = '${updateUser.username}', password = '${updateUser.password}', email = '${updateUser.email}',
+        firstName = '${updateUser.firstName}', lastName = '${updateUser.lastName}', mobileNum = '${updateUser.mobileNum}',
+        dobMonth = '${updateUser.dobMonth}', dobDate = '${updateUser.dobDate}', dobYear = '${updateUser.dobYear}',
+        secQuestionOne = '${updateUser.secQuestionOne}', secAnsOne= '${updateUser.secAnsOne}', secQuestionTwo = '${updateUser.secQuestionTwo}', 
+        secAnsTwo= '${updateUser.secAnsTwo}', secQuestionThree = '${updateUser.secQuestionThree}', secAnsThree= '${updateUser.secAnsThree}'
+      WHERE id = ${updateUser.id}`,
+    [],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        db.query(
+          `SELECT * FROM userdb WHERE id =?`,
+          [updateUser.id],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+            } else {
+              res.send({ update: true, result });
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
 // USERSACCOUNTS
 app.post(`/addAcc`, (req, res) => {
   const newAcc = req.body.newAccount;
@@ -140,7 +171,17 @@ app.post(`/addAcc`, (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        res.send(result);
+        db.query(
+          `SELECT id, accName FROM accountdb WHERE userID = ?`,
+          [userID],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+            } else {
+              res.send(result);
+            }
+          }
+        );
       }
     }
   );
@@ -171,6 +212,49 @@ app.post(`/getSpecAcc`, (req, res) => {
         console.log(err);
       } else {
         res.send(result);
+      }
+    }
+  );
+});
+
+app.post(`/updateAcc`, (req, res) => {
+  const updateAcc = req.body.updateAcc;
+  const userID = req.body.userID;
+  // console.log(updateAcc);
+  // console.log(userID);
+
+  db.query(
+    `UPDATE accountdb
+      SET accName = '${updateAcc.accName}', accUsername = '${
+      updateAcc.accUsername
+    }', accPassword = '${updateAcc.accPassword}',
+        accEmail = '${updateAcc.accEmail}', accPhoneNum = '${
+      updateAcc.accPhoneNum
+    }', accTwoStep = '${Number(updateAcc.accTwoStep)}',
+        accSecQues = '${Number(updateAcc.accSecQues)}', accSecQueOne = '${
+      updateAcc.accSecQueOne
+    }', accAnsOne = '${updateAcc.accAnsOne}',
+        accSecQueTwo = '${updateAcc.accSecQueTwo}', accAnsTwo = '${
+      updateAcc.accAnsTwo
+    }', accSecQueThree = '${updateAcc.accSecQueThree}',
+        accAnsThree = '${updateAcc.accAnsThree}'
+      WHERE id = ${updateAcc.id}`,
+    [],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        db.query(
+          `SELECT id, accName FROM accountdb WHERE userID = ?`,
+          [userID],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+            } else {
+              res.send({ update: true, result });
+            }
+          }
+        );
       }
     }
   );

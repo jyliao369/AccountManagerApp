@@ -8,6 +8,10 @@ const AddAccount = ({
   newAcccount,
   setCurrentUser,
   currentUser,
+  setUserAccountsA,
+  userAccountsA,
+  setUserAccountsB,
+  userAccountsB,
 }) => {
   const changeAddAccPage = (accPage) => {
     if (accPage === "#addAccountPageA") {
@@ -24,7 +28,10 @@ const AddAccount = ({
       newAccount: newAcccount,
       userID: currentUser.id,
     }).then((response) => {
-      console.log(response);
+      setUserAccountsA(response.data.slice(0, response.data.length / 2));
+      setUserAccountsB(
+        response.data.slice(response.data.length / 2, response.data.length)
+      );
       $("#profileCardCont").children().css({ display: "none" });
       $("#profileCard").css({ display: "flex" });
     });
