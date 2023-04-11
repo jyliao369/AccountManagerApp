@@ -139,6 +139,8 @@ const ProfilePage = ({
             updateUser={updateUser}
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
+            setUserAccountsA={setUserAccountsA}
+            setUserAccountsB={setUserAccountsB}
           />
           <AccountInfoCard
             setCurrentUser={setCurrentUser}

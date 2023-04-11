@@ -7,6 +7,8 @@ const Settings = ({
   updateUser,
   setCurrentUser,
   currentUser,
+  setUserAccountsA,
+  setUserAccountsB,
 }) => {
   const updatePageChange = (updatePage) => {
     if (updatePage === "#updatePageA") {
@@ -99,6 +101,7 @@ const Settings = ({
       updateUser: updateUser,
     }).then((response) => {
       if (response.data.update === true) {
+        console.log(response);
         setCurrentUser(response.data.result[0]);
 
         $(`#profileCard`).css({ display: "flex" });
@@ -108,6 +111,24 @@ const Settings = ({
         $(`#updatePageB`).css({ display: "none" });
       }
     });
+  };
+
+  const deleteAcc = () => {
+    console.log("deleting account");
+
+    Axios.delete(`http://localhost:3001/deleteUser/${currentUser.id}`, {}).then(
+      (response) => {
+        if (response.data.message === "deleted") {
+          $("#appMainCont").css({ display: "none" });
+          $("#profileCardCont").children().css({ display: "none" });
+          $("#profileCard").css({ display: "flex" });
+
+          $("#logRegForm").css({ display: "flex" });
+          setUserAccountsA([]);
+          setUserAccountsB([]);
+        }
+      }
+    );
   };
 
   return (
@@ -366,6 +387,9 @@ const Settings = ({
                 />
               </div>
             </div>
+          </div>
+          <div>
+            <button onClick={() => deleteAcc()}>delete</button>
           </div>
         </div>
       </div>

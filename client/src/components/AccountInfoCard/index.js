@@ -96,7 +96,32 @@ const AccountInfoCard = ({
       if (response.data.update === true) {
         $("#accInfoCard").css({ display: "none" });
         $("#profileCard").css({ display: "flex" });
-        $("#accCardInfoB").css({ display: "flex" });
+        $("#accCardInfoA").css({ display: "flex" });
+        $("#accCardInfoB").css({ display: "none" });
+
+        setUserAccountsA(
+          response.data.result.slice(0, response.data.result.length / 2)
+        );
+        setUserAccountsB(
+          response.data.result.slice(
+            response.data.result.length / 2,
+            response.data.result.length
+          )
+        );
+      }
+    });
+  };
+
+  const deleteAcc = (accID) => {
+    Axios.post(`http://localhost:3001/deleteAcc`, {
+      accID: accID,
+      userID: currentUser.id,
+    }).then((response) => {
+      // console.log(response.data.message === "deleted");
+      if (response.data.message === "deleted") {
+        $("#accInfoCard").css({ display: "none" });
+        $("#profileCard").css({ display: "flex" });
+        $("#accCardInfoA").css({ display: "flex" });
         $("#accCardInfoB").css({ display: "none" });
 
         setUserAccountsA(
@@ -361,6 +386,9 @@ const AccountInfoCard = ({
               type={"checkbox"}
               checked={accInformation.accSecQues}
             />
+          </div>
+          <div>
+            <button onClick={() => deleteAcc(accInformation.id)}>delete</button>
           </div>
         </div>
       </div>

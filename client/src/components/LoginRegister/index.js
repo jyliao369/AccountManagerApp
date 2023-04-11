@@ -108,7 +108,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
           setLoginUser({ username: "", password: "" });
           setCurrentUser(response.data.result[0]);
         } else {
-          console.log("access denied");
+          console.log(response.data.message);
         }
       });
     } else if (logReg === "register") {

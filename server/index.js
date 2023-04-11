@@ -9,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELET"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
@@ -118,7 +118,7 @@ app.post(`/updateUser`, (req, res) => {
         firstName = '${updateUser.firstName}', lastName = '${updateUser.lastName}', mobileNum = '${updateUser.mobileNum}',
         dobMonth = '${updateUser.dobMonth}', dobDate = '${updateUser.dobDate}', dobYear = '${updateUser.dobYear}',
         secQuestionOne = '${updateUser.secQuestionOne}', secAnsOne= '${updateUser.secAnsOne}', secQuestionTwo = '${updateUser.secQuestionTwo}', 
-        secAnsTwo= '${updateUser.secAnsTwo}', secQuestionThree = '${updateUser.secQuestionThree}', secAnsThree= '${updateUser.secAnsThree}'
+        secAnsTwo= '${updateUser.secAnsTwo}', secQuestionThree = '${updateUser.secQuestionThree}', secAnsThree = '${updateUser.secAnsThree}'
       WHERE id = ${updateUser.id}`,
     [],
     (err, result) => {
@@ -126,7 +126,7 @@ app.post(`/updateUser`, (req, res) => {
         console.log(err);
       } else {
         db.query(
-          `SELECT * FROM userdb WHERE id =?`,
+          `SELECT * FROM userdb WHERE id = ?`,
           [updateUser.id],
           (err, result) => {
             if (err) {
@@ -139,6 +139,28 @@ app.post(`/updateUser`, (req, res) => {
       }
     }
   );
+});
+
+app.delete(`/deleteUser/:userID`, (req, res) => {
+  const userID = req.params.userID;
+
+  db.query(`DELETE FROM userdb WHERE id = ${userID}`, [], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      db.query(
+        `DELETE FROM accountdb WHERE userID = ${userID}`,
+        [],
+        (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send({ message: "deleted", result });
+          }
+        }
+      );
+    }
+  });
 });
 
 // USERSACCOUNTS
@@ -252,6 +274,32 @@ app.post(`/updateAcc`, (req, res) => {
               console.log(err);
             } else {
               res.send({ update: true, result });
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
+app.post(`/deleteAcc`, (req, res) => {
+  const accID = req.body.accID;
+  const userID = req.body.userID;
+  db.query(
+    `DELETE FROM accountdb WHERE userID = ${userID} AND id = ${accID}`,
+    [],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        db.query(
+          `SELECT id, accName FROM accountdb WHERE userID = ?`,
+          [userID],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+            } else {
+              res.send({ message: "deleted", result });
             }
           }
         );
