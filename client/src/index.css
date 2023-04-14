@@ -27,6 +27,9 @@
 select {
   height: 100%;
 }
+label {
+  font-size: 1vw;
+}
 
 /* Logo */
 .logoMain {
@@ -34,10 +37,11 @@ select {
   align-items: center;
   justify-content: center;
   align-content: center;
+  margin: 5% 0em 10% 0em;
 }
 .logoCont {
   aspect-ratio: 1/1;
-  width: 55%;
+  width: 65%;
   display: flex;
   border-style: solid;
   position: relative;
@@ -60,15 +64,20 @@ select {
 
 /* LOGREGISTER */
 .logRegForm {
+  width: clamp(20vw, 0em, 25vw);
+  height: clamp(60vh, 0vh, 60vh);
   display: flex;
-  width: 15em;
-  background-color: white;
   flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
 }
 .logForm,
 .regForm {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 0em 1.25em;
 }
 .regForm {
   display: none;
@@ -78,6 +87,10 @@ select {
   display: flex;
   flex-direction: column;
 }
+.regFormA p,
+.regFormB p {
+  font-size: 0.9vw;
+}
 .regFormB div {
   display: flex;
   flex-direction: column;
@@ -85,21 +98,45 @@ select {
 .usernameInput,
 .passwordInput,
 .emailInput,
-.phoneNumInput {
+.phoneNumInput,
+.secQuesOneInput,
+.secAnsOneInput,
+.secQuesTwoInput,
+.secAnsTwoInput,
+.secQuesThreeInput,
+.secAnsThreeInput {
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 2% 0em;
+}
+.usernameInput input,
+.passwordInput input,
+.emailInput input,
+.phoneNumInput input,
+.nameInput input,
+.dobInputMain input,
+.dobInputMain select,
+.secQuesOneInput select,
+.secAnsOneInput input,
+.secQuesTwoInput select,
+.secAnsTwoInput input,
+.secQuesThreeInput select,
+.secAnsThreeInput input {
+  padding: 0.35em;
+  font-size: 0.7vw;
 }
 .fullNameInput,
 .dobInputMain {
   display: flex;
   justify-content: space-between;
+  margin: 0em 0em 2% 0em;
 }
 .passwordInput div {
   display: flex;
   justify-content: space-between;
 }
 .nameInput {
-  width: 50%;
+  width: 47%;
   display: flex;
   flex-direction: column;
 }
@@ -115,16 +152,23 @@ select {
   align-items: center;
   justify-content: center;
   align-content: center;
+  margin: 2vh 0em 3vh 0em;
 }
 .logUserInput,
 .logPassInput {
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 3% 0em;
+}
+.logUserInput input,
+.logPassInput input {
+  padding: 0.35em;
 }
 .loginButton,
 .registerButton {
   display: flex;
   justify-content: center;
+  margin: 0% 0em 20% 0em;
 }
 .loginButton button,
 .registerButton button {
@@ -139,32 +183,103 @@ select {
   justify-content: center;
   align-content: center;
 }
+.logToReg button {
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* PROFILEPAGE */
-.mainProfilePage {
-  width: 15em;
-}
 .profileCardCont {
+  width: 18vw;
+  height: 60vh;
   background-color: white;
 }
 .profileCardPage {
+  width: 100%;
+  height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .profileCard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.profileCard p {
+  margin: 0em 0em 5% 0em;
+}
+.profileCard button {
+  width: 45%;
+  height: 4vh;
+  border: none;
+  border-radius: 5em;
+}
+.profileIconCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10% 0em 15% 0em;
+}
+.profileIcon {
+  aspect-ratio: 1/1;
+  width: 10vw;
+  border-style: solid;
+  border-radius: 50%;
 }
 .addAccountForm,
 .settingsForm,
 .accInfoCard {
   display: none;
+  height: 100%;
+  justify-content: space-between;
   flex-direction: column;
+  padding: 0em 1.25em;
+}
+.accountSideA,
+.accountSideB {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.accInfoBtn {
+  width: 75%;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+  border-radius: 1.5em;
+  margin: 1em 0em 1em 0em;
 }
 
 /* SETTINGS */
 .settingsFormMain {
   display: flex;
   flex-direction: column;
+}
+.settingsHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh 0em 1vh 0em;
+}
+.settingImageCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5% 0em 5% 0em;
+}
+.settingImg {
+  aspect-ratio: 1/1;
+  width: 8vw;
+  border-style: solid;
+  border-radius: 50%;
 }
 .updatePageA,
 .updatePageB {
@@ -180,6 +295,7 @@ select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0em 0em 1.5% 0em;
 }
 .firstNameUp,
 .lastNameUp,
@@ -191,7 +307,7 @@ select {
 }
 .firstNameUp,
 .lastNameUp {
-  width: 50%;
+  width: 47%;
 }
 .dobMonthUp,
 .dobDateUp,
@@ -210,10 +326,34 @@ select {
 .secAnsThree {
   display: flex;
   flex-direction: column;
+  margin: 0em 0em 1.5% 0em;
+}
+.firstNameUp input,
+.lastNameUp input,
+.dobMonthUp input,
+.dobDateUp input,
+.dobYearUp input,
+.usernameUp input,
+.emailUp input,
+.passwordUp input,
+.phoneNumUp input,
+.secQuesOne input,
+.secAnsOne input,
+.secQuesTwo input,
+.secAnsTwo input,
+.secQuesThree input,
+.secAnsThree input {
+  padding: 0.35em;
+}
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  margin: 4% 0% 2% 0%;
 }
 .updateButton {
   display: flex;
   justify-content: center;
+  margin: 5% 0em 5% 0em;
 }
 
 /* ADDACCOUNT */
@@ -251,542 +391,29 @@ select {
 .profileNav {
   display: flex;
   justify-content: space-between;
-}
-.profileNav button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-
-/* 
-.logRegHeader {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1em 0em 1.5em 0em;
-}
-.logForm {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  align-content: center;
-  background-color: white;
-}
-.logUserInput,
-.logPassInput {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
-}
-.loginButton,
-.registerButton {
-  width: 90%;
-  height: 75%;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  align-content: center;
-  padding: 0em 0em 1em 0em;
-}
-.loginButton button,
-.registerButton button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-
-.regFormA {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.fullNameInput,
-.dobInputMain {
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0em 0em 0.5em 0em;
-}
-.nameInput {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-}
-.usernameInput,
-.emailInput,
-.passwordInput,
-.phoneNumInput {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
-}
-.passwordInput div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.dobMonthInput {
-  width: 35%;
-  display: flex;
-  flex-direction: column;
-}
-.dobDateInput,
-.dobYearInput {
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-}
-.regFormB {
-  width: 100%;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.regFormB div {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
-}
-.regPage {
-  width: 90%;
-  height: 70%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.test {
-  width: 75%;
-  height: 3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  background-color: white;
-  border-radius: 1.5em;
-  margin: 1em 0em 1em 0em;
-}
-.testChange {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
-}
-.testChangeMain {
-  display: flex;
-}
-.testChangeMain input,
-.testChangeMain p {
-  width: 100%;
-} */
-
-/* PROFILECARD */
-/* .mainProfilePage {
-  display: flex;
-  width: 75%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.profileCardPage {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  overflow: auto;
-  flex-direction: row;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-.profileCardPage::-webkit-scrollbar {
-  display: none;
-}
-.profileCardCont {
-  height: 60%;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  z-index: 0;
-  flex-direction: column;
-}
-.accountSideA,
-.accountSideB {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-}
-.profileCard {
-  width: 22em;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  border-style: solid;
-  background-color: white;
-}
-.profileNav {
-  width: 22em;
-  display: flex;
-  margin: 1em 0em 0em 0em;
-  justify-content: space-between;
+  margin: 2vh 0em 0em 0em;
 }
 .profileNav button {
   aspect-ratio: 1/1;
-  width: 15%;
+  width: 3vw;
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: center;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
 }
-.profileIcon {
-  aspect-ratio: 1/1;
-  width: 10em;
-  border-style: solid;
-  border-radius: 6em;
-  margin: 2em 0em 3em 0em;
-}
-.profileCard p {
-  margin: 0em 0em 1em 0em;
-}
-.accountsCont {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-}
-.accounts {
-  width: 20em;
-  height: 1.75em;
-  display: flex;
-  border-style: solid;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  margin: 0em 0em 1.25em 0em;
-  background-color: #8b8ec3;
-} */
 
-/* SETTINGSPAGE */
-/* .settingsHeader {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  align-content: center;
-  margin: 0.5em 0em 1em 0em;
-}
-.settingsForm {
-  width: 22em;
-  height: 100%;
-  display: none;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  border-style: solid;
-  background-color: white;
-}
-.settingsFormMain {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.updatePageA {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.updatePageB {
-  width: 100%;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.secQuesAnsInput {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
-}
-.settingImageCont {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  margin: 1em 0em 1.25em 0em;
-}
-.settingImg {
-  aspect-ratio: 1/1;
-  width: 8em;
-  border-style: solid;
-  border-radius: 50%;
-  border-width: 1.5px;
-}
-.nameUpdate {
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  align-items: flex-start;
-  margin: 0.25em 0em 0.25em 0em;
-}
-.firstNameUp,
-.lastNameUp {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-}
-.firstNameUp div,
-.lastNameUp div {
-  display: flex;
-  flex-direction: column;
-}
-.firstNameUp div input,
-.lastNameUp div input,
-.dobMonthUp div input,
-.dobDateUp div input,
-.dobYearUp div input {
-  display: none;
-}
-.usernameUp,
-.emailUp,
-.passwordUp,
-.phoneNumUp,
-.secQuesOne,
-.secAnsOne,
-.secQuesTwo,
-.secAnsTwo,
-.secQuesThree,
-.secAnsThree {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  align-content: center;
-  margin: 0.25em 0em 0.25em 0em;
-}
-.usernameUpMain,
-.emailUpMain,
-.passwordUpMain,
-.phoneNumUpMain,
-.secQuesOneMain,
-.secAnsOneMain,
-.secQuesTwoMain,
-.secAnsTwoMain,
-.secQuesThreeMain,
-.secAnsThreeMain {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.usernameUpCont,
-.emailUpCont,
-.passwordUpCont,
-.phoneNumUpCont,
-.secQuesOneCont,
-.secAnsOneCont,
-.secQuesTwoCont,
-.secAnsTwoCont,
-.secQuesThreeCont,
-.secAnsThreeCont {
-  display: flex;
-  flex-direction: column;
-}
-.usernameUpCont input,
-.emailUpCont input,
-.passwordUpCont input,
-.phoneNumUpCont input,
-.secQuesOneCont input,
-.secAnsOneCont input,
-.secQuesTwoCont input,
-.secAnsTwoCont input,
-.secQuesThreeCont input,
-.secAnsThreeCont input {
-  display: none;
-}
-.dobUpdate {
-  width: 90%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin: 0.25em 0em 0.25em 0em;
-}
-.dobMonthUp,
-.dobDateUp,
-.dobYearUp {
-  display: flex;
-  width: 25%;
-  flex-direction: column;
-}
-.dobMonthUp div,
-.dobDateUp div,
-.dobYearUp div {
-  display: flex;
-  flex-direction: column;
-}
-.updateButton {
-  width: 100%;
-  height: 3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* ADDACCOUNT */
-/* .addAccHeader {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  align-content: center;
-  margin: 0.5em 0em 1em 0em;
-}
-.addAccountForm {
-  width: 22em;
-  height: 100%;
-  display: none;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border-style: solid;
-  background-color: white;
-}
-.addAccountFormMain {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.accIconCont {
-  margin: 0.5em 0em 1.5em 0em;
-}
-.accIcon {
-  aspect-ratio: 1/1;
-  width: 7em;
-  border-style: solid;
-}
-.addAccountPageA {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.addAccountPageB {
-  width: 90%;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.addAccountPageB div {
-  margin: 0em 0em 0.5em 0em;
-}
-.addAccSecurityA {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.addAccSecurityB {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.addAccName,
-.addAccUsername,
-.addAccPass,
-.addAccEmail,
-.addAccPhone {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0em 0em 0.5em 0em;
-}
-.updateBtn {
-  width: 100%;
-  height: 3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* #ACCOUNTINFOCARD */
-/* .accInfoCard {
-  width: 22em;
-  height: 100%;
-  display: none;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border-style: solid;
-  background-color: white;
-}
-.accCardInfoMain {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.accCardInfoA {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* ACCOUNTINFOCARD */
+.accCardInfoA,
 .accCardInfoB {
-  width: 100%;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-}
-.accCardIconCont {
-  width: 90%;
   display: flex;
-  justify-content: center;
-  margin: 1em 0em 2em 0em;
+  flex-direction: column;
+}
+.accCardInfoA p,
+.accCardInfoB p {
+  display: none;
 }
 .accName,
 .accUsername,
@@ -799,81 +426,13 @@ select {
 .accAnswer2,
 .accSecurity3,
 .accAnswer3 {
-  width: 90%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  align-content: center;
-  flex-direction: row;
-  margin: 0.25em 0em 0.25em 0em;
-}
-.accNameMain,
-.accUsernameMain,
-.accPassMain,
-.accEmailMain,
-.accPhoneMain,
-.accSecurity1Main,
-.accAnswer1Main,
-.accSecurity2Main,
-.accAnswer2Main,
-.accSecurity3Main,
-.accAnswer3Main {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-.accNameCont,
-.accUsernameCont,
-.accPassCont,
-.accEmailCont,
-.accPhoneCont,
-.accSecurity1Cont,
-.accAnswer1Cont,
-.accSecurity2Cont,
-.accAnswer2Cont,
-.accSecurity3Cont,
-.accAnswer3Cont {
-  height: 1.5em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.accNameCont *,
-.accUsernameCont *,
-.accPassCont *,
-.accEmailCont *,
-.accPhoneCont *,
-.accSecurity1Cont *,
-.accAnswer1Cont *,
-.accSecurity2Cont *,
-.accAnswer2Cont *,
-.accSecurity3Cont *,
-.accAnswer3Cont * {
-  font-size: 1em;
-}
-.accNameCont input,
-.accUsernameCont input,
-.accPassCont input,
-.accEmailCont input,
-.accPhoneCont input,
-.accSecurity1Cont input,
-.accAnswer1Cont input,
-.accSecurity2Cont input,
-.accAnswer2Cont input,
-.accSecurity3Cont input,
-.accAnswer3Cont input {
-  width: 90%;
-  display: none;
-  padding: 0em;
 }
 .accTwoStep,
 .accSecQuestion {
-  width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   align-content: center;
-  margin: 0.5em 0em 0.5em 0em;
-} */
+  justify-content: space-between;
+}

@@ -107,7 +107,7 @@ const ProfilePage = ({
         {userAccountsB.map((account, index) => (
           <div
             onClick={() => showAccInfo(account)}
-            className="test"
+            className="accInfoBtn"
             key={index}
           >
             <p>{account.accName}</p>
@@ -118,15 +118,15 @@ const ProfilePage = ({
       <div className="mainProfilePage">
         <div className="profileCardCont" id="profileCardCont">
           <div className="profileCard" id="profileCard">
-            <div className="profileIcon"></div>
+            <div className="profileIconCont">
+              <div className="profileIcon"></div>
+            </div>
             <p>
               {currentUser.firstName} {currentUser.lastName}
             </p>
             <p>{currentUser.username}</p>
             <p>{currentUser.email}</p>
-            <div>
-              <button onClick={() => grabAccounts()}>Grab Accounts</button>
-            </div>
+            <button onClick={() => grabAccounts()}>Grab Accounts</button>
           </div>
 
           <AddAccount
@@ -179,7 +179,7 @@ const ProfilePage = ({
         {userAccountsA.map((account, index) => (
           <div
             onClick={() => showAccInfo(account)}
-            className="test"
+            className="accInfoBtn"
             key={index}
           >
             <p>{account.accName}</p>

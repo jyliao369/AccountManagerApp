@@ -329,7 +329,7 @@ const Settings = ({
               }
             />
           </div>
-          <div>
+          <div className="deleteBtn">
             <button onClick={() => deleteAcc()}>delete</button>
           </div>
         </div>

@@ -166,35 +166,37 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
   return (
     <div className="logRegForm" id="logRegForm">
       <div className="logForm" id="logForm">
-        <div className="logRegHeader">
-          <h2>Login</h2>
-        </div>
-        <div className="logoMain">
-          <div className="logoCont">
-            <LockIcon id="lockIcon" />
-            <VpnKeyIcon id="keyIcon" />
+        <div className="regFormMain">
+          <div className="logRegHeader">
+            <h2>Login</h2>
           </div>
-        </div>
-        <div className="logUserInput">
-          <label>Username</label>
-          <input
-            placeholder="Ex. testninja101"
-            value={loginUser.username}
-            onChange={(event) =>
-              setLoginUser({ ...loginUser, username: event.target.value })
-            }
-          />
-        </div>
-        <div className="logPassInput">
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="**********"
-            value={loginUser.password}
-            onChange={(event) =>
-              setLoginUser({ ...loginUser, password: event.target.value })
-            }
-          />
+          <div className="logoMain">
+            <div className="logoCont">
+              <LockIcon id="lockIcon" />
+              <VpnKeyIcon id="keyIcon" />
+            </div>
+          </div>
+          <div className="logUserInput">
+            <label>Username</label>
+            <input
+              placeholder="Ex. testninja101"
+              value={loginUser.username}
+              onChange={(event) =>
+                setLoginUser({ ...loginUser, username: event.target.value })
+              }
+            />
+          </div>
+          <div className="logPassInput">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="**********"
+              value={loginUser.password}
+              onChange={(event) =>
+                setLoginUser({ ...loginUser, password: event.target.value })
+              }
+            />
+          </div>
         </div>
         <div className="loginButton">
           <button
@@ -208,237 +210,242 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
       </div>
 
       <div className="regForm" id="regForm">
-        <div className="logRegHeader">
-          <h2>Sign Up</h2>
-        </div>
-        <div className="regFormA" id="regFormA">
-          <div className="usernameInput">
-            <label>Username</label>
-            <input
-              placeholder="Ex. testninja101"
-              value={registerUser.username}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  username: event.target.value,
-                })
-              }
-            />
+        <div className="regFormMain">
+          <div className="logRegHeader">
+            <h2>Sign Up</h2>
           </div>
-          <div className="passwordInput">
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="**********"
-              value={registerUser.password}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  password: event.target.value,
-                })
-              }
-            />
-          </div>
-          <div className="passwordInput">
-            <div>
-              <label>Re-type Password</label>
-              {passwordCheck()}
-            </div>
-            <input
-              type="password"
-              placeholder="**********"
-              value={reTypePass}
-              onChange={(event) => setReTypePass(event.target.value)}
-            />
-          </div>
-          <div className="emailInput">
-            <label>Email</label>
-            <input
-              placeholder="Ex. testninja101"
-              value={registerUser.email}
-              onChange={(event) =>
-                setRegisterUser({ ...registerUser, email: event.target.value })
-              }
-            />
-          </div>
-          <div className="fullNameInput">
-            <div className="nameInput">
-              <label>First Name</label>
+          <div className="regFormA" id="regFormA">
+            <div className="usernameInput">
+              <p>Username</p>
               <input
-                placeholder="Ex. John"
-                value={registerUser.firstName}
+                placeholder="Ex. testninja101"
+                value={registerUser.username}
                 onChange={(event) =>
                   setRegisterUser({
                     ...registerUser,
-                    firstName: event.target.value,
+                    username: event.target.value,
                   })
                 }
               />
             </div>
-            <div className="nameInput">
-              <label>Last Name</label>
+            <div className="passwordInput">
+              <p>Password</p>
               <input
-                placeholder="Ex. Allen"
-                value={registerUser.lastName}
+                type="password"
+                placeholder="**********"
+                value={registerUser.password}
                 onChange={(event) =>
                   setRegisterUser({
                     ...registerUser,
-                    lastName: event.target.value,
+                    password: event.target.value,
                   })
                 }
               />
             </div>
+            <div className="passwordInput">
+              <div>
+                <p>Re-type Password</p>
+                {passwordCheck()}
+              </div>
+              <input
+                type="password"
+                placeholder="**********"
+                value={reTypePass}
+                onChange={(event) => setReTypePass(event.target.value)}
+              />
+            </div>
+            <div className="emailInput">
+              <p>Email</p>
+              <input
+                placeholder="Ex. testninja101"
+                value={registerUser.email}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    email: event.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="fullNameInput">
+              <div className="nameInput">
+                <p>First Name</p>
+                <input
+                  placeholder="Ex. John"
+                  value={registerUser.firstName}
+                  onChange={(event) =>
+                    setRegisterUser({
+                      ...registerUser,
+                      firstName: event.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="nameInput">
+                <p>Last Name</p>
+                <input
+                  placeholder="Ex. Allen"
+                  value={registerUser.lastName}
+                  onChange={(event) =>
+                    setRegisterUser({
+                      ...registerUser,
+                      lastName: event.target.value,
+                    })
+                  }
+                />
+              </div>
+            </div>
+            <div className="phoneNumInput">
+              <p>Mobile Number</p>
+              <input
+                placeholder="Ex. 111-222-3333"
+                value={registerUser.phoneNum}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    phoneNum: event.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="dobInputMain">
+              <div className="dobMonthInput">
+                <p>Month</p>
+                <select
+                  value={registerUser.dobMonth}
+                  onChange={(event) =>
+                    setRegisterUser({
+                      ...registerUser,
+                      dobMonth: event.target.value,
+                    })
+                  }
+                >
+                  <option>Month</option>
+                  {dobMonths.map((month, index) => (
+                    <option key={index}>{month}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="dobDateInput">
+                <p>Date</p>
+                <input
+                  placeholder="Ex. 15"
+                  value={registerUser.dobDate}
+                  onChange={(event) =>
+                    setRegisterUser({
+                      ...registerUser,
+                      dobDate: event.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="dobYearInput">
+                <p>Year</p>
+                <input
+                  placeholder="Ex. 2021"
+                  value={registerUser.dobYear}
+                  onChange={(event) =>
+                    setRegisterUser({
+                      ...registerUser,
+                      dobYear: event.target.value,
+                    })
+                  }
+                />
+              </div>
+            </div>
           </div>
-          <div className="phoneNumInput">
-            <label>Mobile Number</label>
-            <input
-              placeholder="Ex. 111-222-3333"
-              value={registerUser.phoneNum}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  phoneNum: event.target.value,
-                })
-              }
-            />
-          </div>
-          <div className="dobInputMain">
-            <div className="dobMonthInput">
-              <label>Month</label>
+
+          <div className="regFormB" id="regFormB">
+            <div className="secQuesOneInput">
+              <p>Security Question 1:</p>
               <select
-                value={registerUser.dobMonth}
+                value={registerUser.securityOne}
                 onChange={(event) =>
                   setRegisterUser({
                     ...registerUser,
-                    dobMonth: event.target.value,
+                    securityOne: event.target.value,
                   })
                 }
               >
-                <option>Month</option>
-                {dobMonths.map((month, index) => (
-                  <option key={index}>{month}</option>
+                <option>Question 1</option>
+                {secQuestion.map((question, index) => (
+                  <option key={index}>{question}</option>
                 ))}
               </select>
             </div>
-            <div className="dobDateInput">
-              <label>Date</label>
+            <div className="secAnsOneInput">
+              <p>Answer</p>
               <input
-                placeholder="Ex. 15"
-                value={registerUser.dobDate}
+                placeholder="Answer"
+                value={registerUser.ansOne}
                 onChange={(event) =>
                   setRegisterUser({
                     ...registerUser,
-                    dobDate: event.target.value,
+                    ansOne: event.target.value,
                   })
                 }
               />
             </div>
-            <div className="dobYearInput">
-              <label>Year</label>
-              <input
-                placeholder="Ex. 2021"
-                value={registerUser.dobYear}
+            <div className="secQuesTwoInput">
+              <p>Security Question 2:</p>
+              <select
+                value={registerUser.securityTwo}
                 onChange={(event) =>
                   setRegisterUser({
                     ...registerUser,
-                    dobYear: event.target.value,
+                    securityTwo: event.target.value,
+                  })
+                }
+              >
+                <option>Question 2</option>
+                {secQuestion.map((question, index) => (
+                  <option key={index}>{question}</option>
+                ))}
+              </select>
+            </div>
+            <div className="secAnsTwoInput">
+              <p>Answer</p>
+              <input
+                placeholder="Answer"
+                value={registerUser.ansTwo}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    ansTwo: event.target.value,
                   })
                 }
               />
             </div>
-          </div>
-        </div>
-
-        <div className="regFormB" id="regFormB">
-          <div className="secQuesOneInput">
-            <label>Security Question 1:</label>
-            <select
-              value={registerUser.securityOne}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  securityOne: event.target.value,
-                })
-              }
-            >
-              <option>Question 1</option>
-              {secQuestion.map((question, index) => (
-                <option key={index}>{question}</option>
-              ))}
-            </select>
-          </div>
-          <div className="secAnsOneInput">
-            <label>Answer</label>
-            <input
-              placeholder="Answer"
-              value={registerUser.ansOne}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  ansOne: event.target.value,
-                })
-              }
-            />
-          </div>
-          <div className="secQuesTwoInput">
-            <label>Security Question 2:</label>
-            <select
-              value={registerUser.securityTwo}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  securityTwo: event.target.value,
-                })
-              }
-            >
-              <option>Question 2</option>
-              {secQuestion.map((question, index) => (
-                <option key={index}>{question}</option>
-              ))}
-            </select>
-          </div>
-          <div className="secAnsTwoInput">
-            <label>Answer</label>
-            <input
-              placeholder="Answer"
-              value={registerUser.ansTwo}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  ansTwo: event.target.value,
-                })
-              }
-            />
-          </div>
-          <div className="secQuesThreeInput">
-            <label>Security Question 3:</label>
-            <select
-              value={registerUser.securityThree}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  securityThree: event.target.value,
-                })
-              }
-            >
-              <option>Question 3</option>
-              {secQuestion.map((question, index) => (
-                <option key={index}>{question}</option>
-              ))}
-            </select>
-          </div>
-          <div className="secAnsThreeInput">
-            <label>Answer</label>
-            <input
-              placeholder="Answer"
-              value={registerUser.ansThree}
-              onChange={(event) =>
-                setRegisterUser({
-                  ...registerUser,
-                  ansThree: event.target.value,
-                })
-              }
-            />
+            <div className="secQuesThreeInput">
+              <p>Security Question 3:</p>
+              <select
+                value={registerUser.securityThree}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    securityThree: event.target.value,
+                  })
+                }
+              >
+                <option>Question 3</option>
+                {secQuestion.map((question, index) => (
+                  <option key={index}>{question}</option>
+                ))}
+              </select>
+            </div>
+            <div className="secAnsThreeInput">
+              <p>Answer</p>
+              <input
+                placeholder="Answer"
+                value={registerUser.ansThree}
+                onChange={(event) =>
+                  setRegisterUser({
+                    ...registerUser,
+                    ansThree: event.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
         </div>
 
@@ -451,7 +458,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
             onClick={() => loginRegister("register")}
           >
             <LoginIcon />
-            <p>Login</p>
+            <p>Sign In</p>
           </button>
           <button onClick={() => changeRegPage("#regFormB")}>
             <ArrowForwardIosIcon />
