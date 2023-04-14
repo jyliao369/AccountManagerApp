@@ -45,14 +45,7 @@ function App() {
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
           />
-          {/* <AddAccount />
-          <Settings /> */}
         </div>
-
-        {/* <Navigation
-          setUserAccounts={setUserAccounts}
-          userAccounts={userAccounts}
-        /> */}
       </div>
     </div>
   );

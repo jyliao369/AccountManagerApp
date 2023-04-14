@@ -142,7 +142,7 @@ const AddAccount = ({
           </div>
         </div>
         <div className="addAccountPageB" id="addAccountPageB">
-          <div className="addAccSecurityA">
+          <div className="addAccSecurityOne">
             <label>Security Question 1</label>
             <input
               disabled={!newAcccount.accSecQues}
@@ -152,7 +152,7 @@ const AddAccount = ({
               }
             />
           </div>
-          <div className="addAccSecurityA">
+          <div className="addAccAnswerOne">
             <label>Answer</label>
             <input
               disabled={!newAcccount.accSecQues}
@@ -162,7 +162,7 @@ const AddAccount = ({
               }
             />
           </div>
-          <div className="addAccSecurityA">
+          <div className="addAccSecurityTwo">
             <label>Security Question 2</label>
             <input
               disabled={!newAcccount.accSecQues}
@@ -172,7 +172,7 @@ const AddAccount = ({
               }
             />
           </div>
-          <div className="addAccSecurityA">
+          <div className="addAccAnswerTwo">
             <label>Answer</label>
             <input
               disabled={!newAcccount.accSecQues}
@@ -182,7 +182,7 @@ const AddAccount = ({
               }
             />
           </div>
-          <div className="addAccSecurityA">
+          <div className="addAccSecurityTwo">
             <label>Security Question 3</label>
             <input
               disabled={!newAcccount.accSecQues}
@@ -192,7 +192,7 @@ const AddAccount = ({
               }
             />
           </div>
-          <div className="addAccSecurityA">
+          <div className="addAccAnswerThree">
             <label>Answer</label>
             <input
               disabled={!newAcccount.accSecQues}
@@ -221,7 +221,7 @@ const AddAccount = ({
         </div>
       </div>
 
-      <div className="updateBtn">
+      <div className="addAccBtn">
         <button onClick={() => changeAddAccPage("#addAccountPageA")}>
           back
         </button>

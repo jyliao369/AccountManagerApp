@@ -4,6 +4,12 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { securityQuestion, dobMonths } from "../data";
 
+import LockIcon from "@mui/icons-material/Lock";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import LoginIcon from "@mui/icons-material/Login";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+
 const LoginRegister = ({ setCurrentUser, currentUser }) => {
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
   const [registerUser, setRegisterUser] = useState({
@@ -57,12 +63,14 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
   };
 
   const passwordCheck = () => {
-    if (
-      registerUser.password !== reTypePass &&
-      registerUser.password !== "" &&
-      reTypePass !== ""
-    ) {
-      return <p>Not Matching</p>;
+    if (reTypePass.length >= registerUser.password.length) {
+      if (
+        registerUser.password !== reTypePass &&
+        registerUser.password !== "" &&
+        reTypePass !== ""
+      ) {
+        return <p>Not Matching</p>;
+      }
     }
   };
 
@@ -161,8 +169,11 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
         <div className="logRegHeader">
           <h2>Login</h2>
         </div>
-        <div className="logoCont">
-          <div className="logo" />
+        <div className="logoMain">
+          <div className="logoCont">
+            <LockIcon id="lockIcon" />
+            <VpnKeyIcon id="keyIcon" />
+          </div>
         </div>
         <div className="logUserInput">
           <label>Username</label>
@@ -190,7 +201,8 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
             disabled={confirm("log")}
             onClick={() => loginRegister("login")}
           >
-            Login
+            <LoginIcon />
+            <p>Login</p>
           </button>
         </div>
       </div>
@@ -311,7 +323,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
             <div className="dobDateInput">
               <label>Date</label>
               <input
-                placeholder="Ex. 15 or 28"
+                placeholder="Ex. 15"
                 value={registerUser.dobDate}
                 onChange={(event) =>
                   setRegisterUser({
@@ -324,7 +336,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
             <div className="dobYearInput">
               <label>Year</label>
               <input
-                placeholder="Ex. 1989 or 2021"
+                placeholder="Ex. 2021"
                 value={registerUser.dobYear}
                 onChange={(event) =>
                   setRegisterUser({
@@ -338,7 +350,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
         </div>
 
         <div className="regFormB" id="regFormB">
-          <div>
+          <div className="secQuesOneInput">
             <label>Security Question 1:</label>
             <select
               value={registerUser.securityOne}
@@ -355,7 +367,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
               ))}
             </select>
           </div>
-          <div>
+          <div className="secAnsOneInput">
             <label>Answer</label>
             <input
               placeholder="Answer"
@@ -368,7 +380,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
               }
             />
           </div>
-          <div>
+          <div className="secQuesTwoInput">
             <label>Security Question 2:</label>
             <select
               value={registerUser.securityTwo}
@@ -385,7 +397,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
               ))}
             </select>
           </div>
-          <div>
+          <div className="secAnsTwoInput">
             <label>Answer</label>
             <input
               placeholder="Answer"
@@ -398,7 +410,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
               }
             />
           </div>
-          <div>
+          <div className="secQuesThreeInput">
             <label>Security Question 3:</label>
             <select
               value={registerUser.securityThree}
@@ -415,7 +427,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
               ))}
             </select>
           </div>
-          <div>
+          <div className="secAnsThreeInput">
             <label>Answer</label>
             <input
               placeholder="Answer"
@@ -431,15 +443,19 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
         </div>
 
         <div className="registerButton">
-          <button onClick={() => changeRegPage("#regFormA")}>Page One</button>
+          <button onClick={() => changeRegPage("#regFormA")}>
+            <ArrowBackIosNewIcon />
+          </button>
           <button
             disabled={confirm("reg")}
             onClick={() => loginRegister("register")}
           >
-            Register
+            <LoginIcon />
+            <p>Login</p>
           </button>
-          {/* <button onClick={() => test()}>test</button> */}
-          <button onClick={() => changeRegPage("#regFormB")}>Page Two</button>
+          <button onClick={() => changeRegPage("#regFormB")}>
+            <ArrowForwardIosIcon />
+          </button>
         </div>
       </div>
 

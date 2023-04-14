@@ -7,6 +7,11 @@ import AddAccount from "../AddAccount";
 import Settings from "../Settings";
 import AccountInfoCard from "../AccountInfoCard";
 
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 const ProfilePage = ({
   setUserAccounts,
   userAccounts,
@@ -155,14 +160,18 @@ const ProfilePage = ({
         </div>
 
         <div className="profileNav">
-          <button onClick={() => switchPages("#profileCard")}>Home</button>
+          <button onClick={() => switchPages("#profileCard")}>
+            <HomeIcon />
+          </button>
           <button onClick={() => switchPages("#settingsForm", currentUser.id)}>
-            Settings
+            <SettingsIcon />
           </button>
           <button onClick={() => switchPages("#addAccountForm")}>
-            Add Account
+            <LibraryAddIcon />
           </button>
-          <button onClick={() => logOut()}>Log Out</button>
+          <button onClick={() => logOut()}>
+            <LogoutIcon />
+          </button>
         </div>
       </div>
 

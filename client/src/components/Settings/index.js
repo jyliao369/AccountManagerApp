@@ -144,111 +144,86 @@ const Settings = ({
           <div className="nameUpdate">
             <div className="firstNameUp">
               <label>First Name</label>
-              <div>
-                <p id="firstNameUp">{updateUser.firstName}</p>
-                <input
-                  value={updateUser.firstName}
-                  id="firstNameUpInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      firstName: event.target.value,
-                    })
-                  }
-                />
-              </div>
+              <p id="firstNameUp">{updateUser.firstName}</p>
+              <input
+                value={updateUser.firstName}
+                id="firstNameUpInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    firstName: event.target.value,
+                  })
+                }
+              />
             </div>
             <div className="lastNameUp">
               <label>Last Name</label>
-              <div>
-                <p id="lastNameUp">{updateUser.lastName}</p>
-                <input
-                  value={updateUser.lastName}
-                  id="lastNameUpInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      lastName: event.target.value,
-                    })
-                  }
-                />
-              </div>
+              <p id="lastNameUp">{updateUser.lastName}</p>
+              <input
+                value={updateUser.lastName}
+                id="lastNameUpInput"
+                onChange={(event) =>
+                  setUpdateUser({
+                    ...updateUser,
+                    lastName: event.target.value,
+                  })
+                }
+              />
             </div>
-            <button onClick={() => updateInfo("nameUpdate")}>edit</button>
           </div>
           <div className="usernameUp">
-            <div className="usernameUpMain">
-              <label>Username</label>
-              <div className="usernameUpCont">
-                <p id="userNameUp">{updateUser.username}</p>
-                <input
-                  value={updateUser.username}
-                  id="userNameUpInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      username: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("userNameUp")}>edit</button>
+            <label>Username</label>
+            <p id="userNameUp">{updateUser.username}</p>
+            <input
+              value={updateUser.username}
+              id="userNameUpInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  username: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="emailUp">
-            <div className="emailUpMain">
-              <label>Email</label>
-              <div className="emailUpCont">
-                <p id="emailUp">{updateUser.email}</p>
-                <input
-                  value={updateUser.email}
-                  id="emailUpInput"
-                  onChange={(event) =>
-                    setUpdateUser({ ...updateUser, email: event.target.value })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("emailUp")}>edit</button>
+            <label>Email</label>
+            <p id="emailUp">{updateUser.email}</p>
+            <input
+              value={updateUser.email}
+              id="emailUpInput"
+              onChange={(event) =>
+                setUpdateUser({ ...updateUser, email: event.target.value })
+              }
+            />
           </div>
           <div className="passwordUp">
-            <div className="passwordUpMain">
-              <label>Password</label>
-              <div className="passwordUpCont">
-                <p id="passwordUp">{updateUser.password}</p>
-                <input
-                  value={updateUser.password}
-                  id="passwordUpInput"
-                  type="password"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      password: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("passwordUp")}>edit</button>
+            <label>Password</label>
+            <p id="passwordUp">{updateUser.password}</p>
+            <input
+              value={updateUser.password}
+              id="passwordUpInput"
+              type="password"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  password: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="phoneNumUp">
-            <div className="phoneNumUpMain">
-              <label>Phone Number</label>
-              <div className="phoneNumUpCont">
-                <p id="phoneNumUp">{updateUser.mobileNum}</p>
-                <input
-                  value={updateUser.mobileNum}
-                  id="phoneNumUpInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      mobileNum: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("phoneNumUp")}>edit</button>
+            <label>Phone Number</label>
+            <p id="phoneNumUp">{updateUser.mobileNum}</p>
+            <input
+              value={updateUser.mobileNum}
+              id="phoneNumUpInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  mobileNum: event.target.value,
+                })
+              }
+            />
           </div>
         </div>
 
@@ -256,137 +231,103 @@ const Settings = ({
           <div className="dobUpdate">
             <div className="dobMonthUp">
               <label>Month</label>
-              <div>
-                <p id="dobMonthUp">{updateUser.dobMonth}</p>
-                <input id="dobMonthUpInput" value={updateUser.dobMonth} />
-              </div>
+              <p id="dobMonthUp">{updateUser.dobMonth}</p>
+              <input id="dobMonthUpInput" value={updateUser.dobMonth} />
             </div>
             <div className="dobDateUp">
               <label>Date</label>
-              <div>
-                <p id="dobDateUp">{updateUser.dobDate}</p>
-                <input id="dobDateUpInput" value={updateUser.dobDate} />
-              </div>
+              <p id="dobDateUp">{updateUser.dobDate}</p>
+              <input id="dobDateUpInput" value={updateUser.dobDate} />
             </div>
             <div className="dobYearUp">
               <label>Year</label>
-              <div>
-                <p id="dobYearUp">{updateUser.dobYear}</p>
-                <input id="dobYearUpInput" value={updateUser.dobYear} />
-              </div>
+              <p id="dobYearUp">{updateUser.dobYear}</p>
+              <input id="dobYearUpInput" value={updateUser.dobYear} />
             </div>
-            <button onClick={() => updateInfo("dobUpdate")}>edit</button>
           </div>
           <div className="secQuesOne">
-            <div className="secQuesOneMain">
-              <label>Security Question 1</label>
-              <div className="secQuesOneCont">
-                <p id="secQuesOne">{updateUser.secQuestionOne}</p>
-                <input
-                  value={updateUser.secQuestionOne}
-                  id="secQuesOneInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      secQuestionOne: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("secQuesOne")}>edit</button>
+            <label>Security Question 1</label>
+            <p id="secQuesOne">{updateUser.secQuestionOne}</p>
+            <input
+              value={updateUser.secQuestionOne}
+              id="secQuesOneInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  secQuestionOne: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="secAnsOne">
-            <div className="secAnsOneMain">
-              <label>Answer</label>
-              <div className="secAnsOneCont">
-                <p id="secAnsOne">{updateUser.secAnsOne}</p>
-                <input
-                  value={updateUser.secAnsOne}
-                  id="secAnsOneInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      secAnsOne: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
+            <label>Answer</label>
+            <p id="secAnsOne">{updateUser.secAnsOne}</p>
+            <input
+              value={updateUser.secAnsOne}
+              id="secAnsOneInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  secAnsOne: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="secQuesTwo">
-            <div className="secQuesTwoMain">
-              <label>Security Question 2</label>
-              <div className="secQuesTwoCont">
-                <p id="secQuesTwo">{updateUser.secQuestionTwo}</p>
-                <input
-                  value={updateUser.secQuestionTwo}
-                  id="secQuesTwoInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      secQuestionTwo: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("secQuesTwo")}>edit</button>
+            <label>Security Question 2</label>
+            <p id="secQuesTwo">{updateUser.secQuestionTwo}</p>
+            <input
+              value={updateUser.secQuestionTwo}
+              id="secQuesTwoInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  secQuestionTwo: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="secAnsTwo">
-            <div className="secAnsTwoMain">
-              <label>Answer</label>
-              <div className="secAnsTwoCont">
-                <p id="secAnsTwo">{updateUser.secAnsTwo}</p>
-                <input
-                  value={updateUser.secAnsTwo}
-                  id="secAnsTwoInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      secAnsTwo: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
+            <label>Answer</label>
+            <p id="secAnsTwo">{updateUser.secAnsTwo}</p>
+            <input
+              value={updateUser.secAnsTwo}
+              id="secAnsTwoInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  secAnsTwo: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="secQuesThree">
-            <div className="secQuesThreeMain">
-              <label>Security Question 3</label>
-              <div className="secQuesThreeCont">
-                <p id="secQuesThree">{updateUser.secQuestionThree}</p>
-                <input
-                  value={updateUser.secQuestionThree}
-                  id="secQuesThreeInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      secQuestionThree: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
-            <button onClick={() => updateInfo("secQuesThree")}>edit</button>
+            <label>Security Question 3</label>
+            <p id="secQuesThree">{updateUser.secQuestionThree}</p>
+            <input
+              value={updateUser.secQuestionThree}
+              id="secQuesThreeInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  secQuestionThree: event.target.value,
+                })
+              }
+            />
           </div>
           <div className="secAnsThree">
-            <div className="secAnsThreeMain">
-              <label>Answer</label>
-              <div className="secAnsThreeCont">
-                <p id="secAnsThree">{updateUser.secAnsThree}</p>
-                <input
-                  value={updateUser.secAnsThree}
-                  id="secAnsThreeInput"
-                  onChange={(event) =>
-                    setUpdateUser({
-                      ...updateUser,
-                      secAnsThree: event.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
+            <label>Answer</label>
+            <p id="secAnsThree">{updateUser.secAnsThree}</p>
+            <input
+              value={updateUser.secAnsThree}
+              id="secAnsThreeInput"
+              onChange={(event) =>
+                setUpdateUser({
+                  ...updateUser,
+                  secAnsThree: event.target.value,
+                })
+              }
+            />
           </div>
           <div>
             <button onClick={() => deleteAcc()}>delete</button>
