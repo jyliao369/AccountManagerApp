@@ -320,7 +320,7 @@ const AccountInfoCard = ({
               checked={accInformation.accSecQues}
             />
           </div>
-          <div>
+          <div className="deleteAccBtn">
             <button onClick={() => deleteAcc(accInformation.id)}>delete</button>
           </div>
         </div>

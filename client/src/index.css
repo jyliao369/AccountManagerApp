@@ -27,50 +27,438 @@
 select {
   height: 100%;
 }
-label {
-  font-size: 1vw;
-}
 
 /* Logo */
 .logoMain {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: center;
-  margin: 5% 0em 10% 0em;
+  margin: 1rem 0rem 2rem 0rem;
 }
 .logoCont {
   aspect-ratio: 1/1;
-  width: 65%;
+  width: 55%;
   display: flex;
-  border-style: solid;
-  position: relative;
   align-items: center;
   justify-content: center;
-  align-content: center;
   border-radius: 50%;
-}
-.logoCont svg {
-  font-size: 7vw;
-  position: absolute;
+  border-style: solid;
+  position: relative;
 }
 #keyIcon {
+  font-size: 10rem;
+  position: absolute;
   color: #a3a3a3;
   rotate: -25deg;
 }
 #lockIcon {
+  font-size: 10rem;
+  position: absolute;
   color: #e6c200;
 }
 
 /* LOGREGISTER */
 .logRegForm {
-  width: clamp(20vw, 0em, 25vw);
-  height: clamp(60vh, 0vh, 60vh);
+  width: 90%;
+  max-width: 23rem;
+  height: 57vh;
   display: flex;
+  background-color: ghostwhite;
   flex-direction: column;
   justify-content: space-between;
-  background-color: white;
 }
+.logForm,
+.regForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regForm {
+  display: none;
+}
+.logRegHeader {
+  margin: 0.75rem 0rem 0.75rem 0rem;
+}
+.logUserInput,
+.logPassInput {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 0rem 0.7rem 0rem;
+}
+.logUserInput input,
+.logPassInput input {
+  padding: 0.3rem;
+}
+.logNotify {
+  width: 75%;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logMessage {
+  display: none;
+}
+.loginButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1.5rem 0rem 0rem 0rem;
+}
+.registerButton {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0rem 0rem 2rem 0rem;
+}
+.loginButton button,
+.registerButton button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.loginButton button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.regFormA,
+.regFormB {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regFormB {
+  display: none;
+}
+.fullNameInput,
+.dobInputMain {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.nameInput {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+}
+.dobInputMain div {
+  width: 30.33%;
+  display: flex;
+  flex-direction: column;
+}
+.usernameInput,
+.passwordInput,
+.emailInput,
+.phoneNumInput,
+.secQuesOneInput,
+.secAnsOneInput,
+.secQuesTwoInput,
+.secAnsTwoInput,
+.secQuesThreeInput,
+.secAnsThreeInput {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+.passwordInput div {
+  display: flex;
+  justify-content: space-between;
+}
+.fullNameInput input,
+.dobInputMain input,
+.dobInputMain select,
+.usernameInput input,
+.passwordInput input,
+.emailInput input,
+.phoneNumInput input,
+.secQuesOneInput input,
+.secAnsOneInput input,
+.secQuesTwoInput input,
+.secAnsTwoInput input,
+.secQuesThreeInput input,
+.secAnsThreeInput input,
+.secQuesOneInput select,
+.secQuesTwoInput select,
+.secQuesThreeInput select {
+  margin: 0rem 0rem 0.5rem 0rem;
+  padding: 0.3rem;
+}
+.logToReg {
+  display: flex;
+}
+.logToReg button {
+  width: 50%;
+  height: 3vh;
+}
+
+/* PROFILEPAGE */
+.profileCardPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.accountSideA,
+.accountSideB {
+  width: 33.33%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.mainProfilePage {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileCardCont {
+  width: 90%;
+  max-width: 25rem;
+  height: 55vh;
+  background-color: whitesmoke;
+}
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileIconCont {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileIcon {
+  aspect-ratio: 1/1;
+  width: 45%;
+  max-width: 12rem;
+  border-style: solid;
+  border-radius: 50%;
+}
+.addAccountForm,
+.settingsForm,
+.accInfoCard {
+  display: none;
+  flex-direction: column;
+}
+
+/* NAVIGATIONBAR */
+.profileNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* SETTINGS */
+.settingsFormMain {
+  padding: 0em 1.5vw;
+}
+.settingsHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settingImageCont {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5% 0em;
+}
+.settingImg {
+  aspect-ratio: 1/1;
+  width: 45%;
+  max-width: 10rem;
+  border-style: solid;
+  border-radius: 50%;
+}
+.updatePageA,
+.updatePageB {
+  display: flex;
+  flex-direction: column;
+}
+.updatePageA p,
+.updatePageB p {
+  display: none;
+}
+.nameUpdate {
+  display: flex;
+  justify-content: space-between;
+  margin: 0em 0em 1.5% 0em;
+}
+.firstNameUp,
+.lastNameUp {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+}
+.usernameUp,
+.emailUp,
+.passwordUp,
+.phoneNumUp,
+.secQuesOne,
+.secAnsOne,
+.secQuesTwo,
+.secAnsTwo,
+.secQuesThree,
+.secAnsThree {
+  display: flex;
+  flex-direction: column;
+  margin: 0em 0em 1.5% 0em;
+}
+.firstNameUp input,
+.lastNameUp input,
+.usernameUp input,
+.emailUp input,
+.passwordUp input,
+.phoneNumUp input,
+.secQuesOne input,
+.secAnsOne input,
+.secQuesTwo input,
+.secAnsTwo input,
+.secQuesThree input,
+.secAnsThree input {
+  padding: 5px;
+}
+.dobUpdate {
+  display: flex;
+  justify-content: space-between;
+  margin: 0em 0em 1.5% 0em;
+}
+.dobUpdate div {
+  width: 30.33%;
+  display: flex;
+  flex-direction: column;
+}
+.dobUpdate div input {
+  padding: 5px;
+}
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin: 6% 0% 3% 0%;
+}
+.deleteBtn button {
+  width: 50%;
+  padding: 6px;
+}
+
+/* ADDACCOUNT */
+.addAccountFormMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0em 1.5vw;
+}
+.addAccountPageA,
+.addAccountPageB {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.addAccName,
+.addAccUsername,
+.addAccPass,
+.addAccEmail,
+.addAccPhone,
+.addAccSecurityOne,
+.addAccAnswerOne,
+.addAccSecurityTwo,
+.addAccAnswerTwo,
+.addAccSecurityThree,
+.addAccAnswerThree {
+  display: flex;
+  flex-direction: column;
+  margin: 0em 0em 1.5% 0em;
+}
+.addAccName input,
+.addAccUsername input,
+.addAccPass input,
+.addAccEmail input,
+.addAccPhone input,
+.addAccSecurityOne input,
+.addAccAnswerOne input,
+.addAccSecurityTwo input,
+.addAccAnswerTwo input,
+.addAccSecurityThree input,
+.addAccAnswerThree input {
+  padding: 5px;
+}
+.addAccSecurityB {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1% 0em 1.5% 0em;
+}
+.addAccBtn {
+  display: flex;
+  flex-direction: row;
+  padding: 1em 2.5em;
+}
+.addAccBtn button {
+  width: 33.33%;
+  height: 3em;
+}
+
+/* ACCOUNTINFOCARD */
+.accCardInfoA {
+  display: flex;
+  flex-direction: column;
+}
+.accCardInfoB {
+  display: none;
+  flex-direction: column;
+}
+.accCardInfoA p,
+.accCardInfoB p {
+  display: none;
+}
+.accName,
+.accUsername,
+.accPass,
+.accEmail,
+.accPhone,
+.accSecurity1,
+.accAnswer1,
+.accSecurity2,
+.accAnswer2,
+.accSecurity3,
+.accAnswer3 {
+  display: flex;
+  flex-direction: column;
+}
+.accTwoStep,
+.accSecQuestion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.deleteAccBtn {
+  display: flex;
+}
+.deleteAccBtn button {
+  width: 100%;
+}
+.updateBtn {
+  display: flex;
+}
+.updateBtn button {
+  width: 33.33%;
+}
+/* 
 .logForm,
 .regForm {
   height: 100%;
@@ -164,35 +552,10 @@ label {
 .logPassInput input {
   padding: 0.35em;
 }
-.loginButton,
-.registerButton {
-  display: flex;
-  justify-content: center;
-  margin: 0% 0em 20% 0em;
-}
-.loginButton button,
-.registerButton button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.logToReg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-.logToReg button {
-  width: 100%;
-  height: 4vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+*/
 
 /* PROFILEPAGE */
-.profileCardCont {
+/* .profileCardCont {
   width: 18vw;
   height: 60vh;
   background-color: white;
@@ -256,10 +619,10 @@ label {
   background-color: white;
   border-radius: 1.5em;
   margin: 1em 0em 1em 0em;
-}
+} */
 
 /* SETTINGS */
-.settingsFormMain {
+/* .settingsFormMain {
   display: flex;
   flex-direction: column;
 }
@@ -354,10 +717,10 @@ label {
   display: flex;
   justify-content: center;
   margin: 5% 0em 5% 0em;
-}
+} */
 
 /* ADDACCOUNT */
-.addAccountPageA,
+/* .addAccountPageA,
 .addAccountPageB {
   display: flex;
   flex-direction: column;
@@ -385,10 +748,10 @@ label {
 .addAccBtn {
   display: flex;
   justify-content: center;
-}
+} */
 
 /* NAVIGATIONBAR */
-.profileNav {
+/* .profileNav {
   display: flex;
   justify-content: space-between;
   margin: 2vh 0em 0em 0em;
@@ -403,10 +766,10 @@ label {
   border: none;
   border-radius: 1em;
   cursor: pointer;
-}
+} */
 
 /* ACCOUNTINFOCARD */
-.accCardInfoA,
+/* .accCardInfoA,
 .accCardInfoB {
   display: flex;
   flex-direction: column;
@@ -435,4 +798,4 @@ label {
   align-items: center;
   align-content: center;
   justify-content: space-between;
-}
+} */

@@ -99,6 +99,7 @@ const AddAccount = ({
             <label>Account Name</label>
             <input
               value={newAcccount.accName}
+              placeholder="ex. Netflix Account"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accName: e.target.value })
               }
@@ -108,6 +109,7 @@ const AddAccount = ({
             <label>Account Username</label>
             <input
               value={newAcccount.accUsername}
+              placeholder="Ex. ninjaNetflix"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accUsername: e.target.value })
               }
@@ -117,6 +119,7 @@ const AddAccount = ({
             <label>Account Password</label>
             <input
               value={newAcccount.accPassword}
+              placeholder="**********"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accPassword: e.target.value })
               }
@@ -126,6 +129,7 @@ const AddAccount = ({
             <label>Account Email</label>
             <input
               value={newAcccount.accEmail}
+              placeholder="Ex. testninja101@gmail.com"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accEmail: e.target.value })
               }
@@ -135,6 +139,7 @@ const AddAccount = ({
             <label>Account Phone #</label>
             <input
               value={newAcccount.accPhoneNum}
+              placeholder="111-222-3333"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accPhoneNum: e.target.value })
               }
@@ -147,6 +152,7 @@ const AddAccount = ({
             <input
               disabled={!newAcccount.accSecQues}
               value={newAcccount.accSecOne}
+              placeholder="Security Question 1"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accSecOne: e.target.value })
               }
@@ -157,6 +163,7 @@ const AddAccount = ({
             <input
               disabled={!newAcccount.accSecQues}
               value={newAcccount.accAnsOne}
+              placeholder="Answer"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accAnsOne: e.target.value })
               }
@@ -167,6 +174,7 @@ const AddAccount = ({
             <input
               disabled={!newAcccount.accSecQues}
               value={newAcccount.accSecTwo}
+              placeholder="Security Question 2"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accSecTwo: e.target.value })
               }
@@ -177,16 +185,18 @@ const AddAccount = ({
             <input
               disabled={!newAcccount.accSecQues}
               value={newAcccount.accAnsTwo}
+              placeholder="Answer"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accAnsTwo: e.target.value })
               }
             />
           </div>
-          <div className="addAccSecurityTwo">
+          <div className="addAccSecurityThree">
             <label>Security Question 3</label>
             <input
               disabled={!newAcccount.accSecQues}
               value={newAcccount.accSecThree}
+              placeholder="Security Question 3"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accSecThree: e.target.value })
               }
@@ -197,6 +207,7 @@ const AddAccount = ({
             <input
               disabled={!newAcccount.accSecQues}
               value={newAcccount.accAnsThree}
+              placeholder="Answer"
               onChange={(e) =>
                 setNewAccount({ ...newAcccount, accAnsThree: e.target.value })
               }
