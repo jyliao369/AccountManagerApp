@@ -104,7 +104,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
       $("#regFormA").css({ display: "flex" });
       $("#regFormB").css({ display: "none" });
       setLoginUser({ username: "", password: "" });
-      setLogNotify("response.data.message");
+      setLogNotify("");
       $("#logMessage").css({ display: "none" });
     }
   };
@@ -119,6 +119,8 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
           $("#appMainCont").css({ display: "flex" });
           setLoginUser({ username: "", password: "" });
           setCurrentUser(response.data.result[0]);
+          setLogNotify("");
+          $("#logMessage").css({ display: "none" });
         } else {
           setLogNotify(response.data.message);
           $("#logMessage").css({ display: "flex" });

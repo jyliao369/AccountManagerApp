@@ -102,7 +102,7 @@ const ProfilePage = ({
   };
 
   return (
-    <div className="profileCardPage" id="profileCardPage">
+    <>
       <div className="accountSideB">
         {userAccountsB.map((account, index) => (
           <div
@@ -126,7 +126,9 @@ const ProfilePage = ({
             </p>
             <p>{currentUser.username}</p>
             <p>{currentUser.email}</p>
-            <button onClick={() => grabAccounts()}>Grab Accounts</button>
+            <div className="grabAccBtn">
+              <button onClick={() => grabAccounts()}>Grab Accounts</button>
+            </div>
           </div>
 
           <AddAccount
@@ -186,7 +188,7 @@ const ProfilePage = ({
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
