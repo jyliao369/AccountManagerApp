@@ -9,8 +9,9 @@ import AccountInfoCard from "../AccountInfoCard";
 
 import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
-import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ProfilePage = ({
   setUserAccounts,
@@ -101,16 +102,55 @@ const ProfilePage = ({
     });
   };
 
+  const deleteAcc = (accID, identifier) => {
+    console.log(identifier);
+
+    if (identifier === "accountSideB") {
+      console.log(userAccountsB);
+      setUserAccountsB(userAccountsB.filter((account) => account.id !== accID));
+    } else if (identifier === "accountSideA") {
+      console.log(userAccountsA);
+      setUserAccountsA(userAccountsA.filter((account) => account.id !== accID));
+    }
+
+    // let testArray = userAccountsB.filter((account) => account.id !== accID);
+    // console.log(testArray);
+    // Axios.post(`http://localhost:3001/deleteAcc`, {
+    //   accID: accID,
+    //   userID: currentUser.id,
+    // }).then((response) => {
+    //   // console.log(response.data.message === "deleted");
+    //   if (response.data.message === "deleted") {
+    //     $("#accInfoCard").css({ display: "none" });
+    //     $("#profileCard").css({ display: "flex" });
+    //     $("#accCardInfoA").css({ display: "flex" });
+    //     $("#accCardInfoB").css({ display: "none" });
+    //     setUserAccountsA(
+    //       response.data.result.slice(0, response.data.result.length / 2)
+    //     );
+    //     setUserAccountsB(
+    //       response.data.result.slice(
+    //         response.data.result.length / 2,
+    //         response.data.result.length
+    //       )
+    //     );
+    //   }
+    // });
+  };
+
   return (
     <>
-      <div className="accountSideB">
-        {userAccountsB.map((account, index) => (
-          <div
-            onClick={() => showAccInfo(account)}
-            className="accInfoBtn"
-            key={index}
-          >
-            <p>{account.accName}</p>
+      <div className="accountSideA">
+        {userAccountsA.map((account, index) => (
+          <div className="accInfoBtn" key={index}>
+            <div onClick={() => showAccInfo(account)} className="accInfoBtnA">
+              <p>{account.accName} </p>
+            </div>
+            <div className="accInfoBtnB">
+              <DeleteIcon
+                onClick={() => deleteAcc(account.id, "accountSideA")}
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -163,28 +203,31 @@ const ProfilePage = ({
 
         <div className="profileNav">
           <button onClick={() => switchPages("#profileCard")}>
-            <HomeIcon />
+            <HomeIcon id="homeIcon" />
           </button>
           <button onClick={() => switchPages("#settingsForm", currentUser.id)}>
-            <SettingsIcon />
+            <SettingsIcon id="settingIcon" />
           </button>
           <button onClick={() => switchPages("#addAccountForm")}>
-            <LibraryAddIcon />
+            <NoteAddIcon id="addIcon" />
           </button>
           <button onClick={() => logOut()}>
-            <LogoutIcon />
+            <LogoutIcon id="logOutIcon" />
           </button>
         </div>
       </div>
 
-      <div className="accountSideA">
-        {userAccountsA.map((account, index) => (
-          <div
-            onClick={() => showAccInfo(account)}
-            className="accInfoBtn"
-            key={index}
-          >
-            <p>{account.accName}</p>
+      <div className="accountSideB">
+        {userAccountsB.map((account, index) => (
+          <div className="accInfoBtn" key={index}>
+            <div onClick={() => showAccInfo(account)} className="accInfoBtnA">
+              <p>{account.accName} </p>
+            </div>
+            <div className="accInfoBtnB">
+              <DeleteIcon
+                onClick={() => deleteAcc(account.id, "accountSideB")}
+              />
+            </div>
           </div>
         ))}
       </div>

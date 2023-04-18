@@ -2,6 +2,9 @@ import React from "react";
 import $ from "jquery";
 import Axios from "axios";
 
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 const Settings = ({
   setUpdateUser,
   updateUser,
@@ -334,9 +337,23 @@ const Settings = ({
       </div>
 
       <div className="updateButton">
-        <button onClick={() => updatePageChange("#updatePageA")}>back</button>
-        <button onClick={() => updateProfile()}>Update</button>
-        <button onClick={() => updatePageChange("#updatePageB")}>next</button>
+        <div className="updateButtonCont">
+          <button
+            className="settingLeftBtn"
+            onClick={() => updatePageChange("#updatePageA")}
+          >
+            <ChevronLeftIcon />
+          </button>
+          <button className="settingConfirmBtn" onClick={() => updateProfile()}>
+            Update
+          </button>
+          <button
+            className="settingRightBtn"
+            onClick={() => updatePageChange("#updatePageB")}
+          >
+            <ChevronRightIcon />
+          </button>
+        </div>
       </div>
     </div>
   );

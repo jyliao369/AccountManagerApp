@@ -3,6 +3,10 @@ import $ from "jquery";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 const AddAccount = ({
   setNewAccount,
   newAcccount,
@@ -92,7 +96,9 @@ const AddAccount = ({
       </div>
       <div className="addAccountPageA" id="addAccountPageA">
         <div className="accIconCont">
-          <div className="accIcon"></div>
+          <div className="accIcon">
+            <LibraryAddIcon />
+          </div>
         </div>
         <div className="addAccName">
           <label>Account Name</label>
@@ -231,15 +237,27 @@ const AddAccount = ({
       </div>
 
       <div className="addAccBtn">
-        <button onClick={() => changeAddAccPage("#addAccountPageA")}>
-          back
-        </button>
-        <button disabled={addAccConfirm()} onClick={() => addAccounts()}>
-          Add Account
-        </button>
-        <button onClick={() => changeAddAccPage("#addAccountPageB")}>
-          next
-        </button>
+        <div className="addAccBtnCont">
+          <button
+            className="addAccLeftBtn"
+            onClick={() => changeAddAccPage("#addAccountPageA")}
+          >
+            <ChevronLeftIcon />
+          </button>
+          <button
+            className="addAccSubmitBtn"
+            disabled={addAccConfirm()}
+            onClick={() => addAccounts()}
+          >
+            Add Account
+          </button>
+          <button
+            className="addAccRightBtn"
+            onClick={() => changeAddAccPage("#addAccountPageB")}
+          >
+            <ChevronRightIcon />
+          </button>
+        </div>
       </div>
     </div>
   );

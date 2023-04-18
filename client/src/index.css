@@ -116,10 +116,26 @@ select {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  margin: 0rem 0rem 1.5rem 0rem;
 }
-.loginButton button,
-.registerButton button {
+.registerButtonCont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 0rem 1rem 0rem;
+}
+.leftRegBtn,
+.rightRegBtn {
+  aspect-ratio: 1/1;
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  border-radius: 50%;
+}
+.regSubmitBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,29 +224,42 @@ select {
 .accountSideA,
 .accountSideB {
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
 .accInfoBtn {
   width: 90%;
-  max-width: 15rem;
-  height: 2.5rem;
+  max-width: 18rem;
+  height: 3rem;
   display: flex;
   background: aliceblue;
   justify-content: center;
   align-items: center;
   border-radius: 3rem;
+  margin: 0.75rem 0rem;
+}
+.accInfoBtnA,
+.accInfoBtnB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.accInfoBtnA {
+  width: 100%;
+}
+.accInfoBtnB {
+  width: 20%;
 }
 .mainProfilePage {
   width: 100%;
+  max-width: 26rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .profileCardCont {
   width: 90%;
-  max-width: 23rem;
   height: 38rem;
   background-color: ghostwhite;
 }
@@ -283,6 +312,17 @@ select {
 .profileNav {
   display: flex;
   justify-content: space-between;
+  width: 90%;
+  max-width: 20rem;
+  margin: 2.5rem 0rem 0rem 0rem;
+}
+.profileNav button {
+  aspect-ratio: 1/1;
+  min-width: 3.5rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.7rem;
 }
 
 /* SETTINGS */
@@ -386,7 +426,33 @@ select {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  margin: 0rem 0rem 2rem 0rem;
+}
+.updateButtonCont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin: 0rem 0rem 1rem 0rem;
+}
+.settingLeftBtn,
+.settingRightBtn {
+  aspect-ratio: 1/1;
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  border-radius: 50%;
+}
+.settingConfirmBtn {
+  width: 7vw;
+  padding: 0.4rem 0rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #da69b2;
+  color: white;
 }
 
 /* ADDACCOUNT */
@@ -412,8 +478,11 @@ select {
   aspect-ratio: 1/1;
   width: 60%;
   max-width: 8rem;
+  display: flex;
   border-style: solid;
   border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }
 .addAccName,
 .addAccUsername,
@@ -459,9 +528,32 @@ select {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  margin: 0rem 0rem 2rem 0rem;
 }
-.addAccBtn button {
+.addAccBtnCont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 0rem 1rem 0rem;
+}
+.addAccLeftBtn,
+.addAccRightBtn {
+  aspect-ratio: 1/1;
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  border-radius: 50%;
+}
+.addAccSubmitBtn {
+  width: 7vw;
+  padding: 0.4rem 0rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #5db4a1;
+  color: white;
 }
 
 /* ACCOUNTINFOCARD */

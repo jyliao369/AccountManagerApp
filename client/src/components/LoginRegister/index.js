@@ -7,8 +7,8 @@ import { securityQuestion, dobMonths } from "../data";
 import LockIcon from "@mui/icons-material/Lock";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LoginIcon from "@mui/icons-material/Login";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const LoginRegister = ({ setCurrentUser, currentUser }) => {
@@ -456,19 +456,30 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
           </div>
         </div>
         <div className="registerButton">
-          <button onClick={() => changeRegPage("#regFormA")}>
-            <ArrowBackIosNewIcon />
-          </button>
-          <button
-            disabled={confirm("reg")}
-            onClick={() => loginRegister("register")}
-          >
-            <LoginIcon />
-            <p>Sign In</p>
-          </button>
-          <button onClick={() => changeRegPage("#regFormB")}>
-            <ArrowForwardIosIcon />
-          </button>
+          <div className="registerButtonCont">
+            <button
+              className="leftRegBtn"
+              id="leftRegBtn"
+              onClick={() => changeRegPage("#regFormA")}
+            >
+              <ChevronLeftIcon />
+            </button>
+            <button
+              className="regSubmitBtn"
+              disabled={confirm("reg")}
+              onClick={() => loginRegister("register")}
+            >
+              <LoginIcon />
+              <p>Sign In</p>
+            </button>
+            <button
+              className="rightRegBtn"
+              id="rightRegBtn"
+              onClick={() => changeRegPage("#regFormB")}
+            >
+              <ChevronRightIcon />
+            </button>
+          </div>
         </div>
       </div>
 

@@ -3,6 +3,9 @@ import $ from "jquery";
 import Axios from "axios";
 import { useState } from "react";
 
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 const AccountInfoCard = ({
   setCurrentUser,
   currentUser,
@@ -94,31 +97,6 @@ const AccountInfoCard = ({
     }).then((response) => {
       // console.log(response.data.result.length);
       if (response.data.update === true) {
-        $("#accInfoCard").css({ display: "none" });
-        $("#profileCard").css({ display: "flex" });
-        $("#accCardInfoA").css({ display: "flex" });
-        $("#accCardInfoB").css({ display: "none" });
-
-        setUserAccountsA(
-          response.data.result.slice(0, response.data.result.length / 2)
-        );
-        setUserAccountsB(
-          response.data.result.slice(
-            response.data.result.length / 2,
-            response.data.result.length
-          )
-        );
-      }
-    });
-  };
-
-  const deleteAcc = (accID) => {
-    Axios.post(`http://localhost:3001/deleteAcc`, {
-      accID: accID,
-      userID: currentUser.id,
-    }).then((response) => {
-      // console.log(response.data.message === "deleted");
-      if (response.data.message === "deleted") {
         $("#accInfoCard").css({ display: "none" });
         $("#profileCard").css({ display: "flex" });
         $("#accCardInfoA").css({ display: "flex" });
@@ -330,9 +308,13 @@ const AccountInfoCard = ({
       </div>
 
       <div className="updateBtn">
-        <button onClick={() => changeAddAccPage("#accCardInfoA")}>back</button>
+        <button onClick={() => changeAddAccPage("#accCardInfoA")}>
+          <ChevronLeftIcon />
+        </button>
         <button onClick={() => updateAcc()}>Update</button>
-        <button onClick={() => changeAddAccPage("#accCardInfoB")}>next</button>
+        <button onClick={() => changeAddAccPage("#accCardInfoB")}>
+          <ChevronRightIcon />
+        </button>
       </div>
     </div>
   );
