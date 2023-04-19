@@ -262,6 +262,7 @@ select {
   width: 90%;
   height: 38rem;
   background-color: ghostwhite;
+  overflow: hidden;
 }
 .profileCard {
   height: 100%;
@@ -467,6 +468,9 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.addAccountPageB {
+  display: none;
 }
 .accIconCont {
   width: 100%;

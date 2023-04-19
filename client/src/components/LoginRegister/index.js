@@ -11,7 +11,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
-const LoginRegister = ({ setCurrentUser, currentUser }) => {
+const LoginRegister = ({
+  setCurrentUser,
+  currentUser,
+  setCurrentPage,
+  currentPage,
+}) => {
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
   const [registerUser, setRegisterUser] = useState({
     firstName: "",
@@ -121,6 +126,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
           setCurrentUser(response.data.result[0]);
           setLogNotify("");
           $("#logMessage").css({ display: "none" });
+          setCurrentPage("#profileCard");
         } else {
           setLogNotify(response.data.message);
           $("#logMessage").css({ display: "flex" });
@@ -153,6 +159,7 @@ const LoginRegister = ({ setCurrentUser, currentUser }) => {
             ansThree: "",
           });
           setCurrentUser(response.data.result[0]);
+          setCurrentPage("#profileCard");
         } else {
           console.log("register failed");
         }

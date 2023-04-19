@@ -20,6 +20,8 @@ const ProfilePage = ({
   newAcccount,
   setCurrentUser,
   currentUser,
+  setCurrentPage,
+  currentPage,
 }) => {
   const [userAccountsA, setUserAccountsA] = useState([]);
   const [userAccountsB, setUserAccountsB] = useState([]);
@@ -43,40 +45,52 @@ const ProfilePage = ({
       Axios.post(`http://localhost:3001/getUser`, {
         userID: id,
       }).then((response) => {
-        // console.log(response.data[0]);
         setUpdateUser(response.data[0]);
       });
     } else {
       setUpdateUser([]);
     }
 
-    $("#addAccountPageA").css({ display: "flex" });
-    $("#addAccountPageB").css({ display: "none" });
+    if (currentPage === page) {
+      // console.log("same page");
+    } else if (currentPage !== page) {
+      // console.log("going to " + page);
+      $(currentPage).animate({ opacity: 0 }, function () {
+        $(currentPage).css({ display: "none", opacity: 1 });
 
-    $("#updatePageA").css({ display: "flex" });
-    $(`#updatePageB`).css({ display: "none" });
+        setTimeout(() => {
+          $(page).css({ display: "flex", opacity: 0 });
+          $(page).animate({ opacity: 1 }, function () {});
+        }, 250);
 
-    $("#addAccTwo").prop("checked", false);
-    $("#addAccSec").prop("checked", false);
+        setCurrentPage(page);
+      });
+    }
 
-    setNewAccount({
-      accName: "",
-      accUsername: "",
-      accPassword: "",
-      accEmail: "",
-      accPhoneNum: "",
-      accTwoStep: false,
-      accSecQues: false,
-      accSecOne: "N/A",
-      accAnsOne: "N/A",
-      accSecTwo: "N/A",
-      accAnsTwo: "N/A",
-      accSecThree: "N/A",
-      accAnsThree: "N/A",
-    });
+    // $("#addAccountPageA").css({ display: "flex" });
+    // $("#addAccountPageB").css({ display: "none" });
 
-    $("#profileCardCont").children().css({ display: "none" });
-    $(page).css({ display: "flex" });
+    // $("#updatePageA").css({ display: "flex" });
+    // $(`#updatePageB`).css({ display: "none" });
+
+    // $("#addAccTwo").prop("checked", false);
+    // $("#addAccSec").prop("checked", false);
+
+    // setNewAccount({
+    //   accName: "",
+    //   accUsername: "",
+    //   accPassword: "",
+    //   accEmail: "",
+    //   accPhoneNum: "",
+    //   accTwoStep: false,
+    //   accSecQues: false,
+    //   accSecOne: "N/A",
+    //   accAnsOne: "N/A",
+    //   accSecTwo: "N/A",
+    //   accAnsTwo: "N/A",
+    //   accSecThree: "N/A",
+    //   accAnsThree: "N/A",
+    // });
   };
 
   const logOut = () => {
