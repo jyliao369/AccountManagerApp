@@ -28,15 +28,25 @@ const ProfilePage = ({
   const [updateUser, setUpdateUser] = useState([]);
   const [accInformation, setAccInformation] = useState([]);
 
+  const [curUpdatePage, setCurUpdatePage] = useState("#updatePageA");
+  const [curAccUpdatePage, seCurAccUpdatePage] = useState("#addAccountPageA");
+
   const grabAccounts = () => {
     Axios.post(`http://localhost:3001/getAcc`, {
       userID: currentUser.id,
     }).then((response) => {
-      console.log(response);
-      setUserAccountsA(response.data.slice(0, response.data.length / 2));
-      setUserAccountsB(
-        response.data.slice(response.data.length / 2, response.data.length)
-      );
+      console.log(response.data.length);
+      if (response.data.length <= 0) {
+      } else {
+        $("#accountSideA").css({ display: "flex", opacity: 0 });
+        $("#accountSideA").animate({ opacity: 1 });
+        $("#accountSideB").css({ display: "flex", opacity: 0 });
+        $("#accountSideB").animate({ opacity: 1 });
+        setUserAccountsA(response.data.slice(0, response.data.length / 2));
+        setUserAccountsB(
+          response.data.slice(response.data.length / 2, response.data.length)
+        );
+      }
     });
   };
 
@@ -51,46 +61,44 @@ const ProfilePage = ({
       setUpdateUser([]);
     }
 
-    if (currentPage === page) {
-      // console.log("same page");
-    } else if (currentPage !== page) {
-      // console.log("going to " + page);
+    if (currentPage !== page) {
       $(currentPage).animate({ opacity: 0 }, function () {
         $(currentPage).css({ display: "none", opacity: 1 });
-
         setTimeout(() => {
           $(page).css({ display: "flex", opacity: 0 });
           $(page).animate({ opacity: 1 }, function () {});
         }, 250);
-
         setCurrentPage(page);
+
+        setCurUpdatePage("#updatePageA");
+        seCurAccUpdatePage("#addAccountPageA");
+
+        $("#addAccountPageA").css({ display: "flex" });
+        $("#addAccountPageB").css({ display: "none" });
+
+        $("#updatePageA").css({ display: "flex" });
+        $(`#updatePageB`).css({ display: "none" });
+
+        $("#addAccTwo").prop("checked", false);
+        $("#addAccSec").prop("checked", false);
+
+        setNewAccount({
+          accName: "",
+          accUsername: "",
+          accPassword: "",
+          accEmail: "",
+          accPhoneNum: "",
+          accTwoStep: false,
+          accSecQues: false,
+          accSecOne: "N/A",
+          accAnsOne: "N/A",
+          accSecTwo: "N/A",
+          accAnsTwo: "N/A",
+          accSecThree: "N/A",
+          accAnsThree: "N/A",
+        });
       });
     }
-
-    // $("#addAccountPageA").css({ display: "flex" });
-    // $("#addAccountPageB").css({ display: "none" });
-
-    // $("#updatePageA").css({ display: "flex" });
-    // $(`#updatePageB`).css({ display: "none" });
-
-    // $("#addAccTwo").prop("checked", false);
-    // $("#addAccSec").prop("checked", false);
-
-    // setNewAccount({
-    //   accName: "",
-    //   accUsername: "",
-    //   accPassword: "",
-    //   accEmail: "",
-    //   accPhoneNum: "",
-    //   accTwoStep: false,
-    //   accSecQues: false,
-    //   accSecOne: "N/A",
-    //   accAnsOne: "N/A",
-    //   accSecTwo: "N/A",
-    //   accAnsTwo: "N/A",
-    //   accSecThree: "N/A",
-    //   accAnsThree: "N/A",
-    // });
   };
 
   const logOut = () => {
@@ -154,7 +162,7 @@ const ProfilePage = ({
 
   return (
     <>
-      <div className="accountSideA">
+      <div className="accountSideA" id="accountSideA">
         {userAccountsA.map((account, index) => (
           <div className="accInfoBtn" key={index}>
             <div onClick={() => showAccInfo(account)} className="accInfoBtnA">
@@ -194,6 +202,8 @@ const ProfilePage = ({
             userAccountsA={userAccountsA}
             setUserAccountsB={setUserAccountsB}
             userAccountsB={userAccountsB}
+            seCurAccUpdatePage={seCurAccUpdatePage}
+            curAccUpdatePage={curAccUpdatePage}
           />
           <Settings
             setUpdateUser={setUpdateUser}
@@ -202,6 +212,8 @@ const ProfilePage = ({
             currentUser={currentUser}
             setUserAccountsA={setUserAccountsA}
             setUserAccountsB={setUserAccountsB}
+            curUpdatePage={curUpdatePage}
+            setCurUpdatePage={setCurUpdatePage}
           />
           <AccountInfoCard
             setCurrentUser={setCurrentUser}
@@ -231,7 +243,7 @@ const ProfilePage = ({
         </div>
       </div>
 
-      <div className="accountSideB">
+      <div className="accountSideB" id="accountSideB">
         {userAccountsB.map((account, index) => (
           <div className="accInfoBtn" key={index}>
             <div onClick={() => showAccInfo(account)} className="accInfoBtnA">
