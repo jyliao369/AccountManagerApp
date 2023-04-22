@@ -81,7 +81,7 @@ select {
 .logRegForm {
   width: 90%;
   max-width: 23rem;
-  height: 55vh;
+  height: 630px;
   display: flex;
   background-color: ghostwhite;
   flex-direction: column;
@@ -104,36 +104,52 @@ select {
   display: none;
 }
 .logRegHeader {
-  margin: 0.75rem 0rem 0.75rem 0rem;
-}
-.regFormCont {
   width: 100%;
-  height: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0.5em 0em;
+}
+.logFormCont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
 }
 .logUserInput,
 .logPassInput {
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-direction: column;
-  margin: 0rem 0rem 0.7rem 0rem;
+}
+.logUserInput {
+  margin: 0em 0em 0.4em 0em;
 }
 .logUserInput input,
 .logPassInput input {
-  padding: 0.3rem;
+  padding: 0.35rem;
 }
 .logNotify {
-  width: 75%;
+  width: 100%;
   height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0.75rem 0rem;
+  opacity: 0;
 }
 #logMessage {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+}
+#messageIcon {
+  color: #e54932;
+  margin: 0rem 0.5rem 0rem 0rem;
 }
 .loginButton {
   width: 100%;
@@ -142,7 +158,7 @@ select {
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
-  margin: 0rem 0rem 2rem 0rem;
+  margin: 0rem 0rem 2.75rem 0rem;
 }
 #loginBtn {
   width: 10rem;
@@ -165,20 +181,27 @@ select {
 #errorMark {
   color: #e54932;
 }
-.registerButton {
-  width: 70%;
+.regFormCont {
+  width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.registerButton {
+  width: 75%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
+  margin: 1.2em 0em;
 }
 .registerButtonCont {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0rem 0rem 1rem 0rem;
 }
 .leftRegBtn,
 .rightRegBtn {
@@ -224,7 +247,10 @@ select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0rem 0rem 0.5rem 0rem;
+  margin: 0em 0em 0.4em 0em;
+}
+.dobInputMain {
+  margin: 0em;
 }
 .nameInput {
   width: 47%;
@@ -249,7 +275,7 @@ select {
   width: 85%;
   display: flex;
   flex-direction: column;
-  margin: 0rem 0rem 0.5rem 0rem;
+  margin: 0em 0em 0.4em 0em;
 }
 .passwordInput div {
   display: flex;
@@ -271,14 +297,14 @@ select {
 .secQuesOneInput select,
 .secQuesTwoInput select,
 .secQuesThreeInput select {
-  padding: 0.3rem;
+  padding: 0.35rem;
 }
 .logToReg {
   display: flex;
 }
 .logToReg button {
   width: 50%;
-  height: 3vh;
+  height: 4vh;
 }
 
 /* PROFILEPAGE */

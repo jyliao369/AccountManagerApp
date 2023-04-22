@@ -205,12 +205,14 @@ const LoginRegister = ({
             });
             $("#errorMark").css({ display: "flex" });
             $("#errorMark").animate({ opacity: 1 });
+            $("#logNotify").animate({ opacity: 1 });
           }, 5000);
           setTimeout(() => {
             $("#loginBtn")
               .children()
               .animate({ opacity: 0 }, function () {
                 $("#loginBtn").children().css({ display: "none" });
+                $("#logNotify").animate({ opacity: 0 });
                 $("#loginBtn").animate(
                   {
                     width: "10rem",
@@ -289,39 +291,41 @@ const LoginRegister = ({
           <div className="logRegHeader">
             <h2>Login</h2>
           </div>
-          <div className="logoMain">
-            <div className="logoCont">
-              <LockIcon id="lockIcon" />
-              <VpnKeyIcon id="keyIcon" />
+          <div className="logFormCont">
+            <div className="logoMain">
+              <div className="logoCont">
+                <LockIcon id="lockIcon" />
+                <VpnKeyIcon id="keyIcon" />
+              </div>
+            </div>
+            <div className="logUserInput">
+              <label>Username</label>
+              <input
+                placeholder="Ex. testninja101"
+                value={loginUser.username}
+                onChange={(event) =>
+                  setLoginUser({ ...loginUser, username: event.target.value })
+                }
+              />
+            </div>
+            <div className="logPassInput">
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="**********"
+                value={loginUser.password}
+                onChange={(event) =>
+                  setLoginUser({ ...loginUser, password: event.target.value })
+                }
+              />
+            </div>
+            <div className="logNotify" id="logNotify">
+              <p id="logMessage">
+                <ErrorOutlineIcon id="messageIcon" /> {logNotify}
+              </p>
             </div>
           </div>
-          <div className="logUserInput">
-            <label>Username</label>
-            <input
-              placeholder="Ex. testninja101"
-              value={loginUser.username}
-              onChange={(event) =>
-                setLoginUser({ ...loginUser, username: event.target.value })
-              }
-            />
-          </div>
-          <div className="logPassInput">
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="**********"
-              value={loginUser.password}
-              onChange={(event) =>
-                setLoginUser({ ...loginUser, password: event.target.value })
-              }
-            />
-          </div>
-          {/* <div className="logNotify">
-          <p id="logMessage">
-            <ErrorOutlineIcon id="messageIcon" /> {logNotify}
-          </p>
-        </div> */}
-          <div disabledclassName="loginButton">
+          <div className="loginButton">
             <button
               id="loginBtn"
               disabled={confirm("log")}
