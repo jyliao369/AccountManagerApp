@@ -106,6 +106,14 @@ select {
 .logRegHeader {
   margin: 0.75rem 0rem 0.75rem 0rem;
 }
+.regFormCont {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
 .logUserInput,
 .logPassInput {
   width: 80%;
@@ -146,6 +154,16 @@ select {
   border: 0.35rem solid darkgray;
   border-radius: 5rem;
   background-color: #f3f3f3;
+}
+#checkMark,
+#errorMark {
+  display: none;
+}
+#checkMark {
+  color: #43ac4e;
+}
+#errorMark {
+  color: #e54932;
 }
 .registerButton {
   width: 70%;
@@ -202,7 +220,7 @@ select {
 }
 .fullNameInput,
 .dobInputMain {
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -228,7 +246,7 @@ select {
 .secAnsTwoInput,
 .secQuesThreeInput,
 .secAnsThreeInput {
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   margin: 0rem 0rem 0.5rem 0rem;

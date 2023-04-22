@@ -73,12 +73,11 @@ const ProfilePage = ({
         setCurUpdatePage("#updatePageA");
         seCurAccUpdatePage("#addAccountPageA");
 
+        $("#accInfoCard").css({ display: "none" });
         $("#addAccountPageA").css({ display: "flex" });
         $("#addAccountPageB").css({ display: "none" });
-
         $("#updatePageA").css({ display: "flex" });
         $(`#updatePageB`).css({ display: "none" });
-
         $("#addAccTwo").prop("checked", false);
         $("#addAccSec").prop("checked", false);
 
@@ -102,25 +101,39 @@ const ProfilePage = ({
   };
 
   const logOut = () => {
-    $("#appMainCont").css({ display: "none" });
-    $("#profileCardCont").children().css({ display: "none" });
-    $("#profileCard").css({ display: "flex" });
+    $("#appMainCont").animate({ opacity: 0 }, function () {
+      $("#appMainCont").css({ display: "none" });
+      $("#profileCardCont").children().css({ display: "none" });
+      $("#profileCard").css({ display: "flex" });
 
-    $("#logRegForm").css({ display: "flex" });
-    setUserAccountsA([]);
-    setUserAccountsB([]);
+      $("#accountSideA").css({ display: "none" });
+      $("#accountSideB").css({ display: "none" });
+      setUserAccountsA([]);
+      setUserAccountsB([]);
+
+      $("#logRegForm").css({ display: "flex", opacity: 0 });
+      $("#logRegForm").animate({ opacity: 1 }, function () {});
+    });
   };
 
   const showAccInfo = (accountID) => {
-    $("#profileCardCont").children().css({ display: "none" });
-    $("#accInfoCard").css({ display: "flex" });
-    $("#accCardInfoA").css({ display: "flex" });
-    $("#accCardInfoB").css({ display: "none" });
+    console.log(currentPage);
+    console.log(accountID);
 
-    Axios.post(`http://localhost:3001/getSpecAcc`, {
-      accountID: accountID.id,
-    }).then((response) => {
-      setAccInformation(response.data[0]);
+    setCurrentPage("#accInfoCard");
+    $(currentPage).animate({ opacity: 0 }, function () {
+      Axios.post(`http://localhost:3001/getSpecAcc`, {
+        accountID: accountID.id,
+      }).then((response) => {
+        setAccInformation(response.data[0]);
+      });
+      $("#accCardInfoA").css({ display: "flex" });
+      $("#accCardInfoB").css({ display: "none" });
+      $(currentPage).css({ display: "none", opacity: 1 });
+      setTimeout(() => {
+        $("#accInfoCard").css({ display: "flex", opacity: "0" });
+        $("#accInfoCard").animate({ opacity: 1 });
+      });
     });
   };
 
