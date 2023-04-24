@@ -325,7 +325,7 @@ const LoginRegister = ({
               </p>
             </div>
           </div>
-          <div className="loginButton">
+          <div className="loginButton" id="loginButton">
             <button
               id="loginBtn"
               disabled={confirm("log")}

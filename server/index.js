@@ -285,6 +285,7 @@ app.post(`/updateAcc`, (req, res) => {
 app.post(`/deleteAcc`, (req, res) => {
   const accID = req.body.accID;
   const userID = req.body.userID;
+
   db.query(
     `DELETE FROM accountdb WHERE userID = ${userID} AND id = ${accID}`,
     [],
@@ -299,7 +300,7 @@ app.post(`/deleteAcc`, (req, res) => {
             if (err) {
               console.log(err);
             } else {
-              res.send({ message: "deleted", result });
+              res.send({ message: "Deleted", result });
             }
           }
         );
