@@ -18,6 +18,8 @@ const AddAccount = ({
   userAccountsB,
   seCurAccUpdatePage,
   curAccUpdatePage,
+  setCurrentPage,
+  currentPage,
 }) => {
   const changeAddAccPage = (accPage) => {
     if (accPage !== curAccUpdatePage) {
@@ -44,17 +46,8 @@ const AddAccount = ({
   };
 
   const addAccounts = () => {
-    Axios.post(`http://localhost:3001/addAcc`, {
-      newAccount: newAcccount,
-      userID: currentUser.id,
-    }).then((response) => {
-      setUserAccountsA(response.data.slice(0, response.data.length / 2));
-      setUserAccountsB(
-        response.data.slice(response.data.length / 2, response.data.length)
-      );
-      $("#profileCardCont").children().css({ display: "none" });
-      $("#profileCard").css({ display: "flex" });
-    });
+    setTimeout(goneAn);
+    setTimeout(addingAcc, 1750);
   };
 
   const accSecFactors = (test) => {
@@ -103,6 +96,75 @@ const AddAccount = ({
     ) {
       return true;
     }
+  };
+  const goneAn = () => {
+    for (let a = 0; a < userAccountsA.length; a++) {
+      setTimeout(() => {
+        $("#accInfoBtnA" + userAccountsA[a].id).animate(
+          {
+            maxWidth: "24rem",
+            height: "3.5rem",
+          },
+          function () {
+            $("#accInfoBtnA" + userAccountsA[a].id).animate(
+              {
+                maxWidth: "0rem",
+                height: "0rem",
+              },
+              function () {}
+            );
+          }
+        );
+      }, 50 * (1 + a));
+    }
+    for (let b = 0; b < userAccountsB.length; b++) {
+      setTimeout(() => {
+        $("#accInfoBtnB" + userAccountsB[b].id).animate(
+          {
+            maxWidth: "24rem",
+            height: "3.5rem",
+          },
+          function () {
+            $("#accInfoBtnB" + userAccountsB[b].id).animate(
+              {
+                maxWidth: "0rem",
+                height: "0rem",
+              },
+              function () {}
+            );
+          }
+        );
+      }, 50 * (1 + b));
+    }
+    setTimeout(() => {
+      $("#accountSideA, #accountSideB").css({ opacity: 0 });
+      setUserAccountsA([]);
+      setUserAccountsB([]);
+    }, 1500);
+  };
+
+  const addingAcc = () => {
+    setTimeout(() => {
+      Axios.post(`http://localhost:3001/addAcc`, {
+        newAccount: newAcccount,
+        userID: currentUser.id,
+      }).then((response) => {
+        console.log(response.data.result);
+        setUserAccountsA(
+          response.data.result.slice(0, response.data.result.length / 2)
+        );
+        setUserAccountsB(
+          response.data.result.slice(
+            response.data.result.length / 2,
+            response.data.result.length
+          )
+        );
+
+        setTimeout(() => {
+          $("#accountSideA, #accountSideB").animate({ opacity: 1 });
+        }, 1000);
+      });
+    });
   };
 
   return (

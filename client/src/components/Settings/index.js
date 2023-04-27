@@ -15,6 +15,8 @@ const Settings = ({
   setUserAccountsB,
   setCurUpdatePage,
   curUpdatePage,
+  setCurrentPage,
+  currentPage,
 }) => {
   const updatePageChange = (updatePage) => {
     if (updatePage !== curUpdatePage) {
@@ -42,115 +44,24 @@ const Settings = ({
     }
   };
 
-  const updateInfo = (identifier) => {
-    if (identifier === "nameUpdate") {
-      if ($("#firstNameUpInput").css("display") === "none") {
-        $("#firstNameUp").css({ display: "none" });
-        $("#lastNameUp").css({ display: "none" });
-        $("#firstNameUpInput").css({ display: "flex" });
-        $("#lastNameUpInput").css({ display: "flex" });
-      } else {
-        $("#firstNameUp").css({ display: "flex" });
-        $("#lastNameUp").css({ display: "flex" });
-        $("#firstNameUpInput").css({ display: "none" });
-        $("#lastNameUpInput").css({ display: "none" });
-      }
-    } else if (identifier === "dobUpdate") {
-      if ($("#dobMonthUpInput").css("display") === "none") {
-        $("#dobMonthUp").css({ display: "none" });
-        $("#dobDateUp").css({ display: "none" });
-        $("#dobYearUp").css({ display: "none" });
-        $("#dobMonthUpInput").css({ display: "flex" });
-        $("#dobDateUpInput").css({ display: "flex" });
-        $("#dobYearUpInput").css({ display: "flex" });
-      } else {
-        $("#dobMonthUp").css({ display: "flex" });
-        $("#dobDateUp").css({ display: "flex" });
-        $("#dobYearUp").css({ display: "flex" });
-        $("#dobMonthUpInput").css({ display: "none" });
-        $("#dobDateUpInput").css({ display: "none" });
-        $("#dobYearUpInput").css({ display: "none" });
-      }
-    } else if (identifier === "secQuesOne") {
-      if ($("#" + identifier + "Input").css("display") === "none") {
-        $("#" + identifier).css({ display: "none" });
-        $("#" + identifier + "Input").css({ display: "flex" });
-        $("#secAnsOne").css({ display: "none" });
-        $("#secAnsOneInput").css({ display: "flex" });
-      } else {
-        $("#" + identifier).css({ display: "flex" });
-        $("#" + identifier + "Input").css({ display: "none" });
-        $("#secAnsOne").css({ display: "flex" });
-        $("#secAnsOneInput").css({ display: "none" });
-      }
-    } else if (identifier === "secQuesTwo") {
-      if ($("#" + identifier + "Input").css("display") === "none") {
-        $("#" + identifier).css({ display: "none" });
-        $("#" + identifier + "Input").css({ display: "flex" });
-        $("#secAnsTwo").css({ display: "none" });
-        $("#secAnsTwoInput").css({ display: "flex" });
-      } else {
-        $("#" + identifier).css({ display: "flex" });
-        $("#" + identifier + "Input").css({ display: "none" });
-        $("#secAnsTwo").css({ display: "flex" });
-        $("#secAnsTwoInput").css({ display: "none" });
-      }
-    } else if (identifier === "secQuesThree") {
-      if ($("#" + identifier + "Input").css("display") === "none") {
-        $("#" + identifier).css({ display: "none" });
-        $("#" + identifier + "Input").css({ display: "flex" });
-        $("#secAnsThree").css({ display: "none" });
-        $("#secAnsThreeInput").css({ display: "flex" });
-      } else {
-        $("#" + identifier).css({ display: "flex" });
-        $("#" + identifier + "Input").css({ display: "none" });
-        $("#secAnsThree").css({ display: "flex" });
-        $("#secAnsThreeInput").css({ display: "none" });
-      }
-    } else {
-      if ($("#" + identifier + "Input").css(`display`) === "none") {
-        $("#" + identifier + "Input").css({ display: "flex" });
-        $("#" + identifier).css({ display: "none" });
-      } else if ($("#" + identifier + "Input").css(`display`) === "flex") {
-        $("#" + identifier + "Input").css({ display: "none" });
-        $("#" + identifier).css({ display: "flex" });
-      }
-    }
-  };
-
   const updateProfile = () => {
     Axios.post(`http://localhost:3001/updateUser`, {
       updateUser: updateUser,
     }).then((response) => {
       if (response.data.update === true) {
-        console.log(response);
         setCurrentUser(response.data.result[0]);
 
-        $(`#profileCard`).css({ display: "flex" });
-        $(`#settingsForm`).css({ display: "none" });
+        $(`#settingsForm`).animate({ opacity: "0" }, function () {
+          $(`#settingsForm`).css({ display: "none", opacity: 1 });
+          $(`#updatePageA`).css({ display: "flex" });
+          $(`#updatePageB`).css({ display: "none" });
 
-        $(`#updatePageA`).css({ display: "flex" });
-        $(`#updatePageB`).css({ display: "none" });
+          $(`#profileCard`).css({ display: "flex", opacity: 0 });
+          $(`#profileCard`).animate({ opacity: 1 });
+          setCurrentPage("#profileCard");
+        });
       }
     });
-  };
-
-  const deleteAcc = () => {
-    console.log("deleting account");
-
-    Axios.delete(`http://localhost:3001/deleteUser/${currentUser.id}`, {}).then(
-      (response) => {
-        if (response.data.message === "deleted") {
-          $("#appMainCont").css({ display: "none" });
-          $("#profileCardCont").children().css({ display: "none" });
-          $("#profileCard").css({ display: "flex" });
-
-          $("#logRegForm").css({ display: "flex" });
-          setUserAccountsA([]);
-          setUserAccountsB([]);
-        }
-      }
-    );
   };
 
   return (
@@ -352,10 +263,6 @@ const Settings = ({
             />
           </div>
         </div>
-
-        {/* <div className="deleteBtn">
-          <button onClick={() => deleteAcc()}>delete</button>
-        </div> */}
       </div>
 
       <div className="updateButton">

@@ -106,49 +106,26 @@ const AccountInfoCard = ({
       userID: currentUser.id,
     }).then((response) => {
       if (response.data.message === "Deleted") {
-        if (identifier === "#accountSideB") {
-          $("#accInfoBtnB" + accID)
-            .children()
-            .animate({ opacity: 0 }, function () {
-              $("#accInfoBtnB" + accID).children({
-                display: "flex",
-                opacity: 1,
-              });
+        $("#accInfoCont" + accInformation.id)
+          .children()
+          .animate(
+            {
+              maxWidth: "24rem",
+              height: "3rem",
+            },
+            function () {
+              $("#accInfoCont" + accInformation.id)
+                .children()
+                .animate({ maxWidth: "0rem", height: "0rem" });
               setTimeout(() => {
-                $("#accInfoBtnB" + accID).animate(
-                  {
-                    width: "0rem",
-                    height: "0rem",
-                  },
-                  function () {
-                    $("#accInfoBtnB" + accID).css({ display: "none" });
-                    $("#accInfoBtnB" + accID).remove();
-                  }
-                );
-              });
-            });
-        } else if (identifier === "#accountSideA") {
-          $("#accInfoBtnA" + accID)
-            .children()
-            .animate({ opacity: 0 }, function () {
-              $("#accInfoBtnA" + accID).children({
-                display: "flex",
-                opacity: 1,
-              });
-              setTimeout(() => {
-                $("#accInfoBtnA" + accID).animate(
-                  {
-                    width: "0rem",
-                    height: "0rem",
-                  },
-                  function () {
-                    $("#accInfoBtnA" + accID).css({ display: "none" });
-                    $("#accInfoBtnA" + accID).remove();
-                  }
-                );
-              });
-            });
-        }
+                $("#accInfoCont" + accInformation.id).animate({
+                  maxWidth: "0rem",
+                  height: "0rem",
+                });
+              }, 300);
+            }
+          );
+
         setTimeout(() => {
           $("#accInfoCard").animate({ opacity: 0 }, function () {
             $("#accInfoCard").css({ display: "none", opacity: 1 });

@@ -311,21 +311,27 @@ select {
 .accountSideA,
 .accountSideB {
   width: 100%;
-  max-width: 35rem;
+  max-width: 25rem;
   display: none;
   flex-direction: column;
   align-items: center;
 }
+.accInfoCont {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .accInfoBtn {
-  width: 90%;
-  max-width: 23rem;
-  height: 3rem;
+  width: 100%;
+  max-width: 16rem;
+  height: 2.75rem;
   display: flex;
   background: aliceblue;
   justify-content: center;
   align-items: center;
-  border-radius: 3rem;
-  margin: 0.75rem 0rem;
+  border-radius: 5rem;
   overflow: hidden;
 }
 .mainProfilePage {

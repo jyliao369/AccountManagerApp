@@ -106,7 +106,6 @@ const ProfilePage = ({
   const logOut = () => {
     $("#appMainCont").animate({ opacity: 0 }, function () {
       $("#appMainCont").css({ display: "none" });
-      $("#profileCardCont").children().css({ display: "none" });
       $("#profileCard").css({ display: "flex" });
 
       $("#accountSideA").css({ display: "none" });
@@ -145,13 +144,15 @@ const ProfilePage = ({
     <>
       <div className="accountSideA" id="accountSideA">
         {userAccountsA.map((account, index) => (
-          <div
-            onClick={() => showAccInfo(account, "#accountSideA")}
-            className="accInfoBtn"
-            id={"accInfoBtnA" + account.id}
-            key={index}
-          >
-            <p>{account.accName} </p>
+          <div className="accInfoCont" id={"accInfoCont" + account.id}>
+            <div
+              onClick={() => showAccInfo(account, "#accountSideA")}
+              className="accInfoBtn"
+              id={"accInfoBtnA" + account.id}
+              key={index}
+            >
+              <p>{account.accName} </p>
+            </div>
           </div>
         ))}
       </div>
@@ -183,6 +184,8 @@ const ProfilePage = ({
             userAccountsB={userAccountsB}
             seCurAccUpdatePage={seCurAccUpdatePage}
             curAccUpdatePage={curAccUpdatePage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
           />
           <Settings
             setUpdateUser={setUpdateUser}
@@ -193,6 +196,8 @@ const ProfilePage = ({
             setUserAccountsB={setUserAccountsB}
             curUpdatePage={curUpdatePage}
             setCurUpdatePage={setCurUpdatePage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
           />
           <AccountInfoCard
             setCurrentUser={setCurrentUser}
@@ -229,13 +234,15 @@ const ProfilePage = ({
 
       <div className="accountSideB" id="accountSideB">
         {userAccountsB.map((account, index) => (
-          <div
-            onClick={() => showAccInfo(account, "#accountSideB")}
-            className="accInfoBtn"
-            id={"accInfoBtnB" + account.id}
-            key={index}
-          >
-            <p>{account.accName} </p>
+          <div className="accInfoCont" id={"accInfoCont" + account.id}>
+            <div
+              onClick={() => showAccInfo(account, "#accountSideB")}
+              className="accInfoBtn"
+              id={"accInfoBtnB" + account.id}
+              key={index}
+            >
+              <p>{account.accName} </p>
+            </div>
           </div>
         ))}
       </div>
