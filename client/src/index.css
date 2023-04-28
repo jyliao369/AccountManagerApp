@@ -63,7 +63,10 @@ select {
   justify-content: center;
   border-radius: 50%;
   border-style: solid;
+  border-width: 0.5rem;
+  border-color: lightslategray;
   position: relative;
+  box-shadow: 0px 0px 12px #888888;
 }
 #keyIcon {
   font-size: 8rem;
@@ -162,14 +165,16 @@ select {
 }
 #loginBtn {
   width: 10rem;
-  height: 3rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   align-content: center;
-  border: 0.35rem solid darkgray;
+  border: 0.35rem solid #31c245;
   border-radius: 5rem;
-  background-color: #f3f3f3;
+  background-color: #bcf2bd;
+  color: black;
+  font-size: 1rem;
 }
 #checkMark,
 #errorMark {
@@ -213,6 +218,7 @@ select {
   align-content: center;
   border: none;
   border-radius: 50%;
+  box-shadow: 0px 0px 5px #888888;
 }
 .regSubmitBtn {
   display: flex;
@@ -222,14 +228,20 @@ select {
 }
 #regSubmitBtn {
   width: 10rem;
-  height: 3rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   align-content: center;
-  border: 0.35rem solid darkgray;
+  border: 0.35rem solid #5e6fe5;
   border-radius: 5rem;
-  background-color: #f3f3f3;
+  background-color: #a0abf0;
+  color: white;
+  font-size: 1rem;
+}
+#regCheckMark {
+  color: #b2ec90;
+  display: none;
 }
 .regFormA,
 .regFormB {
@@ -346,6 +358,8 @@ select {
   height: 38rem;
   background-color: ghostwhite;
   overflow: hidden;
+  border-radius: 0.75em;
+  box-shadow: 0px 2px 13px darkslategray;
 }
 .profileCard {
   height: 100%;
@@ -407,6 +421,21 @@ select {
   display: flex;
   justify-content: center;
   border-radius: 0.7rem;
+}
+.profileNav button svg {
+  font-size: 2.75em;
+}
+#homeIcon {
+  color: #0c4cab;
+}
+#settingIcon {
+  color: #6d6d6d;
+}
+#addIcon {
+  color: #e0a016;
+}
+#logOutIcon {
+  color: #cc2159;
 }
 
 /* SETTINGS */
@@ -745,7 +774,6 @@ select {
   align-items: center;
   justify-content: center;
 }
-
 #deleteAccConfirm {
   width: 100%;
   height: 100%;

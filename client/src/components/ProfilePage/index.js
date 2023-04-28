@@ -33,6 +33,9 @@ const ProfilePage = ({
   const [identifier, setIdentifier] = useState("");
 
   const grabAccounts = () => {
+    setUserAccountsA([]);
+    setUserAccountsB([]);
+
     Axios.post(`http://localhost:3001/getAcc`, {
       userID: currentUser.id,
     }).then((response) => {

@@ -134,26 +134,27 @@ const LoginRegister = ({
   };
 
   const loginRegister = (logReg) => {
-    $("#loginBtn")
-      .children()
-      .animate({ opacity: 0 }, function () {
-        $("#loginBtn").children().css({ display: "none" });
-        $("#loginBtn");
-        $("#loginBtn").animate(
-          {
-            width: "3rem",
-            height: "3rem",
-          },
-          function () {
-            $("#loginBtn").css({
-              borderTop: ".35rem solid black",
-              animation: "spin 0.5s linear infinite",
-            });
-          }
-        );
-      });
-
     if (logReg === "login") {
+      setTimeout(() => {
+        $("#loginBtn")
+          .children()
+          .animate({ opacity: 0 }, function () {
+            $("#loginBtn").children().css({ display: "none" });
+            $("#loginBtn");
+            $("#loginBtn").animate(
+              {
+                width: "2.75rem",
+                height: "2.75rem",
+              },
+              function () {
+                $("#loginBtn").css({
+                  borderTop: ".35rem solid #269435",
+                  animation: "spin 0.5s linear infinite",
+                });
+              }
+            );
+          });
+      });
       Axios.post(`http://localhost:3001/login`, {
         loginUser: loginUser,
       }).then((response) => {
@@ -168,7 +169,6 @@ const LoginRegister = ({
             $("#checkMark").animate({ opacity: 1 });
           }, 5000);
           setTimeout(() => {
-            console.log("switching");
             $("#logRegForm").animate({ opacity: 0 }, function () {
               $("#logRegForm").css({ display: "none", opacity: 1 });
               $("#appMainCont").css({ display: "flex", opacity: 0 });
@@ -192,6 +192,7 @@ const LoginRegister = ({
                     $("#loginMark").animate({ opacity: 1 });
                     $("#loginMessage").css({ display: "flex" });
                     $("#loginMessage").animate({ opacity: 1 });
+                    $("#loginBtn").prop("disabled", true);
                   }
                 );
               });
@@ -216,7 +217,7 @@ const LoginRegister = ({
                 $("#loginBtn").animate(
                   {
                     width: "10rem",
-                    height: "3rem",
+                    height: "2.75rem",
                   },
                   function () {
                     $("#loginMark").css({ display: "flex" });
@@ -230,33 +231,90 @@ const LoginRegister = ({
         }
       });
     } else if (logReg === "register") {
+      setTimeout(() => {
+        $("#regSubmitBtn")
+          .children()
+          .animate({ opacity: 0 }, function () {
+            $("#regSubmitBtn").children().css({ display: "none" });
+            $("#regSubmitBtn");
+            $("#regSubmitBtn").animate(
+              {
+                width: "2.75rem",
+                height: "2.75rem",
+              },
+              function () {
+                $("#regSubmitBtn").css({
+                  borderTop: ".35rem solid #3749BE",
+                  animation: "spin 0.5s linear infinite",
+                });
+              }
+            );
+          });
+      });
       Axios.post(`http://localhost:3001/register`, {
         registerUser: registerUser,
       }).then((response) => {
         if (response.data.isLoggedin) {
-          $("#logRegForm").css({ display: "none" });
-          $("#logForm").css({ display: "flex" });
-          $("#regForm").css({ display: "none" });
-          $("#appMainCont").css({ display: "flex" });
-          setRegisterUser({
-            firstName: "",
-            lastName: "",
-            username: "",
-            email: "",
-            password: "",
-            phoneNum: "",
-            dobMonth: "",
-            dobDate: "",
-            dobYear: "",
-            securityOne: "",
-            ansOne: "",
-            securityTwo: "",
-            ansTwo: "",
-            securityThree: "",
-            ansThree: "",
-          });
           setCurrentUser(response.data.result[0]);
-          setCurrentPage("#profileCard");
+
+          setTimeout(() => {
+            $("#regSubmitBtn").css({
+              borderTop: "",
+              animation: "",
+            });
+            $("#regCheckMark").css({ display: "flex" });
+            $("#regCheckMark").animate({ opacity: 1 });
+          }, 5000);
+          setTimeout(() => {
+            $("#logRegForm").animate({ opacity: 0 }, function () {
+              $("#logRegForm").css({ display: "none", opacity: 1 });
+              $("#appMainCont").css({ display: "flex", opacity: 0 });
+              $("#appMainCont").animate({ opacity: 1 }, function () {});
+              setRegisterUser({
+                firstName: "",
+                lastName: "",
+                username: "",
+                email: "",
+                password: "",
+                phoneNum: "",
+                dobMonth: "",
+                dobDate: "",
+                dobYear: "",
+                securityOne: "",
+                ansOne: "",
+                securityTwo: "",
+                ansTwo: "",
+                securityThree: "",
+                ansThree: "",
+              });
+              setReTypePass("");
+              setCurrentPage("#profileCard");
+            });
+          }, 7000);
+          setTimeout(() => {
+            $("#regSubmitBtn")
+              .children()
+              .animate({ opacity: 0 }, function () {
+                $("#regSubmitBtn").children().css({ display: "none" });
+                $("#regSubmitBtn").animate(
+                  {
+                    width: "10rem",
+                    height: "2.75rem",
+                  },
+                  function () {
+                    $("#regMark").css({ display: "flex" });
+                    $("#regMark").animate({ opacity: 1 });
+                    $("#regMessage").css({ display: "flex" });
+                    $("#regMessage").animate({ opacity: 1 });
+                    $("#regForm").css({ display: "none" });
+                    $("#regFormA").css({ display: "flex" });
+                    $("#regFormA").css({ display: "none" });
+                    $("#logForm").css({ display: "flex" });
+                    setCurrentRegPage("log");
+                  }
+                );
+              });
+          }, 8000);
         } else {
           console.log("register failed");
         }
@@ -579,7 +637,7 @@ const LoginRegister = ({
             </div>
           </div>
           <div className="registerButton">
-            <div className="registerButtonCont">
+            <div className="registerButtonCont" id="registerButtonCont">
               <button
                 className="leftRegBtn"
                 id="leftRegBtn"
@@ -593,8 +651,9 @@ const LoginRegister = ({
                 disabled={confirm("reg")}
                 onClick={() => loginRegister("register")}
               >
-                <LoginIcon />
-                <p>Sign In</p>
+                <CheckIcon id="regCheckMark" />
+                <LoginIcon id="regMark" />
+                <p id="regMessage">Sign In</p>
               </button>
               <button
                 className="rightRegBtn"
