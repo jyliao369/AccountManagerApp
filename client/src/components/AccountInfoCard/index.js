@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DoneIcon from "@mui/icons-material/Done";
 
 const AccountInfoCard = ({
   setCurrentUser,
@@ -101,46 +102,6 @@ const AccountInfoCard = ({
   };
 
   const deleteAcc = (accID) => {
-    Axios.post(`http://localhost:3001/deleteAcc`, {
-      accID: accID,
-      userID: currentUser.id,
-    }).then((response) => {
-      if (response.data.message === "Deleted") {
-        $("#accInfoCont" + accInformation.id)
-          .children()
-          .animate(
-            {
-              maxWidth: "24rem",
-              height: "3rem",
-            },
-            function () {
-              $("#accInfoCont" + accInformation.id)
-                .children()
-                .animate({ maxWidth: "0rem", height: "0rem" });
-              setTimeout(() => {
-                $("#accInfoCont" + accInformation.id).animate({
-                  maxWidth: "0rem",
-                  height: "0rem",
-                });
-              }, 300);
-            }
-          );
-
-        setTimeout(() => {
-          $("#accInfoCard").animate({ opacity: 0 }, function () {
-            $("#accInfoCard").css({ display: "none", opacity: 1 });
-            setTimeout(() => {
-              $("#profileCard").css({ display: "flex", opacity: 0 });
-              $("#profileCard").animate({ opacity: 1 });
-              setCurrentPage("#profileCard");
-            });
-          });
-        }, 1750);
-      }
-    });
-  };
-
-  const test = () => {
     setTimeout(() => {
       $("#deleteAccBtn")
         .children()
@@ -158,6 +119,44 @@ const AccountInfoCard = ({
       $("#deleteAccBtn").css({
         borderTop: "",
         animation: "",
+      });
+
+      Axios.post(`http://localhost:3001/deleteAcc`, {
+        accID: accID,
+        userID: currentUser.id,
+      }).then((response) => {
+        if (response.data.message === "Deleted") {
+          $("#accInfoCont" + accInformation.id)
+            .children()
+            .animate(
+              {
+                maxWidth: "24rem",
+                height: "3rem",
+              },
+              function () {
+                $("#accInfoCont" + accInformation.id)
+                  .children()
+                  .animate({ maxWidth: "0rem", height: "0rem" });
+                setTimeout(() => {
+                  $("#accInfoCont" + accInformation.id).animate({
+                    maxWidth: "0rem",
+                    height: "0rem",
+                  });
+                }, 300);
+              }
+            );
+
+          setTimeout(() => {
+            $("#accInfoCard").animate({ opacity: 0 }, function () {
+              $("#accInfoCard").css({ display: "none", opacity: 1 });
+              setTimeout(() => {
+                $("#profileCard").css({ display: "flex", opacity: 0 });
+                $("#profileCard").animate({ opacity: 1 });
+                setCurrentPage("#profileCard");
+              });
+            });
+          }, 1750);
+        }
       });
     }, 5000);
     setTimeout(() => {
@@ -250,6 +249,7 @@ const AccountInfoCard = ({
           </div>
           <div className="deleteAccBtn">
             <button id="deleteAccBtn">
+              <DoneIcon id="deleteComplete" />
               <p id="deleteAccButton" onClick={() => deleteConfim()}>
                 Delete
               </p>
@@ -378,9 +378,8 @@ const AccountInfoCard = ({
           >
             <ChevronLeftIcon />
           </button>
-          <button onClick={() => test()}>test</button>
           <button className="updateBtnConfirm" onClick={() => updateAcc()}>
-            Update
+            <p>Update</p>
           </button>
           <button
             className="updateBtnRight"

@@ -34,7 +34,8 @@ const ProfilePage = ({
   const [curAccInfoPage, setCurAccInfoPage] = useState("#accCardInfoA");
   const [identifier, setIdentifier] = useState("");
 
-  const switchPages = (page, id) => {
+  const switchPages = (page, id, icon) => {
+    console.log(icon);
     if (page === "#settingsForm") {
       Axios.post(`http://localhost:3001/getUser`, {
         userID: id,
@@ -44,6 +45,13 @@ const ProfilePage = ({
     } else {
       setUpdateUser([]);
     }
+
+    setTimeout(() => {
+      $("#profileNav")
+        .children()
+        .css({ animation: "float 0s linear infinite" });
+      $(icon).parent().css({ animation: "float 2s linear infinite" });
+    });
 
     if (currentPage !== page) {
       $(currentPage).animate({ opacity: 0 }, function () {
@@ -98,6 +106,9 @@ const ProfilePage = ({
 
       $("#logRegForm").css({ display: "flex", opacity: 0 });
       $("#logRegForm").animate({ opacity: 1 }, function () {});
+
+      $("#grabAccButton").css({ display: "flex", opacity: 1 });
+      $("#storeAccButton").css({ display: "none", opacity: 1 });
     });
   };
 
@@ -325,14 +336,18 @@ const ProfilePage = ({
           />
         </div>
 
-        <div className="profileNav">
-          <button onClick={() => switchPages("#profileCard")}>
+        <div className="profileNav" id="profileNav">
+          <button onClick={() => switchPages("#profileCard", 0, "#homeIcon")}>
             <HomeIcon id="homeIcon" />
           </button>
-          <button onClick={() => switchPages("#settingsForm", currentUser.id)}>
+          <button
+            onClick={() =>
+              switchPages("#settingsForm", currentUser.id, "#settingIcon")
+            }
+          >
             <SettingsIcon id="settingIcon" />
           </button>
-          <button onClick={() => switchPages("#addAccountForm")}>
+          <button onClick={() => switchPages("#addAccountForm", 0, "#addIcon")}>
             <NoteAddIcon id="addIcon" />
           </button>
           <button onClick={() => logOut()}>

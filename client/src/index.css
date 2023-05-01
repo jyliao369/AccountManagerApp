@@ -506,6 +506,20 @@ select {
 #logOutIcon {
   color: #cc2159;
 }
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-5px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
 
 /* SETTINGS */
 .settingsHeader {
@@ -863,6 +877,10 @@ select {
   align-items: center;
   justify-content: center;
 }
+#deleteComplete {
+  color: #bce3b7;
+  display: none;
+}
 .updateBtn {
   width: 70%;
   height: 100%;
@@ -881,8 +899,12 @@ select {
 }
 .updateBtnConfirm {
   width: 7vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   padding: 0.4rem 0rem;
-  border-radius: 1rem;
+  border-radius: 3rem;
   border: none;
   background-color: #da69b2;
   color: white;
