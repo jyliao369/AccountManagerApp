@@ -18,6 +18,8 @@ const LoginRegister = ({
   currentUser,
   setCurrentPage,
   currentPage,
+  setCurrentIcon,
+  currentIcon,
 }) => {
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
   const [registerUser, setRegisterUser] = useState({
@@ -175,6 +177,10 @@ const LoginRegister = ({
               $("#appMainCont").animate({ opacity: 1 }, function () {});
               setLoginUser({ username: "", password: "" });
               setCurrentPage("#profileCard");
+              setCurrentIcon("#homeIcon");
+              $("#homeIcon")
+                .parent()
+                .css({ animation: "float 2s linear infinite" });
             });
           }, 7000);
           setTimeout(() => {

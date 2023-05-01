@@ -26,6 +26,7 @@ function App() {
   });
   const [currentUser, setCurrentUser] = useState([]);
   const [currentPage, setCurrentPage] = useState("");
+  const [currentIcon, setCurrentIcon] = useState("");
 
   Axios.defaults.withCredentials = true;
 
@@ -37,6 +38,8 @@ function App() {
           currentUser={currentUser}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
+          setCurrentIcon={setCurrentIcon}
+          currentIcon={currentIcon}
         />
 
         <div className="appMainCont" id="appMainCont">
@@ -49,6 +52,8 @@ function App() {
             currentUser={currentUser}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
+            setCurrentIcon={setCurrentIcon}
+            currentIcon={currentIcon}
           />
         </div>
       </div>

@@ -23,6 +23,8 @@ const ProfilePage = ({
   currentUser,
   setCurrentPage,
   currentPage,
+  setCurrentIcon,
+  currentIcon,
 }) => {
   const [userAccountsA, setUserAccountsA] = useState([]);
   const [userAccountsB, setUserAccountsB] = useState([]);
@@ -50,6 +52,11 @@ const ProfilePage = ({
       $("#profileNav")
         .children()
         .css({ animation: "float 0s linear infinite" });
+      $(".accInfoBtn").css({
+        animation: "float 0s linear infinite",
+        opacity: 1,
+      });
+      setCurrentIcon(icon);
       $(icon).parent().css({ animation: "float 2s linear infinite" });
     });
 
@@ -116,6 +123,18 @@ const ProfilePage = ({
     setCurrentPage("#accInfoCard");
     setCurAccInfoPage("#accCardInfoA");
     setIdentifier(identifier);
+
+    $("#profileNav").children().css({ animation: "float 0s linear infinite" });
+    $(".accInfoBtn").css({
+      animation: "float 0s linear infinite",
+    });
+    $("#accInfoBtnB" + accountID.id).css({
+      animation: "float 2s linear infinite",
+    });
+    $("#accInfoBtnA" + accountID.id).css({
+      animation: "float 2s linear infinite",
+    });
+
     $(currentPage).animate({ opacity: 0 }, function () {
       Axios.post(`http://localhost:3001/getSpecAcc`, {
         accountID: accountID.id,
