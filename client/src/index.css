@@ -14,7 +14,22 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  background-color: #1f1f7a;
+  background: rgb(26, 188, 156);
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(26, 188, 156, 1) 0%,
+    rgba(142, 68, 173, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(26, 188, 156, 1) 0%,
+    rgba(142, 68, 173, 1) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(26, 188, 156, 1) 0%,
+    rgba(142, 68, 173, 1) 100%
+  );
 }
 .appMainCont {
   width: 100%;
@@ -133,7 +148,16 @@ select {
 }
 .logUserInput input,
 .logPassInput input {
-  padding: 0.35rem;
+  padding: 0.45rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 4px #888888;
+}
+.logUserInput label,
+.logPassInput label {
+  padding: 0rem 0rem 0rem 0.4rem;
+  margin: 0rem 0rem 0.25rem 0rem;
 }
 .logNotify {
   width: 100%;
@@ -141,7 +165,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.75rem 0rem;
+  margin: 0.5rem 0rem;
   opacity: 0;
 }
 #logMessage {
@@ -159,9 +183,9 @@ select {
   height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  margin: 0rem 0rem 2.75rem 0rem;
+  margin: 0rem 0rem 2.5rem 0rem;
 }
 #loginBtn {
   width: 10rem;
@@ -274,6 +298,10 @@ select {
   display: flex;
   flex-direction: column;
 }
+.regFormA label,
+.regFormB label {
+  padding: 0rem 0rem 0rem 0.4rem;
+}
 .usernameInput,
 .passwordInput,
 .emailInput,
@@ -309,7 +337,11 @@ select {
 .secQuesOneInput select,
 .secQuesTwoInput select,
 .secQuesThreeInput select {
-  padding: 0.35rem;
+  padding: 0.45rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 4px #888888;
 }
 .logToReg {
   display: flex;
@@ -375,14 +407,47 @@ select {
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  margin: 0em 0em 7rem 0em;
 }
 .grabAccBtn button {
-  padding: 1rem 3rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+}
+.grabAccBtnCont {
+  width: 100%;
+  max-width: 10rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 2rem;
   border: none;
+  background-color: #fdfbbd;
+  border: 0.45rem solid #fcf897;
+  box-shadow: 0px 0px 3px #8888;
+}
+#storeAccButton {
+  display: none;
+}
+/* .grabAccBtn p {
+  font-size: 1rem;
+  margin: 0rem;
+} */
+#grabAccSuccess,
+#grabAccErr {
+  display: none;
+}
+#grabAccSuccess {
+  color: green;
+}
+#grabAccErr {
+  color: red;
 }
 .profileIconCont {
   width: 100%;
@@ -395,7 +460,10 @@ select {
   width: 90%;
   max-width: 10rem;
   border-style: solid;
+  border-width: 0.5rem;
   border-radius: 50%;
+  border-color: white;
+  box-shadow: 0px 0px 10px #888888;
 }
 .addAccountForm,
 .settingsForm,
@@ -421,6 +489,7 @@ select {
   display: flex;
   justify-content: center;
   border-radius: 0.7rem;
+  border: none;
 }
 .profileNav button svg {
   font-size: 2.75em;
@@ -522,7 +591,10 @@ select {
 .secAnsTwo input,
 .secQuesThree input,
 .secAnsThree input {
-  padding: 0.3rem;
+  padding: 0.45rem;
+  border: none;
+  outline: none;
+  background: white;
 }
 .dobUpdate div {
   width: 30.33%;
@@ -530,7 +602,10 @@ select {
   flex-direction: column;
 }
 .dobUpdate div input {
-  padding: 0.3rem;
+  padding: 0.45rem;
+  border: none;
+  outline: none;
+  background: white;
 }
 .deleteBtn {
   width: 80%;
@@ -567,6 +642,7 @@ select {
   align-content: center;
   border: none;
   border-radius: 50%;
+  box-shadow: 0px 0px 5px #888888;
 }
 .settingConfirmBtn {
   width: 7vw;
@@ -678,6 +754,7 @@ select {
   align-content: center;
   border: none;
   border-radius: 50%;
+  box-shadow: 0px 0px 5px #888888;
 }
 .addAccSubmitBtn {
   width: 7vw;
@@ -758,7 +835,8 @@ select {
   margin: 3rem 0rem;
 }
 .deleteAccBtn button {
-  width: 10vw;
+  width: 60%;
+  max-width: 10rem;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -766,6 +844,10 @@ select {
   align-content: center;
   border-radius: 3rem;
   border-width: 0px;
+  background-color: #dd7381;
+  border: 0.35rem solid #d55062;
+  font-size: 1rem;
+  color: #f7dce0;
 }
 #deleteAccButton {
   width: 100%;
@@ -815,4 +897,5 @@ select {
   align-content: center;
   border: none;
   border-radius: 50%;
+  box-shadow: 0px 0px 5px #888888;
 }

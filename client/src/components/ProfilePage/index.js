@@ -11,6 +11,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import CheckIcon from "@mui/icons-material/Check";
 
 const ProfilePage = ({
   setUserAccounts,
@@ -31,28 +33,6 @@ const ProfilePage = ({
   const [curAccUpdatePage, seCurAccUpdatePage] = useState("#addAccountPageA");
   const [curAccInfoPage, setCurAccInfoPage] = useState("#accCardInfoA");
   const [identifier, setIdentifier] = useState("");
-
-  const grabAccounts = () => {
-    setUserAccountsA([]);
-    setUserAccountsB([]);
-
-    Axios.post(`http://localhost:3001/getAcc`, {
-      userID: currentUser.id,
-    }).then((response) => {
-      console.log(response.data);
-      if (response.data.length <= 0) {
-      } else {
-        $("#accountSideA").css({ display: "flex", opacity: 0 });
-        $("#accountSideA").animate({ opacity: 1 });
-        $("#accountSideB").css({ display: "flex", opacity: 0 });
-        $("#accountSideB").animate({ opacity: 1 });
-        setUserAccountsA(response.data.slice(0, response.data.length / 2));
-        setUserAccountsB(
-          response.data.slice(response.data.length / 2, response.data.length)
-        );
-      }
-    });
-  };
 
   const switchPages = (page, id) => {
     if (page === "#settingsForm") {
@@ -143,6 +123,123 @@ const ProfilePage = ({
     });
   };
 
+  const storeAccount = () => {
+    setTimeout(() => {
+      $("#grabAccBtnCont")
+        .children()
+        .animate({ opacity: 0 }, function () {
+          $("#grabAccBtnCont").children().css({ display: "none" });
+          $("#grabAccBtnCont").animate({ maxWidth: "2.5rem" }, function () {
+            $("#grabAccBtnCont").css({
+              borderTop: ".35rem solid #F3D265",
+              animation: "spin 0.5s linear infinite",
+            });
+          });
+        });
+    });
+    setTimeout(() => {
+      $("#grabAccBtnCont").css({
+        borderTop: "",
+        animation: "",
+      });
+      setTimeout(() => {
+        $("#accountSideA, #accountSideB").animate({ opacity: 0 }, function () {
+          setUserAccountsA([]);
+          setUserAccountsB([]);
+          $("#grabAccBtnCont").animate(
+            {
+              maxWidth: "10rem",
+            },
+            function () {
+              $("#grabAccBtnCont")
+                .children()
+                .animate({ opacity: 0 }, function () {
+                  $("#grabAccBtnCont").children().css({ display: "none" });
+                  $("#grabAccBtnCont").animate(
+                    { maxWidth: "10rem" },
+                    function () {
+                      $("#grabAccButton").css({ display: "flex" });
+                      setTimeout(() => {
+                        $("#grabAccButton").animate({ opacity: 1 });
+                      });
+                    }
+                  );
+                });
+            }
+          );
+        });
+      }, 500);
+    }, 5000);
+  };
+
+  const grabAccounts = () => {
+    setTimeout(() => {
+      $("#grabAccBtnCont")
+        .children()
+        .animate({ opacity: 0 }, function () {
+          $("#grabAccBtnCont").children().css({ display: "none" });
+          $("#grabAccBtnCont").animate({ maxWidth: "2.5rem" }, function () {
+            $("#grabAccBtnCont").css({
+              borderTop: ".35rem solid #F3D265",
+              animation: "spin 0.5s linear infinite",
+            });
+          });
+        });
+    });
+    setTimeout(() => {
+      $("#grabAccBtnCont").css({
+        borderTop: "",
+        animation: "",
+      });
+
+      Axios.post(`http://localhost:3001/getAcc`, {
+        userID: currentUser.id,
+      }).then((response) => {
+        console.log(response.data);
+        if (response.data.length <= 0) {
+        } else {
+          setTimeout(() => {
+            $("#grabAccBtnCont").css({
+              borderTop: "",
+              animation: "",
+            });
+            $("#grabAccSuccess").css({ display: "flex" });
+            $("#grabAccSuccess").animate({ opacity: 1 }, function () {});
+          });
+          setTimeout(() => {
+            setUserAccountsA(response.data.slice(0, response.data.length / 2));
+            setUserAccountsB(
+              response.data.slice(
+                response.data.length / 2,
+                response.data.length
+              )
+            );
+            $("#accountSideA").css({ display: "flex", opacity: 0 });
+            $("#accountSideA").animate({ opacity: 1 });
+            $("#accountSideB").css({ display: "flex", opacity: 0 });
+            $("#accountSideB").animate({ opacity: 1 });
+          }, 3000);
+          setTimeout(() => {
+            $("#grabAccBtnCont")
+              .children()
+              .animate({ opacity: 0 }, function () {
+                $("#grabAccBtnCont").children().css({ display: "none" });
+                $("#grabAccBtnCont").animate(
+                  { maxWidth: "10rem" },
+                  function () {
+                    $("#storeAccButton").css({ display: "flex" });
+                    setTimeout(() => {
+                      $("#storeAccButton").animate({ opacity: 1 });
+                    });
+                  }
+                );
+              });
+          }, 3000);
+        }
+      });
+    }, 5000);
+  };
+
   return (
     <>
       <div className="accountSideA" id="accountSideA">
@@ -172,7 +269,16 @@ const ProfilePage = ({
             <p>{currentUser.username}</p>
             <p>{currentUser.email}</p>
             <div className="grabAccBtn">
-              <button onClick={() => grabAccounts()}>Grab Accounts</button>
+              <div className="grabAccBtnCont" id="grabAccBtnCont">
+                <PriorityHighIcon id="grabAccErr" />
+                <CheckIcon id="grabAccSuccess" />
+                <button id="grabAccButton" onClick={() => grabAccounts()}>
+                  Grab Accounts
+                </button>
+                <button id="storeAccButton" onClick={() => storeAccount()}>
+                  Store Accounts
+                </button>
+              </div>
             </div>
           </div>
 

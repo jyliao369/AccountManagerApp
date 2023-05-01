@@ -77,7 +77,6 @@ const Settings = ({
           <div className="nameUpdate">
             <div className="firstNameUp">
               <label>First Name</label>
-              <p id="firstNameUp">{updateUser.firstName}</p>
               <input
                 value={updateUser.firstName}
                 id="firstNameUpInput"
@@ -91,7 +90,6 @@ const Settings = ({
             </div>
             <div className="lastNameUp">
               <label>Last Name</label>
-              <p id="lastNameUp">{updateUser.lastName}</p>
               <input
                 value={updateUser.lastName}
                 id="lastNameUpInput"
@@ -106,7 +104,6 @@ const Settings = ({
           </div>
           <div className="usernameUp">
             <label>Username</label>
-            <p id="userNameUp">{updateUser.username}</p>
             <input
               value={updateUser.username}
               id="userNameUpInput"
@@ -120,7 +117,6 @@ const Settings = ({
           </div>
           <div className="emailUp">
             <label>Email</label>
-            <p id="emailUp">{updateUser.email}</p>
             <input
               value={updateUser.email}
               id="emailUpInput"
@@ -131,7 +127,6 @@ const Settings = ({
           </div>
           <div className="passwordUp">
             <label>Password</label>
-            <p id="passwordUp">{updateUser.password}</p>
             <input
               value={updateUser.password}
               id="passwordUpInput"
@@ -146,7 +141,6 @@ const Settings = ({
           </div>
           <div className="phoneNumUp">
             <label>Phone Number</label>
-            <p id="phoneNumUp">{updateUser.mobileNum}</p>
             <input
               value={updateUser.mobileNum}
               id="phoneNumUpInput"
@@ -164,7 +158,6 @@ const Settings = ({
           <div className="dobUpdate">
             <div className="dobMonthUp">
               <label>Month</label>
-              <p id="dobMonthUp">{updateUser.dobMonth}</p>
               <input id="dobMonthUpInput" value={updateUser.dobMonth} />
             </div>
             <div className="dobDateUp">
@@ -180,7 +173,6 @@ const Settings = ({
           </div>
           <div className="secQuesOne">
             <label>Security Question 1</label>
-            <p id="secQuesOne">{updateUser.secQuestionOne}</p>
             <input
               value={updateUser.secQuestionOne}
               id="secQuesOneInput"
@@ -194,7 +186,6 @@ const Settings = ({
           </div>
           <div className="secAnsOne">
             <label>Answer</label>
-            <p id="secAnsOne">{updateUser.secAnsOne}</p>
             <input
               value={updateUser.secAnsOne}
               id="secAnsOneInput"
@@ -208,7 +199,6 @@ const Settings = ({
           </div>
           <div className="secQuesTwo">
             <label>Security Question 2</label>
-            <p id="secQuesTwo">{updateUser.secQuestionTwo}</p>
             <input
               value={updateUser.secQuestionTwo}
               id="secQuesTwoInput"
@@ -222,7 +212,6 @@ const Settings = ({
           </div>
           <div className="secAnsTwo">
             <label>Answer</label>
-            <p id="secAnsTwo">{updateUser.secAnsTwo}</p>
             <input
               value={updateUser.secAnsTwo}
               id="secAnsTwoInput"
@@ -236,7 +225,6 @@ const Settings = ({
           </div>
           <div className="secQuesThree">
             <label>Security Question 3</label>
-            <p id="secQuesThree">{updateUser.secQuestionThree}</p>
             <input
               value={updateUser.secQuestionThree}
               id="secQuesThreeInput"
@@ -250,7 +238,6 @@ const Settings = ({
           </div>
           <div className="secAnsThree">
             <label>Answer</label>
-            <p id="secAnsThree">{updateUser.secAnsThree}</p>
             <input
               value={updateUser.secAnsThree}
               id="secAnsThreeInput"

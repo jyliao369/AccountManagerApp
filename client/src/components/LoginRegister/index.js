@@ -404,7 +404,7 @@ const LoginRegister = ({
           <div className="regFormCont">
             <div className="regFormA" id="regFormA">
               <div className="usernameInput">
-                <p>Username</p>
+                <label>Username</label>
                 <input
                   placeholder="Ex. testninja101"
                   value={registerUser.username}
@@ -417,7 +417,7 @@ const LoginRegister = ({
                 />
               </div>
               <div className="passwordInput">
-                <p>Password</p>
+                <label>Password</label>
                 <input
                   type="password"
                   placeholder="**********"
@@ -432,7 +432,7 @@ const LoginRegister = ({
               </div>
               <div className="passwordInput">
                 <div>
-                  <p>Re-type Password</p>
+                  <label>Re-type Password</label>
                   {passwordCheck()}
                 </div>
                 <input
@@ -443,7 +443,7 @@ const LoginRegister = ({
                 />
               </div>
               <div className="emailInput">
-                <p>Email</p>
+                <label>Email</label>
                 <input
                   placeholder="Ex. testninja101@gmail.com"
                   value={registerUser.email}
@@ -457,7 +457,7 @@ const LoginRegister = ({
               </div>
               <div className="fullNameInput">
                 <div className="nameInput">
-                  <p>First Name</p>
+                  <label>First Name</label>
                   <input
                     placeholder="Ex. John"
                     value={registerUser.firstName}
@@ -470,7 +470,7 @@ const LoginRegister = ({
                   />
                 </div>
                 <div className="nameInput">
-                  <p>Last Name</p>
+                  <label>Last Name</label>
                   <input
                     placeholder="Ex. Allen"
                     value={registerUser.lastName}
@@ -484,7 +484,7 @@ const LoginRegister = ({
                 </div>
               </div>
               <div className="phoneNumInput">
-                <p>Mobile Number</p>
+                <label>Mobile Number</label>
                 <input
                   placeholder="Ex. 111-222-3333"
                   value={registerUser.phoneNum}
@@ -498,7 +498,7 @@ const LoginRegister = ({
               </div>
               <div className="dobInputMain">
                 <div className="dobMonthInput">
-                  <p>Month</p>
+                  <label>Month</label>
                   <select
                     value={registerUser.dobMonth}
                     onChange={(event) =>
@@ -515,7 +515,7 @@ const LoginRegister = ({
                   </select>
                 </div>
                 <div className="dobDateInput">
-                  <p>Date</p>
+                  <label>Date</label>
                   <input
                     placeholder="Ex. 15"
                     value={registerUser.dobDate}
@@ -528,7 +528,7 @@ const LoginRegister = ({
                   />
                 </div>
                 <div className="dobYearInput">
-                  <p>Year</p>
+                  <label>Year</label>
                   <input
                     placeholder="Ex. 2021"
                     value={registerUser.dobYear}
@@ -542,10 +542,9 @@ const LoginRegister = ({
                 </div>
               </div>
             </div>
-
             <div className="regFormB" id="regFormB">
               <div className="secQuesOneInput">
-                <p>Security Question 1:</p>
+                <label>Security Question 1:</label>
                 <select
                   value={registerUser.securityOne}
                   onChange={(event) =>
@@ -562,7 +561,7 @@ const LoginRegister = ({
                 </select>
               </div>
               <div className="secAnsOneInput">
-                <p>Answer</p>
+                <label>Answer</label>
                 <input
                   placeholder="Answer"
                   value={registerUser.ansOne}
@@ -575,7 +574,7 @@ const LoginRegister = ({
                 />
               </div>
               <div className="secQuesTwoInput">
-                <p>Security Question 2:</p>
+                <label>Security Question 2:</label>
                 <select
                   value={registerUser.securityTwo}
                   onChange={(event) =>
@@ -592,7 +591,7 @@ const LoginRegister = ({
                 </select>
               </div>
               <div className="secAnsTwoInput">
-                <p>Answer</p>
+                <label>Answer</label>
                 <input
                   placeholder="Answer"
                   value={registerUser.ansTwo}
@@ -605,7 +604,7 @@ const LoginRegister = ({
                 />
               </div>
               <div className="secQuesThreeInput">
-                <p>Security Question 3:</p>
+                <label>Security Question 3:</label>
                 <select
                   value={registerUser.securityThree}
                   onChange={(event) =>
@@ -622,7 +621,7 @@ const LoginRegister = ({
                 </select>
               </div>
               <div className="secAnsThreeInput">
-                <p>Answer</p>
+                <label>Answer</label>
                 <input
                   placeholder="Answer"
                   value={registerUser.ansThree}

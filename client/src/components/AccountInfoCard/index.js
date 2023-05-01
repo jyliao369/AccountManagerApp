@@ -140,6 +140,39 @@ const AccountInfoCard = ({
     });
   };
 
+  const test = () => {
+    setTimeout(() => {
+      $("#deleteAccBtn")
+        .children()
+        .animate({ opacity: 0 }, function () {
+          $("#deleteAccBtn").children().css({ display: "none" });
+          $("#deleteAccBtn").animate({ maxWidth: "2.5rem" }, function () {
+            $("#deleteAccBtn").css({
+              borderTop: ".35rem solid #BA2C23",
+              animation: "spin 0.5s linear infinite",
+            });
+          });
+        });
+    });
+    setTimeout(() => {
+      $("#deleteAccBtn").css({
+        borderTop: "",
+        animation: "",
+      });
+    }, 5000);
+    setTimeout(() => {
+      $("#deleteAccBtn").animate(
+        {
+          maxWidth: "10rem",
+        },
+        function () {
+          $("#deleteAccButton").css({ display: "flex", opacity: 0 });
+          $("#deleteAccButton").animate({ opacity: 1 });
+        }
+      );
+    }, 7500);
+  };
+
   return (
     <div className="accInfoCard" id="accInfoCard">
       <div className="accInfoHeader">
@@ -345,6 +378,7 @@ const AccountInfoCard = ({
           >
             <ChevronLeftIcon />
           </button>
+          <button onClick={() => test()}>test</button>
           <button className="updateBtnConfirm" onClick={() => updateAcc()}>
             Update
           </button>
